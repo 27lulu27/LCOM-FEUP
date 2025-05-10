@@ -1,0 +1,282 @@
+\doxysection{alien.\+c File Reference}
+\hypertarget{alien_8c}{}\label{alien_8c}\index{alien.c@{alien.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lab5.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include "{}alien.\+h"{}}\newline
+{\ttfamily \#include "{}sprites.\+h"{}}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+Include dependency graph for alien.\+c\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{alien_8c_a535fa46781e558a799283cd8f490f4eb}{ALIEN\+\_\+\+START\+\_\+X}}~20
+\item 
+\#define \mbox{\hyperlink{alien_8c_a06809dcfaa50c0fa0da3cf2c8a37424f}{ALIEN\+\_\+\+START\+\_\+Y}}~50
+\item 
+\#define \mbox{\hyperlink{alien_8c_aca5dd4fac29068dad2677785e1f7dae1}{ALIEN\+\_\+\+SPACING\+\_\+X}}~60
+\item 
+\#define \mbox{\hyperlink{alien_8c_acc20d002bdc181f94d014abb9b47cb97}{ALIEN\+\_\+\+SPACING\+\_\+Y}}~45
+\item 
+\#define \mbox{\hyperlink{alien_8c_abd51ae9ed4b8969eb07f6621c8922ff5}{ALIEN\+\_\+\+MOVE\+\_\+\+DISTANCE}}~10
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{alien_8c_a94245e4c26d13b3b3189c113100b51d7}{init\+\_\+aliens}} (uint16\+\_\+t x\+\_\+res, uint16\+\_\+t y\+\_\+res)
+\item 
+int \mbox{\hyperlink{alien_8c_a20b7d3c635db2499444661a9e3e0de4d}{draw\+\_\+alien}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{alien_8c_aa0df4bfd1873e94493d8268825051e2a}{delete\+\_\+alien}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+void \mbox{\hyperlink{alien_8c_a284324980330e195c1fda0f53f1700fe}{draw\+\_\+aliens}} ()
+\item 
+void \mbox{\hyperlink{alien_8c_ad41dda425726620c758d91489f94c93b}{set\+\_\+alien\+\_\+dead}} (int index)
+\item 
+void \mbox{\hyperlink{alien_8c_a3c0ad6715ee35e1197b6c87389ef4d51}{move\+\_\+aliens}} ()
+\item 
+bool \mbox{\hyperlink{alien_8c_aa9ab81b083d969ad980267020986cd4b}{check\+\_\+all\+\_\+aliens\+\_\+dead}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{alien_8c_a0a616785339f73b99ebf766134d6e39e}{alien\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{alien_8c_ad373e1d66f40af9cf259f6e9f95586d4}{img\+\_\+alien\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{alien_8c_affd5b1454d0b572f34930e5b0c57a89f}{alien\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{alien_8c_a5b1fb9c7f27a878305b599428903af1f}{img\+\_\+alien\+\_\+black\+\_\+sprite}}
+\item 
+\mbox{\hyperlink{struct_alien}{Alien}} \mbox{\hyperlink{alien_8c_a98d97778028fdcea1300f6ec9e242f65}{aliens}} \mbox{[}\mbox{\hyperlink{alien_8h_ac1ed6f2f60c77f89c280be8b23f36eab}{ALIEN\+\_\+\+COUNT}}\mbox{]}
+\item 
+int \mbox{\hyperlink{alien_8c_abe3222080920e969777184424358ade9}{alien\+\_\+shoot\+\_\+interval}} = 180
+\item 
+uint16\+\_\+t \mbox{\hyperlink{alien_8c_ad2b9859dcd5621e0a431189d9e181876}{screen\+\_\+width}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{alien_8c_ae144b821695827ec01ceb52f3220b07d}{screen\+\_\+height}}
+\item 
+bool \mbox{\hyperlink{alien_8c_a0be557ee65f1dce3448807a63b2a3118}{moving\+\_\+right}} = true
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{alien_8c_abd51ae9ed4b8969eb07f6621c8922ff5}\label{alien_8c_abd51ae9ed4b8969eb07f6621c8922ff5} 
+\index{alien.c@{alien.c}!ALIEN\_MOVE\_DISTANCE@{ALIEN\_MOVE\_DISTANCE}}
+\index{ALIEN\_MOVE\_DISTANCE@{ALIEN\_MOVE\_DISTANCE}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{ALIEN\_MOVE\_DISTANCE}{ALIEN\_MOVE\_DISTANCE}}
+{\footnotesize\ttfamily \#define ALIEN\+\_\+\+MOVE\+\_\+\+DISTANCE~10}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00014}{14}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_aca5dd4fac29068dad2677785e1f7dae1}\label{alien_8c_aca5dd4fac29068dad2677785e1f7dae1} 
+\index{alien.c@{alien.c}!ALIEN\_SPACING\_X@{ALIEN\_SPACING\_X}}
+\index{ALIEN\_SPACING\_X@{ALIEN\_SPACING\_X}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{ALIEN\_SPACING\_X}{ALIEN\_SPACING\_X}}
+{\footnotesize\ttfamily \#define ALIEN\+\_\+\+SPACING\+\_\+X~60}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00012}{12}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_acc20d002bdc181f94d014abb9b47cb97}\label{alien_8c_acc20d002bdc181f94d014abb9b47cb97} 
+\index{alien.c@{alien.c}!ALIEN\_SPACING\_Y@{ALIEN\_SPACING\_Y}}
+\index{ALIEN\_SPACING\_Y@{ALIEN\_SPACING\_Y}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{ALIEN\_SPACING\_Y}{ALIEN\_SPACING\_Y}}
+{\footnotesize\ttfamily \#define ALIEN\+\_\+\+SPACING\+\_\+Y~45}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00013}{13}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_a535fa46781e558a799283cd8f490f4eb}\label{alien_8c_a535fa46781e558a799283cd8f490f4eb} 
+\index{alien.c@{alien.c}!ALIEN\_START\_X@{ALIEN\_START\_X}}
+\index{ALIEN\_START\_X@{ALIEN\_START\_X}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{ALIEN\_START\_X}{ALIEN\_START\_X}}
+{\footnotesize\ttfamily \#define ALIEN\+\_\+\+START\+\_\+X~20}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00010}{10}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_a06809dcfaa50c0fa0da3cf2c8a37424f}\label{alien_8c_a06809dcfaa50c0fa0da3cf2c8a37424f} 
+\index{alien.c@{alien.c}!ALIEN\_START\_Y@{ALIEN\_START\_Y}}
+\index{ALIEN\_START\_Y@{ALIEN\_START\_Y}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{ALIEN\_START\_Y}{ALIEN\_START\_Y}}
+{\footnotesize\ttfamily \#define ALIEN\+\_\+\+START\+\_\+Y~50}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00011}{11}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{alien_8c_aa9ab81b083d969ad980267020986cd4b}\label{alien_8c_aa9ab81b083d969ad980267020986cd4b} 
+\index{alien.c@{alien.c}!check\_all\_aliens\_dead@{check\_all\_aliens\_dead}}
+\index{check\_all\_aliens\_dead@{check\_all\_aliens\_dead}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{check\_all\_aliens\_dead()}{check\_all\_aliens\_dead()}}
+{\footnotesize\ttfamily bool check\+\_\+all\+\_\+aliens\+\_\+dead (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00112}{112}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_aa0df4bfd1873e94493d8268825051e2a}\label{alien_8c_aa0df4bfd1873e94493d8268825051e2a} 
+\index{alien.c@{alien.c}!delete\_alien@{delete\_alien}}
+\index{delete\_alien@{delete\_alien}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{delete\_alien()}{delete\_alien()}}
+{\footnotesize\ttfamily int delete\+\_\+alien (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00048}{48}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_a20b7d3c635db2499444661a9e3e0de4d}\label{alien_8c_a20b7d3c635db2499444661a9e3e0de4d} 
+\index{alien.c@{alien.c}!draw\_alien@{draw\_alien}}
+\index{draw\_alien@{draw\_alien}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{draw\_alien()}{draw\_alien()}}
+{\footnotesize\ttfamily int draw\+\_\+alien (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00040}{40}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_a284324980330e195c1fda0f53f1700fe}\label{alien_8c_a284324980330e195c1fda0f53f1700fe} 
+\index{alien.c@{alien.c}!draw\_aliens@{draw\_aliens}}
+\index{draw\_aliens@{draw\_aliens}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{draw\_aliens()}{draw\_aliens()}}
+{\footnotesize\ttfamily void draw\+\_\+aliens (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00056}{56}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_a94245e4c26d13b3b3189c113100b51d7}\label{alien_8c_a94245e4c26d13b3b3189c113100b51d7} 
+\index{alien.c@{alien.c}!init\_aliens@{init\_aliens}}
+\index{init\_aliens@{init\_aliens}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{init\_aliens()}{init\_aliens()}}
+{\footnotesize\ttfamily void init\+\_\+aliens (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x\+\_\+res,  }\item[{uint16\+\_\+t}]{y\+\_\+res }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00027}{27}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_a3c0ad6715ee35e1197b6c87389ef4d51}\label{alien_8c_a3c0ad6715ee35e1197b6c87389ef4d51} 
+\index{alien.c@{alien.c}!move\_aliens@{move\_aliens}}
+\index{move\_aliens@{move\_aliens}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{move\_aliens()}{move\_aliens()}}
+{\footnotesize\ttfamily void move\+\_\+aliens (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00075}{75}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_ad41dda425726620c758d91489f94c93b}\label{alien_8c_ad41dda425726620c758d91489f94c93b} 
+\index{alien.c@{alien.c}!set\_alien\_dead@{set\_alien\_dead}}
+\index{set\_alien\_dead@{set\_alien\_dead}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{set\_alien\_dead()}{set\_alien\_dead()}}
+{\footnotesize\ttfamily void set\+\_\+alien\+\_\+dead (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00066}{66}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{alien_8c_affd5b1454d0b572f34930e5b0c57a89f}\label{alien_8c_affd5b1454d0b572f34930e5b0c57a89f} 
+\index{alien.c@{alien.c}!alien\_black\_sprite@{alien\_black\_sprite}}
+\index{alien\_black\_sprite@{alien\_black\_sprite}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{alien\_black\_sprite}{alien\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} alien\+\_\+black\+\_\+sprite}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00018}{18}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_abe3222080920e969777184424358ade9}\label{alien_8c_abe3222080920e969777184424358ade9} 
+\index{alien.c@{alien.c}!alien\_shoot\_interval@{alien\_shoot\_interval}}
+\index{alien\_shoot\_interval@{alien\_shoot\_interval}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{alien\_shoot\_interval}{alien\_shoot\_interval}}
+{\footnotesize\ttfamily int alien\+\_\+shoot\+\_\+interval = 180}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00021}{21}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_a0a616785339f73b99ebf766134d6e39e}\label{alien_8c_a0a616785339f73b99ebf766134d6e39e} 
+\index{alien.c@{alien.c}!alien\_sprite@{alien\_sprite}}
+\index{alien\_sprite@{alien\_sprite}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{alien\_sprite}{alien\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} alien\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00026}{26}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{alien_8c_a98d97778028fdcea1300f6ec9e242f65}\label{alien_8c_a98d97778028fdcea1300f6ec9e242f65} 
+\index{alien.c@{alien.c}!aliens@{aliens}}
+\index{aliens@{aliens}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{aliens}{aliens}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_alien}{Alien}} aliens\mbox{[}\mbox{\hyperlink{alien_8h_ac1ed6f2f60c77f89c280be8b23f36eab}{ALIEN\+\_\+\+COUNT}}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00020}{20}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_a5b1fb9c7f27a878305b599428903af1f}\label{alien_8c_a5b1fb9c7f27a878305b599428903af1f} 
+\index{alien.c@{alien.c}!img\_alien\_black\_sprite@{img\_alien\_black\_sprite}}
+\index{img\_alien\_black\_sprite@{img\_alien\_black\_sprite}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{img\_alien\_black\_sprite}{img\_alien\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+alien\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00049}{49}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{alien_8c_ad373e1d66f40af9cf259f6e9f95586d4}\label{alien_8c_ad373e1d66f40af9cf259f6e9f95586d4} 
+\index{alien.c@{alien.c}!img\_alien\_sprite@{img\_alien\_sprite}}
+\index{img\_alien\_sprite@{img\_alien\_sprite}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{img\_alien\_sprite}{img\_alien\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+alien\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00048}{48}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{alien_8c_a0be557ee65f1dce3448807a63b2a3118}\label{alien_8c_a0be557ee65f1dce3448807a63b2a3118} 
+\index{alien.c@{alien.c}!moving\_right@{moving\_right}}
+\index{moving\_right@{moving\_right}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{moving\_right}{moving\_right}}
+{\footnotesize\ttfamily bool moving\+\_\+right = true}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00025}{25}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_ae144b821695827ec01ceb52f3220b07d}\label{alien_8c_ae144b821695827ec01ceb52f3220b07d} 
+\index{alien.c@{alien.c}!screen\_height@{screen\_height}}
+\index{screen\_height@{screen\_height}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{screen\_height}{screen\_height}}
+{\footnotesize\ttfamily uint16\+\_\+t screen\+\_\+height}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00024}{24}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8c_ad2b9859dcd5621e0a431189d9e181876}\label{alien_8c_ad2b9859dcd5621e0a431189d9e181876} 
+\index{alien.c@{alien.c}!screen\_width@{screen\_width}}
+\index{screen\_width@{screen\_width}!alien.c@{alien.c}}
+\doxysubsubsection{\texorpdfstring{screen\_width}{screen\_width}}
+{\footnotesize\ttfamily uint16\+\_\+t screen\+\_\+width}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00023}{23}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+

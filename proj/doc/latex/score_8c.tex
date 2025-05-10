@@ -1,0 +1,182 @@
+\doxysection{score.\+c File Reference}
+\hypertarget{score_8c}{}\label{score_8c}\index{score.c@{score.c}}
+{\ttfamily \#include "{}score.\+h"{}}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include "{}projectiles.\+h"{}}\newline
+{\ttfamily \#include "{}sprites.\+h"{}}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+{\ttfamily \#include "{}alien.\+h"{}}\newline
+{\ttfamily \#include "{}letters.\+h"{}}\newline
+Include dependency graph for score.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{score_8c_ad412bd4b019684f65ffc0a7329230b4c}{init\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info, int initial\+\_\+lives)
+\item 
+void \mbox{\hyperlink{score_8c_aaee542d3d50b8381ae32a7988de45265}{update\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info, int points)
+\item 
+void \mbox{\hyperlink{score_8c_a19b87e2c11783731fd604db62f573636}{decrement\+\_\+lives}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\item 
+void \mbox{\hyperlink{score_8c_ad672546b1e1c378c5d5ee0d10d2a82b9}{draw\+\_\+char}} (char c, uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+void \mbox{\hyperlink{score_8c_a1bff1633bdaa2353a4e118795637156a}{draw\+\_\+string}} (const char \texorpdfstring{$\ast$}{*}str, uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+void \mbox{\hyperlink{score_8c_af02807ea1d130a53010007ea1b78b69c}{draw\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\item 
+void \mbox{\hyperlink{score_8c_a8b3f30b0e190034dea2801d4da83d7c1}{draw\+\_\+final\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\item 
+void \mbox{\hyperlink{score_8c_a80435eec9f6ce3ca56ec5f983f331aa6}{draw\+\_\+lives}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\item 
+void \mbox{\hyperlink{score_8c_ac9d2010d9375c17d14455a279167fecd}{draw\+\_\+best\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\item 
+void \mbox{\hyperlink{score_8c_afb4c3703e5755f5a6156baa007248c13}{draw\+\_\+time\+\_\+remaining}} (int time\+\_\+remaining)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{score_8c_a3951b025e02a4bfd74ff02dcac77a8c3}{alien\+\_\+score\+\_\+value}} = 100
+\item 
+\mbox{\hyperlink{struct_score}{Score}} \mbox{\hyperlink{score_8c_adc7277eea8958dea6b52f5e3dbe65a7e}{game\+\_\+score}}
+\item 
+int \mbox{\hyperlink{score_8c_ac3816f3d5c6e0dce27cf9b2b18ed94ca}{best\+\_\+score}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{score_8c_a19b87e2c11783731fd604db62f573636}\label{score_8c_a19b87e2c11783731fd604db62f573636} 
+\index{score.c@{score.c}!decrement\_lives@{decrement\_lives}}
+\index{decrement\_lives@{decrement\_lives}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{decrement\_lives()}{decrement\_lives()}}
+{\footnotesize\ttfamily void decrement\+\_\+lives (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00025}{25}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_ac9d2010d9375c17d14455a279167fecd}\label{score_8c_ac9d2010d9375c17d14455a279167fecd} 
+\index{score.c@{score.c}!draw\_best\_score@{draw\_best\_score}}
+\index{draw\_best\_score@{draw\_best\_score}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{draw\_best\_score()}{draw\_best\_score()}}
+{\footnotesize\ttfamily void draw\+\_\+best\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00084}{84}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_ad672546b1e1c378c5d5ee0d10d2a82b9}\label{score_8c_ad672546b1e1c378c5d5ee0d10d2a82b9} 
+\index{score.c@{score.c}!draw\_char@{draw\_char}}
+\index{draw\_char@{draw\_char}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{draw\_char()}{draw\_char()}}
+{\footnotesize\ttfamily void draw\+\_\+char (\begin{DoxyParamCaption}\item[{char}]{c,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00031}{31}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_a8b3f30b0e190034dea2801d4da83d7c1}\label{score_8c_a8b3f30b0e190034dea2801d4da83d7c1} 
+\index{score.c@{score.c}!draw\_final\_score@{draw\_final\_score}}
+\index{draw\_final\_score@{draw\_final\_score}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{draw\_final\_score()}{draw\_final\_score()}}
+{\footnotesize\ttfamily void draw\+\_\+final\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00072}{72}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_a80435eec9f6ce3ca56ec5f983f331aa6}\label{score_8c_a80435eec9f6ce3ca56ec5f983f331aa6} 
+\index{score.c@{score.c}!draw\_lives@{draw\_lives}}
+\index{draw\_lives@{draw\_lives}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lives()}{draw\_lives()}}
+{\footnotesize\ttfamily void draw\+\_\+lives (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00078}{78}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_af02807ea1d130a53010007ea1b78b69c}\label{score_8c_af02807ea1d130a53010007ea1b78b69c} 
+\index{score.c@{score.c}!draw\_score@{draw\_score}}
+\index{draw\_score@{draw\_score}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{draw\_score()}{draw\_score()}}
+{\footnotesize\ttfamily void draw\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00066}{66}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_a1bff1633bdaa2353a4e118795637156a}\label{score_8c_a1bff1633bdaa2353a4e118795637156a} 
+\index{score.c@{score.c}!draw\_string@{draw\_string}}
+\index{draw\_string@{draw\_string}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{draw\_string()}{draw\_string()}}
+{\footnotesize\ttfamily void draw\+\_\+string (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00058}{58}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_afb4c3703e5755f5a6156baa007248c13}\label{score_8c_afb4c3703e5755f5a6156baa007248c13} 
+\index{score.c@{score.c}!draw\_time\_remaining@{draw\_time\_remaining}}
+\index{draw\_time\_remaining@{draw\_time\_remaining}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{draw\_time\_remaining()}{draw\_time\_remaining()}}
+{\footnotesize\ttfamily void draw\+\_\+time\+\_\+remaining (\begin{DoxyParamCaption}\item[{int}]{time\+\_\+remaining }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00093}{93}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_ad412bd4b019684f65ffc0a7329230b4c}\label{score_8c_ad412bd4b019684f65ffc0a7329230b4c} 
+\index{score.c@{score.c}!init\_score@{init\_score}}
+\index{init\_score@{init\_score}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{init\_score()}{init\_score()}}
+{\footnotesize\ttfamily void init\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info,  }\item[{int}]{initial\+\_\+lives }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00016}{16}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_aaee542d3d50b8381ae32a7988de45265}\label{score_8c_aaee542d3d50b8381ae32a7988de45265} 
+\index{score.c@{score.c}!update\_score@{update\_score}}
+\index{update\_score@{update\_score}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{update\_score()}{update\_score()}}
+{\footnotesize\ttfamily void update\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info,  }\item[{int}]{points }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00021}{21}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{score_8c_a3951b025e02a4bfd74ff02dcac77a8c3}\label{score_8c_a3951b025e02a4bfd74ff02dcac77a8c3} 
+\index{score.c@{score.c}!alien\_score\_value@{alien\_score\_value}}
+\index{alien\_score\_value@{alien\_score\_value}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{alien\_score\_value}{alien\_score\_value}}
+{\footnotesize\ttfamily int alien\+\_\+score\+\_\+value = 100}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00012}{12}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_ac3816f3d5c6e0dce27cf9b2b18ed94ca}\label{score_8c_ac3816f3d5c6e0dce27cf9b2b18ed94ca} 
+\index{score.c@{score.c}!best\_score@{best\_score}}
+\index{best\_score@{best\_score}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{best\_score}{best\_score}}
+{\footnotesize\ttfamily int best\+\_\+score = 0}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00014}{14}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8c_adc7277eea8958dea6b52f5e3dbe65a7e}\label{score_8c_adc7277eea8958dea6b52f5e3dbe65a7e} 
+\index{score.c@{score.c}!game\_score@{game\_score}}
+\index{game\_score@{game\_score}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{game\_score}{game\_score}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_score}{Score}} game\+\_\+score}
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00013}{13}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+

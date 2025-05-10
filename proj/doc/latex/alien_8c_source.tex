@@ -1,0 +1,125 @@
+\doxysection{alien.\+c}
+\hypertarget{alien_8c_source}{}\label{alien_8c_source}\index{src/alien.c@{src/alien.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <lcom/lab5.h>}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}video.h"{}}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{alien_8h}{alien.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprites_8h}{sprites.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}i8042.h"{}}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00010}00010\ \textcolor{preprocessor}{\#define\ ALIEN\_START\_X\ 20}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00011}00011\ \textcolor{preprocessor}{\#define\ ALIEN\_START\_Y\ 50}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00012}00012\ \textcolor{preprocessor}{\#define\ ALIEN\_SPACING\_X\ 60}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00013}00013\ \textcolor{preprocessor}{\#define\ ALIEN\_SPACING\_Y\ 45}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00014}00014\ \textcolor{preprocessor}{\#define\ ALIEN\_MOVE\_DISTANCE\ 10}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00016}00016\ \textcolor{keyword}{extern}\ uint8\_t*\ alien\_sprite;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00017}00017\ \textcolor{keyword}{extern}\ xpm\_image\_t\ img\_alien\_sprite;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00018}00018\ uint8\_t*\ alien\_black\_sprite;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00019}00019\ \textcolor{keyword}{extern}\ xpm\_image\_t\ img\_alien\_black\_sprite;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00020}\mbox{\hyperlink{alien_8h_a98d97778028fdcea1300f6ec9e242f65}{00020}}\ \mbox{\hyperlink{struct_alien}{Alien}}\ aliens[ALIEN\_COUNT];}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00021}\mbox{\hyperlink{alien_8h_abe3222080920e969777184424358ade9}{00021}}\ \textcolor{keywordtype}{int}\ alien\_shoot\_interval\ =\ 180;\ \ \textcolor{comment}{//\ 3\ seconds\ default}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00023}00023\ uint16\_t\ screen\_width;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00024}00024\ uint16\_t\ screen\_height;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00025}00025\ \textcolor{keywordtype}{bool}\ moving\_right\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00027}\mbox{\hyperlink{alien_8h_a94245e4c26d13b3b3189c113100b51d7}{00027}}\ \textcolor{keywordtype}{void}\ init\_aliens(uint16\_t\ x\_res,\ uint16\_t\ y\_res)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00028}00028\ \ \ screen\_width\ =\ x\_res;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00029}00029\ \ \ screen\_height\ =\ y\_res;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00030}00030\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ row\ =\ 0;\ row\ <\ ALIEN\_ROWS;\ row++)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00031}00031\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ col\ =\ 0;\ col\ <\ ALIEN\_COLUMNS;\ col++)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00032}00032\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ row\ *\ ALIEN\_COLUMNS\ +\ col;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00033}00033\ \ \ \ \ \ \ aliens[i].x\ =\ ALIEN\_START\_X\ +\ col\ *\ ALIEN\_SPACING\_X;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00034}00034\ \ \ \ \ \ \ aliens[i].y\ =\ ALIEN\_START\_Y\ +\ row\ *\ ALIEN\_SPACING\_Y;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00035}00035\ \ \ \ \ \ \ aliens[i].alive\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00037}00037\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00040}\mbox{\hyperlink{alien_8h_a20b7d3c635db2499444661a9e3e0de4d}{00040}}\ \textcolor{keywordtype}{int}\ draw\_alien(uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00041}00041\ \ \ \textcolor{keywordflow}{if}\ (draw\_xpm(alien\_sprite,\ img\_alien\_sprite,\ x,\ y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00042}00042\ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00044}00044\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00045}00045\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00048}\mbox{\hyperlink{alien_8h_aa0df4bfd1873e94493d8268825051e2a}{00048}}\ \textcolor{keywordtype}{int}\ delete\_alien(uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00049}00049\ \ \ \textcolor{keywordflow}{if}\ (draw\_xpm(alien\_black\_sprite,\ img\_alien\_black\_sprite,\ x,\ y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00050}00050\ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00052}00052\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00053}00053\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00056}\mbox{\hyperlink{alien_8h_a14e05fad9daa4ab53ee1358171b86b0d}{00056}}\ \textcolor{keywordtype}{void}\ draw\_aliens()\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00057}00057\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00058}00058\ \ \ \ \ \textcolor{keywordflow}{if}\ (aliens[i].alive)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00059}00059\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_alien(aliens[i].x,\ aliens[i].y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ draw\ alien\ \#\%d\ at\ (\%d,\ \%d)\(\backslash\)n"{}},\ i,\ aliens[i].x,\ aliens[i].y);}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00061}00061\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00063}00063\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00066}\mbox{\hyperlink{alien_8h_ad41dda425726620c758d91489f94c93b}{00066}}\ \textcolor{keywordtype}{void}\ set\_alien\_dead(\textcolor{keywordtype}{int}\ index)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00067}00067\ \ \ \textcolor{keywordflow}{if}\ (index\ >=\ 0\ \&\&\ index\ <\ ALIEN\_COUNT)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00068}00068\ \ \ \ \ aliens[index].alive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00069}00069\ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_alien(aliens[index].x,\ aliens[index].y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00070}00070\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ alien\ \#\%d\ at\ (\%d,\ \%d)\(\backslash\)n"{}},\ index,\ aliens[index].x,\ aliens[index].y);}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00072}00072\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00075}\mbox{\hyperlink{alien_8h_af94a4eb5b67a10eea057aba41d4be138}{00075}}\ \textcolor{keywordtype}{void}\ move\_aliens()\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00076}00076\ \ \ \textcolor{keywordtype}{bool}\ hit\_edge\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00078}00078\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00079}00079\ \ \ \ \ \textcolor{keywordflow}{if}\ (aliens[i].alive)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00080}00080\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (moving\_right\ \&\&\ (aliens[i].x\ +\ ALIEN\_SPACING\_X\ >=\ screen\_width))\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00081}00081\ \ \ \ \ \ \ \ \ hit\_edge\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00083}00083\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!moving\_right\ \&\&\ (aliens[i].x\ <=\ ALIEN\_MOVE\_DISTANCE))\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ hit\_edge\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00086}00086\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00088}00088\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00090}00090\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{if}\ (aliens[i].alive)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00092}00092\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_alien(aliens[i].x,\ aliens[i].y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ alien\ \#\%d\ at\ (\%d,\ \%d)\(\backslash\)n"{}},\ i,\ aliens[i].x,\ aliens[i].y);}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00094}00094\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00096}00096\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00098}00098\ \ \ \textcolor{keywordflow}{if}\ (hit\_edge)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00099}00099\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00100}00100\ \ \ \ \ \ \ aliens[i].y\ +=\ ALIEN\_MOVE\_DISTANCE;\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00102}00102\ \ \ \ \ moving\_right\ =\ !moving\_right;\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00103}00103\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00105}00105\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aliens[i].alive)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ aliens[i].x\ +=\ moving\_right\ ?\ ALIEN\_MOVE\_DISTANCE\ :\ -\/ALIEN\_MOVE\_DISTANCE;}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00107}00107\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00109}00109\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00112}\mbox{\hyperlink{alien_8h_a80d3420dd02c804f605027a5f38a0658}{00112}}\ \textcolor{keywordtype}{bool}\ check\_all\_aliens\_dead()\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00113}00113\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (aliens[i].alive)\ \{}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00115}00115\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00117}00117\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00118}00118\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{alien_8c_source_l00119}00119\ \}}
+
+\end{DoxyCode}

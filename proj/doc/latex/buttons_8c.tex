@@ -1,0 +1,384 @@
+\doxysection{buttons.\+c File Reference}
+\hypertarget{buttons_8c}{}\label{buttons_8c}\index{buttons.c@{buttons.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lab5.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}sprites.\+h"{}}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+Include dependency graph for buttons.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{buttons_8c_a567a48ac4004f709ef32412a547d16db}{draw\+\_\+quit}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_af4ffb26e4b4c4e1c075c7b4256496c87}{draw\+\_\+selected\+\_\+quit}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_a2fe639b56e44e9d0b1e0ef34fe377521}{draw\+\_\+start}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_a98eaec294a3dc3166cf741e33d9ed6f8}{draw\+\_\+selected\+\_\+start}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_a26185e1d23d44d6eeaca62d42551bd28}{delete\+\_\+quit}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_ae2e94933b27c5371a155003a27ce248e}{delete\+\_\+start}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_a981daeff7b27e48310ba355aaf8dc9cc}{draw\+\_\+game\+\_\+over}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_a6ab47d4a4a6b6a7a7475fa561fe72295}{draw\+\_\+win}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_a3b9b0b72e9b77e46bd844304ea203920}{delete\+\_\+win}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8c_aeec93f15db7e213af69ba409e3262bc9}{delete\+\_\+gameover}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_aa65a0bc405f360dfbc7e7dfe0d6aaf39}{start\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_a05f19d619150197a312d1fc11b86d77a}{selected\+\_\+start\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_aa04ff30a7dc1250bd48a39c3ebe8d383}{start\+\_\+black\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_a69122e394ae757cd6bafcb0ae60689cf}{quit\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_ac280591e8f37c2dcda48466a301de5f7}{selected\+\_\+quit\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_ac59ba870523bb46c54eb5c2cd7ada33c}{quit\+\_\+black\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_ad95dac8a49e6c55d60c23c597a0efdbb}{win\+\_\+black\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_a5c7cf6f89930c136c839b65abee00ea0}{gameover\+\_\+black\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_afcbf97cbe1ee3501aa9c0c4aaf341035}{gameover\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{buttons_8c_a80971c18da1c8b6c49dff2c212ad7210}{win\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_ac7b91a43a4a0811f1a9ac319e52a1b1f}{img\+\_\+start\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_a3188ea936d18829ed18e3015f367dd87}{img\+\_\+selected\+\_\+start\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_a865138f6f39715438230ae20f4228271}{img\+\_\+start\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_a01feebb844a2494ba716a8e720687e01}{img\+\_\+quit\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_acefd47e48e79fa38d998eb13b23a9f18}{img\+\_\+selected\+\_\+quit\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_ad5dfdef0afb68911c424dcc3cb49d3cc}{img\+\_\+quit\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_a5ef1f2de746a340d5949d2c5beb62fee}{img\+\_\+gameover\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_a51c19752ebae14210210247acca82f3a}{img\+\_\+win\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_a6de2a43e9fe20801718577f3c47afe8c}{img\+\_\+gameover\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{buttons_8c_adba5dabd33eb164f336e6022ae55a4ae}{img\+\_\+win\+\_\+sprite}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{buttons_8c_aeec93f15db7e213af69ba409e3262bc9}\label{buttons_8c_aeec93f15db7e213af69ba409e3262bc9} 
+\index{buttons.c@{buttons.c}!delete\_gameover@{delete\_gameover}}
+\index{delete\_gameover@{delete\_gameover}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{delete\_gameover()}{delete\_gameover()}}
+{\footnotesize\ttfamily int delete\+\_\+gameover (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00119}{119}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_a26185e1d23d44d6eeaca62d42551bd28}\label{buttons_8c_a26185e1d23d44d6eeaca62d42551bd28} 
+\index{buttons.c@{buttons.c}!delete\_quit@{delete\_quit}}
+\index{delete\_quit@{delete\_quit}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{delete\_quit()}{delete\_quit()}}
+{\footnotesize\ttfamily int delete\+\_\+quit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00073}{73}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_ae2e94933b27c5371a155003a27ce248e}\label{buttons_8c_ae2e94933b27c5371a155003a27ce248e} 
+\index{buttons.c@{buttons.c}!delete\_start@{delete\_start}}
+\index{delete\_start@{delete\_start}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{delete\_start()}{delete\_start()}}
+{\footnotesize\ttfamily int delete\+\_\+start (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00082}{82}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_a3b9b0b72e9b77e46bd844304ea203920}\label{buttons_8c_a3b9b0b72e9b77e46bd844304ea203920} 
+\index{buttons.c@{buttons.c}!delete\_win@{delete\_win}}
+\index{delete\_win@{delete\_win}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{delete\_win()}{delete\_win()}}
+{\footnotesize\ttfamily int delete\+\_\+win (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00109}{109}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_a981daeff7b27e48310ba355aaf8dc9cc}\label{buttons_8c_a981daeff7b27e48310ba355aaf8dc9cc} 
+\index{buttons.c@{buttons.c}!draw\_game\_over@{draw\_game\_over}}
+\index{draw\_game\_over@{draw\_game\_over}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{draw\_game\_over()}{draw\_game\_over()}}
+{\footnotesize\ttfamily int draw\+\_\+game\+\_\+over (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00091}{91}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_a567a48ac4004f709ef32412a547d16db}\label{buttons_8c_a567a48ac4004f709ef32412a547d16db} 
+\index{buttons.c@{buttons.c}!draw\_quit@{draw\_quit}}
+\index{draw\_quit@{draw\_quit}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{draw\_quit()}{draw\_quit()}}
+{\footnotesize\ttfamily int draw\+\_\+quit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00035}{35}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_af4ffb26e4b4c4e1c075c7b4256496c87}\label{buttons_8c_af4ffb26e4b4c4e1c075c7b4256496c87} 
+\index{buttons.c@{buttons.c}!draw\_selected\_quit@{draw\_selected\_quit}}
+\index{draw\_selected\_quit@{draw\_selected\_quit}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{draw\_selected\_quit()}{draw\_selected\_quit()}}
+{\footnotesize\ttfamily int draw\+\_\+selected\+\_\+quit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00044}{44}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_a98eaec294a3dc3166cf741e33d9ed6f8}\label{buttons_8c_a98eaec294a3dc3166cf741e33d9ed6f8} 
+\index{buttons.c@{buttons.c}!draw\_selected\_start@{draw\_selected\_start}}
+\index{draw\_selected\_start@{draw\_selected\_start}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{draw\_selected\_start()}{draw\_selected\_start()}}
+{\footnotesize\ttfamily int draw\+\_\+selected\+\_\+start (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00062}{62}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_a2fe639b56e44e9d0b1e0ef34fe377521}\label{buttons_8c_a2fe639b56e44e9d0b1e0ef34fe377521} 
+\index{buttons.c@{buttons.c}!draw\_start@{draw\_start}}
+\index{draw\_start@{draw\_start}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{draw\_start()}{draw\_start()}}
+{\footnotesize\ttfamily int draw\+\_\+start (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00053}{53}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8c_a6ab47d4a4a6b6a7a7475fa561fe72295}\label{buttons_8c_a6ab47d4a4a6b6a7a7475fa561fe72295} 
+\index{buttons.c@{buttons.c}!draw\_win@{draw\_win}}
+\index{draw\_win@{draw\_win}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{draw\_win()}{draw\_win()}}
+{\footnotesize\ttfamily int draw\+\_\+win (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00100}{100}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{buttons_8c_a5c7cf6f89930c136c839b65abee00ea0}\label{buttons_8c_a5c7cf6f89930c136c839b65abee00ea0} 
+\index{buttons.c@{buttons.c}!gameover\_black\_sprite@{gameover\_black\_sprite}}
+\index{gameover\_black\_sprite@{gameover\_black\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{gameover\_black\_sprite}{gameover\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} gameover\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00017}{17}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_afcbf97cbe1ee3501aa9c0c4aaf341035}\label{buttons_8c_afcbf97cbe1ee3501aa9c0c4aaf341035} 
+\index{buttons.c@{buttons.c}!gameover\_sprite@{gameover\_sprite}}
+\index{gameover\_sprite@{gameover\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{gameover\_sprite}{gameover\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} gameover\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00014}{14}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a5ef1f2de746a340d5949d2c5beb62fee}\label{buttons_8c_a5ef1f2de746a340d5949d2c5beb62fee} 
+\index{buttons.c@{buttons.c}!img\_gameover\_black\_sprite@{img\_gameover\_black\_sprite}}
+\index{img\_gameover\_black\_sprite@{img\_gameover\_black\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_gameover\_black\_sprite}{img\_gameover\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+gameover\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00038}{38}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a6de2a43e9fe20801718577f3c47afe8c}\label{buttons_8c_a6de2a43e9fe20801718577f3c47afe8c} 
+\index{buttons.c@{buttons.c}!img\_gameover\_sprite@{img\_gameover\_sprite}}
+\index{img\_gameover\_sprite@{img\_gameover\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_gameover\_sprite}{img\_gameover\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+gameover\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00036}{36}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_ad5dfdef0afb68911c424dcc3cb49d3cc}\label{buttons_8c_ad5dfdef0afb68911c424dcc3cb49d3cc} 
+\index{buttons.c@{buttons.c}!img\_quit\_black\_sprite@{img\_quit\_black\_sprite}}
+\index{img\_quit\_black\_sprite@{img\_quit\_black\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_quit\_black\_sprite}{img\_quit\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+quit\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00045}{45}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a01feebb844a2494ba716a8e720687e01}\label{buttons_8c_a01feebb844a2494ba716a8e720687e01} 
+\index{buttons.c@{buttons.c}!img\_quit\_sprite@{img\_quit\_sprite}}
+\index{img\_quit\_sprite@{img\_quit\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_quit\_sprite}{img\_quit\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+quit\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00043}{43}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_acefd47e48e79fa38d998eb13b23a9f18}\label{buttons_8c_acefd47e48e79fa38d998eb13b23a9f18} 
+\index{buttons.c@{buttons.c}!img\_selected\_quit\_sprite@{img\_selected\_quit\_sprite}}
+\index{img\_selected\_quit\_sprite@{img\_selected\_quit\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_selected\_quit\_sprite}{img\_selected\_quit\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+selected\+\_\+quit\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00044}{44}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a3188ea936d18829ed18e3015f367dd87}\label{buttons_8c_a3188ea936d18829ed18e3015f367dd87} 
+\index{buttons.c@{buttons.c}!img\_selected\_start\_sprite@{img\_selected\_start\_sprite}}
+\index{img\_selected\_start\_sprite@{img\_selected\_start\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_selected\_start\_sprite}{img\_selected\_start\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+selected\+\_\+start\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00041}{41}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a865138f6f39715438230ae20f4228271}\label{buttons_8c_a865138f6f39715438230ae20f4228271} 
+\index{buttons.c@{buttons.c}!img\_start\_black\_sprite@{img\_start\_black\_sprite}}
+\index{img\_start\_black\_sprite@{img\_start\_black\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_start\_black\_sprite}{img\_start\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+start\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00042}{42}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_ac7b91a43a4a0811f1a9ac319e52a1b1f}\label{buttons_8c_ac7b91a43a4a0811f1a9ac319e52a1b1f} 
+\index{buttons.c@{buttons.c}!img\_start\_sprite@{img\_start\_sprite}}
+\index{img\_start\_sprite@{img\_start\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_start\_sprite}{img\_start\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+start\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00137}{137}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a51c19752ebae14210210247acca82f3a}\label{buttons_8c_a51c19752ebae14210210247acca82f3a} 
+\index{buttons.c@{buttons.c}!img\_win\_black\_sprite@{img\_win\_black\_sprite}}
+\index{img\_win\_black\_sprite@{img\_win\_black\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_win\_black\_sprite}{img\_win\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+win\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00039}{39}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_adba5dabd33eb164f336e6022ae55a4ae}\label{buttons_8c_adba5dabd33eb164f336e6022ae55a4ae} 
+\index{buttons.c@{buttons.c}!img\_win\_sprite@{img\_win\_sprite}}
+\index{img\_win\_sprite@{img\_win\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{img\_win\_sprite}{img\_win\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+win\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00037}{37}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_ac59ba870523bb46c54eb5c2cd7ada33c}\label{buttons_8c_ac59ba870523bb46c54eb5c2cd7ada33c} 
+\index{buttons.c@{buttons.c}!quit\_black\_sprite@{quit\_black\_sprite}}
+\index{quit\_black\_sprite@{quit\_black\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{quit\_black\_sprite}{quit\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} quit\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00023}{23}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a69122e394ae757cd6bafcb0ae60689cf}\label{buttons_8c_a69122e394ae757cd6bafcb0ae60689cf} 
+\index{buttons.c@{buttons.c}!quit\_sprite@{quit\_sprite}}
+\index{quit\_sprite@{quit\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{quit\_sprite}{quit\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} quit\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00021}{21}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_ac280591e8f37c2dcda48466a301de5f7}\label{buttons_8c_ac280591e8f37c2dcda48466a301de5f7} 
+\index{buttons.c@{buttons.c}!selected\_quit\_sprite@{selected\_quit\_sprite}}
+\index{selected\_quit\_sprite@{selected\_quit\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{selected\_quit\_sprite}{selected\_quit\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} selected\+\_\+quit\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00022}{22}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a05f19d619150197a312d1fc11b86d77a}\label{buttons_8c_a05f19d619150197a312d1fc11b86d77a} 
+\index{buttons.c@{buttons.c}!selected\_start\_sprite@{selected\_start\_sprite}}
+\index{selected\_start\_sprite@{selected\_start\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{selected\_start\_sprite}{selected\_start\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} selected\+\_\+start\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00019}{19}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_aa04ff30a7dc1250bd48a39c3ebe8d383}\label{buttons_8c_aa04ff30a7dc1250bd48a39c3ebe8d383} 
+\index{buttons.c@{buttons.c}!start\_black\_sprite@{start\_black\_sprite}}
+\index{start\_black\_sprite@{start\_black\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{start\_black\_sprite}{start\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} start\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00020}{20}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_aa65a0bc405f360dfbc7e7dfe0d6aaf39}\label{buttons_8c_aa65a0bc405f360dfbc7e7dfe0d6aaf39} 
+\index{buttons.c@{buttons.c}!start\_sprite@{start\_sprite}}
+\index{start\_sprite@{start\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{start\_sprite}{start\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t \texorpdfstring{$\ast$}{*} start\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00059}{59}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_ad95dac8a49e6c55d60c23c597a0efdbb}\label{buttons_8c_ad95dac8a49e6c55d60c23c597a0efdbb} 
+\index{buttons.c@{buttons.c}!win\_black\_sprite@{win\_black\_sprite}}
+\index{win\_black\_sprite@{win\_black\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{win\_black\_sprite}{win\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} win\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00016}{16}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{buttons_8c_a80971c18da1c8b6c49dff2c212ad7210}\label{buttons_8c_a80971c18da1c8b6c49dff2c212ad7210} 
+\index{buttons.c@{buttons.c}!win\_sprite@{win\_sprite}}
+\index{win\_sprite@{win\_sprite}!buttons.c@{buttons.c}}
+\doxysubsubsection{\texorpdfstring{win\_sprite}{win\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} win\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00015}{15}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+

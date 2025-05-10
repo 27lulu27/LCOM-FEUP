@@ -1,0 +1,43 @@
+\doxysection{src/sprites.h File Reference}
+\hypertarget{sprites_8h}{}\label{sprites_8h}\index{src/sprites.h@{src/sprites.h}}
+
+
+Header file for sprite loading and handling functions.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for sprites.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{sprites_8h_af5a533128c5f10233dc65fea728767a3}{load\+\_\+xpm}} ()
+\begin{DoxyCompactList}\small\item\em Load all game sprites based on the current time (hours). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for sprite loading and handling functions. 
+
+
+
+Definition in file \mbox{\hyperlink{sprites_8h_source}{sprites.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sprites_8h_af5a533128c5f10233dc65fea728767a3}\label{sprites_8h_af5a533128c5f10233dc65fea728767a3} 
+\index{sprites.h@{sprites.h}!load\_xpm@{load\_xpm}}
+\index{load\_xpm@{load\_xpm}!sprites.h@{sprites.h}}
+\doxysubsubsection{\texorpdfstring{load\_xpm()}{load\_xpm()}}
+{\footnotesize\ttfamily void load\+\_\+xpm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Load all game sprites based on the current time (hours). 
+
+This function loads the appropriate sprites for the game based on whether it is day or night. It uses the global variable {\ttfamily hours} to determine the time of day. 
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00253}{253}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+

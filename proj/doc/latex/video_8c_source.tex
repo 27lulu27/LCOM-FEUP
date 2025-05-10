@@ -1,0 +1,161 @@
+\doxysection{video.\+c}
+\hypertarget{video_8c_source}{}\label{video_8c_source}\index{src/video.c@{src/video.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}video.h"{}}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <inttypes.h>}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00004}00004\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ *video\_mem;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00005}00005\ vbe\_mode\_info\_t\ vmi\_p;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00006}00006\ \textcolor{keywordtype}{char}\ *buff;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00008}00008\ \textcolor{comment}{//\ initialize\ the\ video\ card}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00009}00009\ int(vg\_initi)(uint16\_t\ mode)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00010}00010\ \ \ \textcolor{comment}{//\ memory\ range}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00011}00011\ \ \ \textcolor{keyword}{struct\ }minix\_mem\_range\ mem\_range;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00012}00012\ \ \ \textcolor{comment}{//\ vram\ base}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00013}00013\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ vram\_base;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00014}00014\ \ \ \textcolor{comment}{//\ size\ of\ vram}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00015}00015\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ vram\_size;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00016}00016\ \ \ \textcolor{keywordtype}{int}\ r;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00018}00018\ \ \ \textcolor{comment}{//\ return\ vbe\ mode\ information}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00019}00019\ \ \ vbe\_get\_mode\_info(mode,\ \&vmi\_p);}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00021}00021\ \ \ \textcolor{comment}{//\ get\ vram\ Physical\ base}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00022}00022\ \ \ vram\_base\ =\ vmi\_p.PhysBasePtr;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00024}00024\ \ \ \textcolor{comment}{//\ get\ vram\ size\ (max\ X\ resolution\ multiplied\ by\ max\ Y\ resolution\ multiplied\ by\ the\ amount\ of\ pixels)}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00025}00025\ \ \ vram\_size\ =\ vmi\_p.XResolution\ *\ vmi\_p.YResolution\ *\ ((vmi\_p.BitsPerPixel\ +\ 7)\ /\ 8);}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00027}00027\ \ \ \textcolor{comment}{//\ allocate\ the\ vram\ size\ to\ create\ a\ buffer}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00028}00028\ \ \ buff\ =\ (\textcolor{keywordtype}{char}\ *)\ malloc(vram\_size);}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00030}00030\ \ \ \textcolor{comment}{//\ set\ memory\ range\ base\ to\ vram\ physical\ base}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00031}00031\ \ \ mem\_range.mr\_base\ =\ (phys\_bytes)\ vram\_base;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00033}00033\ \ \ \textcolor{comment}{//\ set\ memory\ limit\ to\ memory\ range\ base\ added\ with\ vram\ size}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00034}00034\ \ \ mem\_range.mr\_limit\ =\ mem\_range.mr\_base\ +\ vram\_size;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00036}00036\ \ \ \textcolor{keywordflow}{if}\ (OK\ !=\ (r\ =\ sys\_privctl(SELF,\ SYS\_PRIV\_ADD\_MEM,\ \&mem\_range)))\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00037}00037\ \ \ \ \ panic(\textcolor{stringliteral}{"{}sys\_privctl\ (ADD\_MEM)\ failed:\ \%d\(\backslash\)n"{}},\ r);}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00038}00038\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00040}00040\ \ \ video\_mem\ =\ vm\_map\_phys(SELF,\ (\textcolor{keywordtype}{void}\ *)\ mem\_range.mr\_base,\ vram\_size);}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00042}00042\ \ \ reg86\_t\ r86;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00043}00043\ \ \ memset(\&r86,\ 0,\ \textcolor{keyword}{sizeof}(r86));\ \textcolor{comment}{/*\ zero\ the\ structure\ */}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00045}00045\ \ \ r86.ah\ =\ 0x4F;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00046}00046\ \ \ r86.al\ =\ 0x02;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00047}00047\ \ \ r86.bx\ =\ 1\ <<\ 14\ |\ mode;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00048}00048\ \ \ r86.intno\ =\ 0x10;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00050}00050\ \ \ \textcolor{keywordflow}{if}\ (sys\_int86(\&r86)\ !=\ OK)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00051}00051\ \ \ \ \ printf(\textcolor{stringliteral}{"{}vg\_init:\ sys\_int86()\ failed\ to\ set\ graphics\ mode\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00053}00053\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00055}00055\ \ \ \textcolor{keywordflow}{if}\ (video\_mem\ ==\ MAP\_FAILED)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00056}00056\ \ \ \ \ panic(\textcolor{stringliteral}{"{}couldn't\ map\ video\ memory"{}});}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00057}00057\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00059}00059\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00062}00062\ \textcolor{comment}{//\ draw\ pixel}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00063}00063\ int(vg\_draw\_pixel)(uint16\_t\ x,\ uint16\_t\ y,\ uint8\_t\ *color)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00065}00065\ \ \ \textcolor{comment}{//\ if\ x\ is\ bigger\ than\ max\ x,\ stop}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00066}00066\ \ \ \textcolor{keywordflow}{if}\ (x\ >\ vmi\_p.XResolution)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00067}00067\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ paramater\ x\ is\ too\ big!"{}});}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00069}00069\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00071}00071\ \ \ \textcolor{comment}{//\ if\ y\ is\ bigger\ than\ max\ y,\ stop}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00072}00072\ \ \ \textcolor{keywordflow}{if}\ (y\ >\ vmi\_p.YResolution)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00073}00073\ \ \ \ \ printf(\textcolor{stringliteral}{"{}The\ paramater\ y\ is\ too\ big!"{}});}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00075}00075\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00077}00077\ \ \ \textcolor{comment}{//\ copy\ mem\ with\ restriction\ of\ the\ max\ pixels\ with\ the\ buffer,\ color\ given,\ per\ pixel}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00078}00078\ \ \ memcpy(buff\ +\ vmi\_p.XResolution\ *\ y\ *\ ((vmi\_p.BitsPerPixel\ +\ 7)\ /\ 8)\ +\ x\ *\ ((vmi\_p.BitsPerPixel\ +\ 7)\ /\ 8),\ color,\ ((vmi\_p.BitsPerPixel\ +\ 7)\ /\ 8));}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00080}00080\ \ \ \textcolor{comment}{//\ return\ 0\ if\ successful}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00081}00081\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00085}00085\ \textcolor{comment}{//draw\ horizontal\ pixel}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00086}00086\ int\ (vg\_draw\_line)(uint16\_t\ x,\ uint16\_t\ y,\ uint16\_t\ len,\ uint8\_t*\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00088}00088\ \ \ \textcolor{comment}{//until\ widht\ ends}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00089}00089\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ len;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//draw\ pixel}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{if}(vg\_draw\_pixel(x+i,y,\ color)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00092}00092\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00094}00094\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00096}00096\ \ \ \textcolor{comment}{//return\ 0\ if\ successful}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00097}00097\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00098}00098\ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00100}00100\ \textcolor{comment}{//draw\ rectangle}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00101}00101\ int\ (vg\_draw\_rect)(uint16\_t\ x,\ uint16\_t\ y,\ uint16\_t\ width,\ uint16\_t\ height,\ uint8\_t*\ color)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00102}00102\ \ \ \textcolor{comment}{//until\ height\ ends}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00103}00103\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ height;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//draw\ line}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00105}00105\ \ \ \ \ \textcolor{keywordflow}{if}(vg\_draw\_line(x,\ y+i,\ width,\ color)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00106}00106\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00107}00107\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00108}00108\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00110}00110\ \ \ \textcolor{comment}{//return\ 0\ if\ successful}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00111}00111\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00112}00112\ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00115}00115\ \textcolor{comment}{//\ double\ buffer\ (write\ video\ to\ memory)}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00116}00116\ void(double\_buffer)()\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00117}00117\ \ \ memcpy(video\_mem,\ buff,\ vmi\_p.XResolution\ *\ vmi\_p.YResolution\ *\ ((vmi\_p.BitsPerPixel\ +\ 7)\ /\ 8));}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00118}00118\ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00120}00120\ int(draw\_xpm)(uint8\_t\ *used\_colors,\ xpm\_image\_t\ img,\ uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00122}00122\ \ \ \textcolor{keywordflow}{if}\ (used\_colors\ ==\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00123}00123\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00124}00124\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00126}00126\ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ height\ =\ 0;\ height\ <\ img.height;\ height++)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00127}00127\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ width\ =\ 0;\ width\ <\ img.width;\ width++)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00128}00128\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (xpm\_transparency\_color(XPM\_8\_8\_8)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vg\_draw\_pixel(x\ +\ width,\ y\ +\ height,\ used\_colors)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ used\_colors\ +=\ 3;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00133}00133\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00135}00135\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00137}00137\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00138}00138\ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00141}00141\ int\ (draw\_sprite)(xpm\_image\_t\ img,\ uint8\_t*\ sprite,\ uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00143}00143\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ height\ =\ 0;\ height\ <\ img.height;\ height++)\{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ width\ =\ 0;\ width\ <\ img.width;\ width++)\{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00146}00146\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (vg\_draw\_pixel(x\ +\ width,y\ +\ height,sprite)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00148}00148\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00149}00149\ \ \ \ \ \ \ sprite++;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00150}00150\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00151}00151\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00153}00153\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00154}00154\ \}}
+\DoxyCodeLine{\Hypertarget{video_8c_source_l00155}00155\ }
+
+\end{DoxyCode}

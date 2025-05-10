@@ -1,0 +1,131 @@
+\doxysection{src/cursor.h File Reference}
+\hypertarget{cursor_8h}{}\label{cursor_8h}\index{src/cursor.h@{src/cursor.h}}
+
+
+Header file containing function prototypes for cursor manipulation.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for cursor.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{cursor_8h_a7ec6b5ad2b086d4e45c05fbe54d54a5e}{draw\+\_\+cursor}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the cursor sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cursor_8h_a36d730aa71c9f641239b42446e70a016}{delete\+\_\+cursor}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the cursor sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cursor_8h_a66772f0d798122c3a6a6461952c81dc0}{draw\+\_\+target}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the target sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cursor_8h_a634e1ef48eb6cb5227080f4158c8fcb7}{delete\+\_\+target}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the target sprite at the specified coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file containing function prototypes for cursor manipulation. 
+
+
+
+Definition in file \mbox{\hyperlink{cursor_8h_source}{cursor.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cursor_8h_a36d730aa71c9f641239b42446e70a016}\label{cursor_8h_a36d730aa71c9f641239b42446e70a016} 
+\index{cursor.h@{cursor.h}!delete\_cursor@{delete\_cursor}}
+\index{delete\_cursor@{delete\_cursor}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{delete\_cursor()}{delete\_cursor()}}
+{\footnotesize\ttfamily int delete\+\_\+cursor (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the cursor sprite at the specified coordinates. 
+
+This function deletes the cursor sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the cursor sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the cursor sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{cursor_8c_source_l00031}{31}} of file \mbox{\hyperlink{cursor_8c_source}{cursor.\+c}}.
+
+\Hypertarget{cursor_8h_a634e1ef48eb6cb5227080f4158c8fcb7}\label{cursor_8h_a634e1ef48eb6cb5227080f4158c8fcb7} 
+\index{cursor.h@{cursor.h}!delete\_target@{delete\_target}}
+\index{delete\_target@{delete\_target}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{delete\_target()}{delete\_target()}}
+{\footnotesize\ttfamily int delete\+\_\+target (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the target sprite at the specified coordinates. 
+
+This function deletes the target sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the target sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the target sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{cursor_8c_source_l00049}{49}} of file \mbox{\hyperlink{cursor_8c_source}{cursor.\+c}}.
+
+\Hypertarget{cursor_8h_a7ec6b5ad2b086d4e45c05fbe54d54a5e}\label{cursor_8h_a7ec6b5ad2b086d4e45c05fbe54d54a5e} 
+\index{cursor.h@{cursor.h}!draw\_cursor@{draw\_cursor}}
+\index{draw\_cursor@{draw\_cursor}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{draw\_cursor()}{draw\_cursor()}}
+{\footnotesize\ttfamily int draw\+\_\+cursor (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the cursor sprite at the specified coordinates. 
+
+This function draws the cursor sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the cursor sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the cursor sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{cursor_8c_source_l00022}{22}} of file \mbox{\hyperlink{cursor_8c_source}{cursor.\+c}}.
+
+\Hypertarget{cursor_8h_a66772f0d798122c3a6a6461952c81dc0}\label{cursor_8h_a66772f0d798122c3a6a6461952c81dc0} 
+\index{cursor.h@{cursor.h}!draw\_target@{draw\_target}}
+\index{draw\_target@{draw\_target}!cursor.h@{cursor.h}}
+\doxysubsubsection{\texorpdfstring{draw\_target()}{draw\_target()}}
+{\footnotesize\ttfamily int draw\+\_\+target (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the target sprite at the specified coordinates. 
+
+This function draws the target sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the target sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the target sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{cursor_8c_source_l00040}{40}} of file \mbox{\hyperlink{cursor_8c_source}{cursor.\+c}}.
+

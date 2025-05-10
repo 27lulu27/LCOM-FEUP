@@ -1,0 +1,64 @@
+\doxysection{i8042.\+h File Reference}
+\hypertarget{i8042_8h}{}\label{i8042_8h}\index{i8042.h@{i8042.h}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for i8042.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga1a522aa19bcb695a9df30032a893bee3}{DELAY\+\_\+\+US}}~20000
+\item 
+\#define \mbox{\hyperlink{group__i8402_gaade608c2b485d0c1238c401e073bbbdc}{STATUS\+\_\+\+REGISTER}}~0x64
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga42623faaacf8f8d4d780650277a79856}{INPUT\+\_\+\+BUFFER\+\_\+\+COMMANDS}}~0x64
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga727f73f94247554b6c804fb2b6381761}{INPUT\+\_\+\+BUFFER\+\_\+\+ARGUMENTS}}~0x60
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga85dd25ad45d47136734196ec996419cd}{OUTPUT\+\_\+\+BUFFER}}~0x60
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga45967c9e25447ba853cf6fb4ac545fe6}{OBF}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Output buffer full -\/ data available for reading. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga3c48b10907056351582baf9f6478598e}{IBF}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Input buffer full don’t write commands or arguments. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga03f542f1e0e2ba512c4ed189decfee3d}{INH}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Inhibit flag\+: 0 if keyboard is inhibited. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga1b41fd2be63532d4ab910f8b256c3811}{AUX}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Mouse data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga45ba202b05caf39795aeca91b0ae547e}{TIMEOUT}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Timeout error -\/ invalid data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_gaf6996d12e71a534569c41a25de7d6d52}{PARITY}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Parity error -\/ invalid data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_gad62cdd5fda070b9af70ae3fff25cedb7}{READ\+\_\+\+COM\+\_\+\+BYTE}}~0x20
+\begin{DoxyCompactList}\small\item\em Returns Command Byte. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_gaab181eb16a40d9dffe372854ab88b888}{WRITE\+\_\+\+COM\+\_\+\+BYTE}}~0x60
+\begin{DoxyCompactList}\small\item\em Takes Arguments\+: Command Byte. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga32dfca0455c987adcf22db3d2043ed63}{COMMAND\+\_\+\+MOUSE}}~0x\+D4
+\item 
+\#define \mbox{\hyperlink{group__i8402_gab3919f33b46e0808c4ed1c56a6a423f2}{STREAM\+\_\+\+MODE}}~0x\+EA
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga618bdf461c25d552e654d6b899de2d37}{ENABLE\+\_\+\+MOUSE}}~0x\+F4
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga12d3b0abea66d191d47fe6860e58865e}{DISABLE\+\_\+\+MOUSE}}~0x\+F5
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga5388784cb69a0b869c4e5f60c839ca24}{IRQ2}}~2
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga37360776bcc1dd3b5da93b025177551f}{IRQ1}}~1
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga8885a13da4dafeb2cb209ce1b7ec3107}{IRQ0}}~0
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga57276d1481230d81d2bba849f935ce5a}{IRQ12}}~12
+\item 
+\#define \mbox{\hyperlink{group__i8402_gaf4bced5cf8ed55746d4b5d34f9a0fe39}{ENTER}}~0x1C
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga4af1b6159e447ba72652bb7fcdfa726e}{ESC}}~0x81
+\item 
+\#define \mbox{\hyperlink{group__i8402_gafd8bf8957488cb511e510ff32f28c6d6}{WK}}~0x11
+\item 
+\#define \mbox{\hyperlink{group__i8402_gac3a341ede33bbed651abe7f847361a6e}{AK}}~0x1e
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga78970dd75cad4541ac7435082258c2ea}{DK}}~0x20
+\item 
+\#define \mbox{\hyperlink{group__i8402_gae55d82000e15df69860ea33e540f1b07}{SK}}~0x1f
+\end{DoxyCompactItemize}

@@ -1,0 +1,57 @@
+\doxysection{i8042.\+h}
+\hypertarget{i8042_8h_source}{}\label{i8042_8h_source}\index{src/i8042.h@{src/i8042.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00001}00001\ \textcolor{preprocessor}{\#ifndef\ \_LCOM\_I8402\_H\_}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00002}00002\ \textcolor{preprocessor}{\#define\ \_LCOM\_I8402\_H\_}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00015}00015\ \textcolor{preprocessor}{\#define\ DELAY\_US\ 20000\ }\textcolor{comment}{//wait\ 20\ ms}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00018}00018\ \textcolor{comment}{/*i8042\ ports*/}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00020}00020\ \textcolor{preprocessor}{\#define\ STATUS\_REGISTER\ 0x64\ }\textcolor{comment}{//read\ the\ KBC\ state}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00022}00022\ \textcolor{preprocessor}{\#define\ INPUT\_BUFFER\_COMMANDS\ 0x64\ }\textcolor{comment}{//write\ commands\ to\ KBC\ access}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00024}00024\ \textcolor{preprocessor}{\#define\ INPUT\_BUFFER\_ARGUMENTS\ 0x60\ }\textcolor{comment}{//write\ arguments\ to\ KBC\ access}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00026}00026\ \textcolor{preprocessor}{\#define\ OUTPUT\_BUFFER\ 0x60\ }\textcolor{comment}{//read\ sandcodes\ both\ make\ and\ break\ and\ return\ values\ from\ KBC\ commands}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00028}00028\ \textcolor{comment}{/*\ STATUS\ REGISTER\ */}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00030}\mbox{\hyperlink{group__i8402_ga45967c9e25447ba853cf6fb4ac545fe6}{00030}}\ \textcolor{preprocessor}{\#define\ OBF\ \ \ BIT(0)\ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00032}\mbox{\hyperlink{group__i8402_ga3c48b10907056351582baf9f6478598e}{00032}}\ \textcolor{preprocessor}{\#define\ IBF\ BIT(1)\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00034}\mbox{\hyperlink{group__i8402_ga03f542f1e0e2ba512c4ed189decfee3d}{00034}}\ \textcolor{preprocessor}{\#define\ INH\ BIT(4)\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00036}\mbox{\hyperlink{group__i8402_ga1b41fd2be63532d4ab910f8b256c3811}{00036}}\ \textcolor{preprocessor}{\#define\ AUX\ BIT(5)\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00038}\mbox{\hyperlink{group__i8402_ga45ba202b05caf39795aeca91b0ae547e}{00038}}\ \textcolor{preprocessor}{\#define\ TIMEOUT\ \ \ BIT(6)\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00040}\mbox{\hyperlink{group__i8402_gaf6996d12e71a534569c41a25de7d6d52}{00040}}\ \textcolor{preprocessor}{\#define\ PARITY\ \ \ BIT(7)\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00044}\mbox{\hyperlink{group__i8402_gad62cdd5fda070b9af70ae3fff25cedb7}{00044}}\ \textcolor{preprocessor}{\#define\ READ\_COM\_BYTE\ \ \ \ 0x20\ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00046}\mbox{\hyperlink{group__i8402_gaab181eb16a40d9dffe372854ab88b888}{00046}}\ \textcolor{preprocessor}{\#define\ WRITE\_COM\_BYTE\ \ \ \ 0x60\ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00048}00048\ \textcolor{preprocessor}{\#define\ COMMAND\_MOUSE\ 0xD4}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00050}00050\ \textcolor{preprocessor}{\#define\ STREAM\_MODE\ 0xEA}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00052}00052\ \textcolor{preprocessor}{\#define\ ENABLE\_MOUSE\ 0xF4}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00054}00054\ \textcolor{preprocessor}{\#define\ DISABLE\_MOUSE\ 0xF5}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00056}00056\ \textcolor{preprocessor}{\#define\ IRQ2\ 2}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00057}00057\ \textcolor{preprocessor}{\#define\ IRQ1\ 1}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00058}00058\ \textcolor{preprocessor}{\#define\ IRQ0\ 0}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00059}00059\ \textcolor{preprocessor}{\#define\ IRQ12\ 12}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00061}00061\ \textcolor{preprocessor}{\#define\ ENTER\ 0x1C}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00062}00062\ \textcolor{preprocessor}{\#define\ ESC\ 0x81}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00063}00063\ \textcolor{preprocessor}{\#define\ WK\ 0x11}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00064}00064\ \textcolor{preprocessor}{\#define\ AK\ 0x1e}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00065}00065\ \textcolor{preprocessor}{\#define\ DK\ 0x20}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00066}00066\ \textcolor{preprocessor}{\#define\ SK\ 0x1f}}
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{i8042_8h_source_l00068}00068\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ \_LCOM\_I8042\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,120 @@
+\doxysection{player.\+c File Reference}
+\hypertarget{player_8c}{}\label{player_8c}\index{player.c@{player.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lab5.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}sprites.\+h"{}}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+Include dependency graph for player.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{player_8c_ae7a5d2990396c2adcedb1b75686061d9}{draw\+\_\+player}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{player_8c_a1cc0db435c23941866802a30bdaf88ed}{delete\+\_\+player}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8c_a45b96a8fd80d87a09a8476dbcb809cee}{spaceship\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8c_ab419e74a14f7a7e9e72af7d7a562762d}{spaceship\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{player_8c_a64d341ac772bd7fffb3322f6e249a24b}{img\+\_\+spaceship\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{player_8c_a1b53647228f887de40fc06840904d30f}{img\+\_\+spaceship\+\_\+black\+\_\+sprite}}
+\item 
+int \mbox{\hyperlink{player_8c_a3e0fc7221ce28519cfbedeec759fbdaa}{player\+\_\+x}} = 325
+\item 
+int \mbox{\hyperlink{player_8c_a7b1a7175078ec67b0e88cc383cc7400c}{player\+\_\+y}} = 460
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player_8c_a1cc0db435c23941866802a30bdaf88ed}\label{player_8c_a1cc0db435c23941866802a30bdaf88ed} 
+\index{player.c@{player.c}!delete\_player@{delete\_player}}
+\index{delete\_player@{delete\_player}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{delete\_player()}{delete\_player()}}
+{\footnotesize\ttfamily int delete\+\_\+player (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{player_8c_source_l00030}{30}} of file \mbox{\hyperlink{player_8c_source}{player.\+c}}.
+
+\Hypertarget{player_8c_ae7a5d2990396c2adcedb1b75686061d9}\label{player_8c_ae7a5d2990396c2adcedb1b75686061d9} 
+\index{player.c@{player.c}!draw\_player@{draw\_player}}
+\index{draw\_player@{draw\_player}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{draw\_player()}{draw\_player()}}
+{\footnotesize\ttfamily int draw\+\_\+player (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{player_8c_source_l00021}{21}} of file \mbox{\hyperlink{player_8c_source}{player.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{player_8c_a1b53647228f887de40fc06840904d30f}\label{player_8c_a1b53647228f887de40fc06840904d30f} 
+\index{player.c@{player.c}!img\_spaceship\_black\_sprite@{img\_spaceship\_black\_sprite}}
+\index{img\_spaceship\_black\_sprite@{img\_spaceship\_black\_sprite}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{img\_spaceship\_black\_sprite}{img\_spaceship\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+spaceship\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00035}{35}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{player_8c_a64d341ac772bd7fffb3322f6e249a24b}\label{player_8c_a64d341ac772bd7fffb3322f6e249a24b} 
+\index{player.c@{player.c}!img\_spaceship\_sprite@{img\_spaceship\_sprite}}
+\index{img\_spaceship\_sprite@{img\_spaceship\_sprite}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{img\_spaceship\_sprite}{img\_spaceship\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+spaceship\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00034}{34}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{player_8c_a3e0fc7221ce28519cfbedeec759fbdaa}\label{player_8c_a3e0fc7221ce28519cfbedeec759fbdaa} 
+\index{player.c@{player.c}!player\_x@{player\_x}}
+\index{player\_x@{player\_x}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{player\_x}{player\_x}}
+{\footnotesize\ttfamily int player\+\_\+x = 325}
+
+
+
+Definition at line \mbox{\hyperlink{player_8c_source_l00018}{18}} of file \mbox{\hyperlink{player_8c_source}{player.\+c}}.
+
+\Hypertarget{player_8c_a7b1a7175078ec67b0e88cc383cc7400c}\label{player_8c_a7b1a7175078ec67b0e88cc383cc7400c} 
+\index{player.c@{player.c}!player\_y@{player\_y}}
+\index{player\_y@{player\_y}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{player\_y}{player\_y}}
+{\footnotesize\ttfamily int player\+\_\+y = 460}
+
+
+
+Definition at line \mbox{\hyperlink{player_8c_source_l00019}{19}} of file \mbox{\hyperlink{player_8c_source}{player.\+c}}.
+
+\Hypertarget{player_8c_ab419e74a14f7a7e9e72af7d7a562762d}\label{player_8c_ab419e74a14f7a7e9e72af7d7a562762d} 
+\index{player.c@{player.c}!spaceship\_black\_sprite@{spaceship\_black\_sprite}}
+\index{spaceship\_black\_sprite@{spaceship\_black\_sprite}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{spaceship\_black\_sprite}{spaceship\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} spaceship\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00013}{13}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{player_8c_a45b96a8fd80d87a09a8476dbcb809cee}\label{player_8c_a45b96a8fd80d87a09a8476dbcb809cee} 
+\index{player.c@{player.c}!spaceship\_sprite@{spaceship\_sprite}}
+\index{spaceship\_sprite@{spaceship\_sprite}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{spaceship\_sprite}{spaceship\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} spaceship\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00012}{12}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+

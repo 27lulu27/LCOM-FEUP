@@ -1,0 +1,31 @@
+\doxysection{bg.\+c}
+\hypertarget{bg_8c_source}{}\label{bg_8c_source}\index{src/bg.c@{src/bg.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bg_8h}{bg.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}rtc.h"{}}}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}video.h"{}}}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00007}00007\ \textcolor{keyword}{extern}\ uint8\_t\ hours;}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00009}\mbox{\hyperlink{bg_8h_ab6015ed9c34bed4feb81898f826e91c0}{00009}}\ \textcolor{keywordtype}{int}\ draw\_mmbg()\{}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00010}00010\ \ \ \textcolor{keyword}{extern}\ uint8\_t\ *mmbg\_sprite;}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00011}00011\ \ \ \textcolor{keyword}{extern}\ xpm\_image\_t\ img\_mmbg;}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00012}00012\ \ \ \textcolor{keywordflow}{if}\ (draw\_xpm(mmbg\_sprite,img\_mmbg,0,0)\ !=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00013}00013\ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;\ \ }
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00014}00014\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00015}00015\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00016}00016\ \}}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00018}\mbox{\hyperlink{bg_8h_a5ce92a738c350c4baec732d3c3236b20}{00018}}\ \textcolor{keywordtype}{int}\ delete\_mmbg()\{}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00019}00019\ \ \ \textcolor{keyword}{extern}\ uint8\_t\ *erasebg\_sprite;}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00020}00020\ \ \ \textcolor{keyword}{extern}\ xpm\_image\_t\ img\_erasebg;}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00021}00021\ \ \ \textcolor{keywordflow}{if}\ (draw\_xpm(erasebg\_sprite,\ img\_erasebg,0,0)\ !=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00022}00022\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00023}00023\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00024}00024\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{bg_8c_source_l00025}00025\ \}}
+
+\end{DoxyCode}

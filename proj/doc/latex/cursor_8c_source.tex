@@ -1,0 +1,63 @@
+\doxysection{cursor.\+c}
+\hypertarget{cursor_8c_source}{}\label{cursor_8c_source}\index{src/cursor.c@{src/cursor.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00001}00001\ \textcolor{comment}{//\ IMPORTANT:\ you\ must\ include\ the\ following\ line\ in\ all\ your\ C\ files}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <lcom/lab5.h>}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}video.h"{}}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprites_8h}{sprites.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}i8042.h"{}}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00013}00013\ \textcolor{keyword}{extern}\ uint8\_t*\ cursor\_sprite;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00014}00014\ \textcolor{keyword}{extern}\ uint8\_t*\ cursor\_black\_sprite;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00015}00015\ \textcolor{keyword}{extern}\ xpm\_image\_t\ img\_cursor\_sprite;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00016}00016\ \textcolor{keyword}{extern}\ xpm\_image\_t\ img\_cursor\_black\_sprite;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00017}00017\ \textcolor{keyword}{extern}\ uint8\_t*\ target\_sprite;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00018}00018\ \textcolor{keyword}{extern}\ uint8\_t*\ target\_black\_sprite;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00019}00019\ \textcolor{keyword}{extern}\ xpm\_image\_t\ img\_target\_sprite;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00020}00020\ \textcolor{keyword}{extern}\ xpm\_image\_t\ img\_target\_black\_sprite;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00022}\mbox{\hyperlink{cursor_8h_a7ec6b5ad2b086d4e45c05fbe54d54a5e}{00022}}\ \textcolor{keywordtype}{int}\ draw\_cursor(uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00023}00023\ \ \ \textcolor{keywordflow}{if}(draw\_xpm(cursor\_sprite,\ img\_cursor\_sprite,\ x,\ y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00024}00024\ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load"{}});}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00025}00025\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00026}00026\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00028}00028\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00031}\mbox{\hyperlink{cursor_8h_a36d730aa71c9f641239b42446e70a016}{00031}}\ \textcolor{keywordtype}{int}\ delete\_cursor(uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00032}00032\ \ \ \textcolor{keywordflow}{if}(draw\_xpm(cursor\_black\_sprite,\ img\_cursor\_black\_sprite,\ x,\ y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00033}00033\ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load"{}});}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00035}00035\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00037}00037\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00038}00038\ \}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00040}\mbox{\hyperlink{cursor_8h_a66772f0d798122c3a6a6461952c81dc0}{00040}}\ \textcolor{keywordtype}{int}\ draw\_target(uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00041}00041\ \ \ \textcolor{keywordflow}{if}(draw\_xpm(target\_sprite,\ img\_target\_sprite,\ x,\ y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00042}00042\ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load"{}});}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00044}00044\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00046}00046\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00049}\mbox{\hyperlink{cursor_8h_a634e1ef48eb6cb5227080f4158c8fcb7}{00049}}\ \textcolor{keywordtype}{int}\ delete\_target(uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00050}00050\ \ \ \textcolor{keywordflow}{if}(draw\_xpm(target\_black\_sprite,\ img\_target\_black\_sprite,\ x,\ y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00051}00051\ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load"{}});}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00053}00053\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00055}00055\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{cursor_8c_source_l00057}00057\ }
+
+\end{DoxyCode}

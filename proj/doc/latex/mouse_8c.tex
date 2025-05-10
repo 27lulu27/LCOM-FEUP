@@ -1,0 +1,305 @@
+\doxysection{mouse.\+c File Reference}
+\hypertarget{mouse_8c}{}\label{mouse_8c}\index{mouse.c@{mouse.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+{\ttfamily \#include "{}mouse.\+h"{}}\newline
+Include dependency graph for mouse.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{mouse_8c_aa9e73dfd6dfae8349d860045dbdb3cdd}{write\+\_\+argument\+\_\+to\+\_\+mouse}} (uint8\+\_\+t argument)
+\begin{DoxyCompactList}\small\item\em Writes an argument to the mouse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mouse_8c_a834b6d7efe311484d6da234db333cb97}{mouse\+\_\+ih}} ()
+\begin{DoxyCompactList}\small\item\em Mouse interrupt handler. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_a99506573209b197b84ee22a228b89fbd}{mouse\+\_\+subscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Subscribes and enables mouse interrupts. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_a685ad2706aca36d9869a30a19b9f446a}{mouse\+\_\+unsubscribe\+\_\+int}} ()
+\begin{DoxyCompactList}\small\item\em Unsubscribes mouse interrupts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mouse_8c_a5011e95fc18746f3f2e2863ee66c35de}{print\+\_\+mouse\+\_\+packet}} ()
+\begin{DoxyCompactList}\small\item\em Prints the mouse packet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_ad8f082d47fa7bde0306eb3b82b6127e9}{enable\+\_\+mouse}} ()
+\begin{DoxyCompactList}\small\item\em Enables the mouse in stream mode. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mouse_8c_a22e7aa936a38417be07fc29cf34cfd05}{disable\+\_\+mouse}} ()
+\begin{DoxyCompactList}\small\item\em Disables the mouse. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mouse_8c_a9975d683185bf7ad773dae7b75709e91}{get\+\_\+mouse\+\_\+coordinates}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves the mouse coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mouse_8c_a4e9d7286a2410fd885583042c4e9138f}{move\+\_\+cursor}} ()
+\begin{DoxyCompactList}\small\item\em Moves the cursor based on mouse input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}{hook\+\_\+id\+\_\+mouse}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{mouse_8c_a35cd830d1a306a97dc8991f8eb723651}{total\+\_\+packets}} = 0
+\item 
+bool \mbox{\hyperlink{mouse_8c_ad50f2bee48c1d4eb880b20ffa5354098}{error\+\_\+reading}} = false
+\item 
+int \mbox{\hyperlink{mouse_8c_a913773c9d479d1739a332b92cea6fbfa}{counter\+\_\+mouse}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{mouse_8c_a15f30eb0027f44ecb399b8f6e738a16d}{packet}}
+\item 
+bool \mbox{\hyperlink{mouse_8c_a9b2213e927c07017d91c02a3fa7550c1}{do\+\_\+sync}} = false
+\item 
+struct \mbox{\hyperlink{mouse_8c_a15f30eb0027f44ecb399b8f6e738a16d}{packet}} \mbox{\hyperlink{mouse_8c_a2624f94fdd37f75b6f95cc211e319626}{packet0}}
+\item 
+int \mbox{\hyperlink{mouse_8c_a35a74a52bea7b832dc8631092d567881}{x\+\_\+mouse}} = 0
+\item 
+int \mbox{\hyperlink{mouse_8c_a71a2343b1f1be8aa683af2f581daa604}{y\+\_\+mouse}} = 0
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{mouse_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\+\_\+p}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mouse_8c_a22e7aa936a38417be07fc29cf34cfd05}\label{mouse_8c_a22e7aa936a38417be07fc29cf34cfd05} 
+\index{mouse.c@{mouse.c}!disable\_mouse@{disable\_mouse}}
+\index{disable\_mouse@{disable\_mouse}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{disable\_mouse()}{disable\_mouse()}}
+{\footnotesize\ttfamily int disable\+\_\+mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disables the mouse. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00204}{204}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_ad8f082d47fa7bde0306eb3b82b6127e9}\label{mouse_8c_ad8f082d47fa7bde0306eb3b82b6127e9} 
+\index{mouse.c@{mouse.c}!enable\_mouse@{enable\_mouse}}
+\index{enable\_mouse@{enable\_mouse}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{enable\_mouse()}{enable\_mouse()}}
+{\footnotesize\ttfamily int enable\+\_\+mouse (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enables the mouse in stream mode. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00191}{191}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a9975d683185bf7ad773dae7b75709e91}\label{mouse_8c_a9975d683185bf7ad773dae7b75709e91} 
+\index{mouse.c@{mouse.c}!get\_mouse\_coordinates@{get\_mouse\_coordinates}}
+\index{get\_mouse\_coordinates@{get\_mouse\_coordinates}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{get\_mouse\_coordinates()}{get\_mouse\_coordinates()}}
+{\footnotesize\ttfamily void get\+\_\+mouse\+\_\+coordinates (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retrieves the mouse coordinates. 
+
+This function processes the mouse packets to update the mouse coordinates, taking into account possible synchronization issues. 
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00215}{215}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a834b6d7efe311484d6da234db333cb97}\label{mouse_8c_a834b6d7efe311484d6da234db333cb97} 
+\index{mouse.c@{mouse.c}!mouse\_ih@{mouse\_ih}}
+\index{mouse\_ih@{mouse\_ih}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_ih()}{mouse\_ih()}}
+{\footnotesize\ttfamily void mouse\+\_\+ih (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Mouse interrupt handler. 
+
+This function handles the interrupts generated by the mouse, reading the packets and handling possible errors. 
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00071}{71}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a99506573209b197b84ee22a228b89fbd}\label{mouse_8c_a99506573209b197b84ee22a228b89fbd} 
+\index{mouse.c@{mouse.c}!mouse\_subscribe\_int@{mouse\_subscribe\_int}}
+\index{mouse\_subscribe\_int@{mouse\_subscribe\_int}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_subscribe\_int()}{mouse\_subscribe\_int()}}
+{\footnotesize\ttfamily int mouse\+\_\+subscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Subscribes and enables mouse interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00107}{107}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a685ad2706aca36d9869a30a19b9f446a}\label{mouse_8c_a685ad2706aca36d9869a30a19b9f446a} 
+\index{mouse.c@{mouse.c}!mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}}
+\index{mouse\_unsubscribe\_int@{mouse\_unsubscribe\_int}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{mouse\_unsubscribe\_int()}{mouse\_unsubscribe\_int()}}
+{\footnotesize\ttfamily int mouse\+\_\+unsubscribe\+\_\+int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unsubscribes mouse interrupts. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, 1 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00118}{118}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a4e9d7286a2410fd885583042c4e9138f}\label{mouse_8c_a4e9d7286a2410fd885583042c4e9138f} 
+\index{mouse.c@{mouse.c}!move\_cursor@{move\_cursor}}
+\index{move\_cursor@{move\_cursor}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{move\_cursor()}{move\_cursor()}}
+{\footnotesize\ttfamily void move\+\_\+cursor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Moves the cursor based on mouse input. 
+
+This function updates the cursor position on the screen based on the mouse\textquotesingle{}s delta values and ensures the cursor stays within the screen boundaries. 
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00278}{278}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a5011e95fc18746f3f2e2863ee66c35de}\label{mouse_8c_a5011e95fc18746f3f2e2863ee66c35de} 
+\index{mouse.c@{mouse.c}!print\_mouse\_packet@{print\_mouse\_packet}}
+\index{print\_mouse\_packet@{print\_mouse\_packet}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{print\_mouse\_packet()}{print\_mouse\_packet()}}
+{\footnotesize\ttfamily void print\+\_\+mouse\+\_\+packet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Prints the mouse packet. 
+
+This function prints the contents of the mouse packet, after ensuring synchronization with the mouse data stream. 
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00126}{126}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_aa9e73dfd6dfae8349d860045dbdb3cdd}\label{mouse_8c_aa9e73dfd6dfae8349d860045dbdb3cdd} 
+\index{mouse.c@{mouse.c}!write\_argument\_to\_mouse@{write\_argument\_to\_mouse}}
+\index{write\_argument\_to\_mouse@{write\_argument\_to\_mouse}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{write\_argument\_to\_mouse()}{write\_argument\_to\_mouse()}}
+{\footnotesize\ttfamily int write\+\_\+argument\+\_\+to\+\_\+mouse (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{argument }\end{DoxyParamCaption})}
+
+
+
+Writes an argument to the mouse. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argument} & The argument to be written to the mouse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, 1 otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00020}{20}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{mouse_8c_a913773c9d479d1739a332b92cea6fbfa}\label{mouse_8c_a913773c9d479d1739a332b92cea6fbfa} 
+\index{mouse.c@{mouse.c}!counter\_mouse@{counter\_mouse}}
+\index{counter\_mouse@{counter\_mouse}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{counter\_mouse}{counter\_mouse}}
+{\footnotesize\ttfamily int counter\+\_\+mouse = 0}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00012}{12}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a9b2213e927c07017d91c02a3fa7550c1}\label{mouse_8c_a9b2213e927c07017d91c02a3fa7550c1} 
+\index{mouse.c@{mouse.c}!do\_sync@{do\_sync}}
+\index{do\_sync@{do\_sync}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{do\_sync}{do\_sync}}
+{\footnotesize\ttfamily bool do\+\_\+sync = false}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00014}{14}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_ad50f2bee48c1d4eb880b20ffa5354098}\label{mouse_8c_ad50f2bee48c1d4eb880b20ffa5354098} 
+\index{mouse.c@{mouse.c}!error\_reading@{error\_reading}}
+\index{error\_reading@{error\_reading}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{error\_reading}{error\_reading}}
+{\footnotesize\ttfamily bool error\+\_\+reading = false}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00011}{11}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76}\label{mouse_8c_a0b0da21bbdff62b7b28e9af7ec3d0d76} 
+\index{mouse.c@{mouse.c}!hook\_id\_mouse@{hook\_id\_mouse}}
+\index{hook\_id\_mouse@{hook\_id\_mouse}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{hook\_id\_mouse}{hook\_id\_mouse}}
+{\footnotesize\ttfamily int hook\+\_\+id\+\_\+mouse = 0}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00009}{9}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a15f30eb0027f44ecb399b8f6e738a16d}\label{mouse_8c_a15f30eb0027f44ecb399b8f6e738a16d} 
+\index{mouse.c@{mouse.c}!packet@{packet}}
+\index{packet@{packet}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{packet}{packet}}
+{\footnotesize\ttfamily uint8\+\_\+t packet}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00013}{13}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a2624f94fdd37f75b6f95cc211e319626}\label{mouse_8c_a2624f94fdd37f75b6f95cc211e319626} 
+\index{mouse.c@{mouse.c}!packet0@{packet0}}
+\index{packet0@{packet0}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{packet0}{packet0}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{mouse_8c_a15f30eb0027f44ecb399b8f6e738a16d}{packet}} packet0}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00015}{15}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a35cd830d1a306a97dc8991f8eb723651}\label{mouse_8c_a35cd830d1a306a97dc8991f8eb723651} 
+\index{mouse.c@{mouse.c}!total\_packets@{total\_packets}}
+\index{total\_packets@{total\_packets}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{total\_packets}{total\_packets}}
+{\footnotesize\ttfamily uint32\+\_\+t total\+\_\+packets = 0}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00010}{10}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a26081be7a771e5c611b33f15caaf831e}\label{mouse_8c_a26081be7a771e5c611b33f15caaf831e} 
+\index{mouse.c@{mouse.c}!vmi\_p@{vmi\_p}}
+\index{vmi\_p@{vmi\_p}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{vmi\_p}{vmi\_p}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t vmi\+\_\+p\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00005}{5}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{mouse_8c_a35a74a52bea7b832dc8631092d567881}\label{mouse_8c_a35a74a52bea7b832dc8631092d567881} 
+\index{mouse.c@{mouse.c}!x\_mouse@{x\_mouse}}
+\index{x\_mouse@{x\_mouse}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{x\_mouse}{x\_mouse}}
+{\footnotesize\ttfamily int x\+\_\+mouse = 0}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00016}{16}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{mouse_8c_a71a2343b1f1be8aa683af2f581daa604}\label{mouse_8c_a71a2343b1f1be8aa683af2f581daa604} 
+\index{mouse.c@{mouse.c}!y\_mouse@{y\_mouse}}
+\index{y\_mouse@{y\_mouse}!mouse.c@{mouse.c}}
+\doxysubsubsection{\texorpdfstring{y\_mouse}{y\_mouse}}
+{\footnotesize\ttfamily int y\+\_\+mouse = 0}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00017}{17}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+

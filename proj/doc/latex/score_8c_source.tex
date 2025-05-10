@@ -1,0 +1,104 @@
+\doxysection{score.\+c}
+\hypertarget{score_8c_source}{}\label{score_8c_source}\index{src/score.c@{src/score.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{score_8h}{score.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00005}00005\ \textcolor{preprocessor}{\#include\ "{}video.h"{}}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{projectiles_8h}{projectiles.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprites_8h}{sprites.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}i8042.h"{}}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{alien_8h}{alien.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{letters_8h}{letters.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00012}\mbox{\hyperlink{score_8h_a3951b025e02a4bfd74ff02dcac77a8c3}{00012}}\ \textcolor{keywordtype}{int}\ alien\_score\_value\ =\ 100;\ \textcolor{comment}{//how\ many\ points\ each\ alien\ kill\ is\ worth}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00013}\mbox{\hyperlink{score_8h_adc7277eea8958dea6b52f5e3dbe65a7e}{00013}}\ \mbox{\hyperlink{struct_score}{Score}}\ game\_score;}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00014}\mbox{\hyperlink{score_8h_ac3816f3d5c6e0dce27cf9b2b18ed94ca}{00014}}\ \textcolor{keywordtype}{int}\ best\_score\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00016}\mbox{\hyperlink{score_8h_ad412bd4b019684f65ffc0a7329230b4c}{00016}}\ \textcolor{keywordtype}{void}\ init\_score(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info,\ \textcolor{keywordtype}{int}\ initial\_lives)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00017}00017\ \ \ score\_info-\/>score\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00018}00018\ \ \ score\_info-\/>lives\ =\ initial\_lives;}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00021}\mbox{\hyperlink{score_8h_aaee542d3d50b8381ae32a7988de45265}{00021}}\ \textcolor{keywordtype}{void}\ update\_score(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info,\ \textcolor{keywordtype}{int}\ points)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00022}00022\ \ \ score\_info-\/>score\ +=\ points;}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00023}00023\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00025}\mbox{\hyperlink{score_8h_a19b87e2c11783731fd604db62f573636}{00025}}\ \textcolor{keywordtype}{void}\ decrement\_lives(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00026}00026\ \ \ \textcolor{keywordflow}{if}\ (score\_info-\/>lives\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00027}00027\ \ \ \ \ score\_info-\/>lives\ -\/=\ 1;}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00028}00028\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00029}00029\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00031}00031\ \textcolor{keywordtype}{void}\ draw\_char(\textcolor{keywordtype}{char}\ c,\ uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00032}00032\ \ \ \textcolor{keywordflow}{switch}\ (c)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00033}00033\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'0'}:\ draw\_zerow(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00034}00034\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'1'}:\ draw\_onew(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00035}00035\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'2'}:\ draw\_twow(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00036}00036\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'3'}:\ draw\_threew(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00037}00037\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'4'}:\ draw\_fourw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00038}00038\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'5'}:\ draw\_fivew(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'6'}:\ draw\_sixw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00040}00040\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'7'}:\ draw\_sevenw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'8'}:\ draw\_eightw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00042}00042\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'9'}:\ draw\_ninew(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00043}00043\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'S'}:\ draw\_Sw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00044}00044\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'C'}:\ draw\_Cw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'O'}:\ draw\_Ow(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'R'}:\ draw\_Rw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'E'}:\ draw\_Ew(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'L'}:\ draw\_Lw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00049}00049\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'I'}:\ draw\_Iw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'V'}:\ draw\_Vw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'B'}:\ draw\_Bw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'T'}:\ draw\_Tw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'M'}:\ draw\_Mw(x,\ y);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00055}00055\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00056}00056\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00058}00058\ \textcolor{keywordtype}{void}\ draw\_string(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ uint16\_t\ x,\ uint16\_t\ y)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00059}00059\ \ \ \textcolor{keywordflow}{while}\ (*str)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00060}00060\ \ \ \ \ draw\_char(*str,\ x,\ y);}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00061}00061\ \ \ \ \ x\ +=\ 16;\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00062}00062\ \ \ \ \ str++;}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00063}00063\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00064}00064\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00066}\mbox{\hyperlink{score_8h_af02807ea1d130a53010007ea1b78b69c}{00066}}\ \textcolor{keywordtype}{void}\ draw\_score(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00067}00067\ \ \ \textcolor{keywordtype}{char}\ score\_str[20];}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00068}00068\ \ \ sprintf(score\_str,\ \textcolor{stringliteral}{"{}SCORE:\ \%d"{}},\ score\_info-\/>score);}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00069}00069\ \ \ draw\_string(score\_str,\ 10,\ 10);\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00070}00070\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00072}\mbox{\hyperlink{score_8h_a8b3f30b0e190034dea2801d4da83d7c1}{00072}}\ \textcolor{keywordtype}{void}\ draw\_final\_score(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00073}00073\ \ \ \textcolor{keywordtype}{char}\ score\_str[20];}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00074}00074\ \ \ sprintf(score\_str,\ \textcolor{stringliteral}{"{}SCORE:\ \%d"{}},\ score\_info-\/>score);}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00075}00075\ \ \ draw\_string(score\_str,\ 305,\ 315);\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00078}\mbox{\hyperlink{score_8h_a80435eec9f6ce3ca56ec5f983f331aa6}{00078}}\ \textcolor{keywordtype}{void}\ draw\_lives(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00079}00079\ \ \ \textcolor{keywordtype}{char}\ lives\_str[20];}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00080}00080\ \ \ sprintf(lives\_str,\ \textcolor{stringliteral}{"{}LIVES\ \%d"{}},\ score\_info-\/>lives);}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00081}00081\ \ \ draw\_string(lives\_str,\ 10,\ 30);\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00084}\mbox{\hyperlink{score_8h_ac9d2010d9375c17d14455a279167fecd}{00084}}\ \textcolor{keywordtype}{void}\ draw\_best\_score(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00085}00085\ \ \ \textcolor{keywordflow}{if}\ (score\_info-\/>score\ >\ best\_score)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00086}00086\ \ \ \ \ best\_score\ =\ score\_info-\/>score;}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00087}00087\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00088}00088\ \ \ \textcolor{keywordtype}{char}\ score\_str[20];}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00089}00089\ \ \ sprintf(score\_str,\ \textcolor{stringliteral}{"{}BEST\ \%d"{}},\ best\_score);}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00090}00090\ \ \ draw\_string(score\_str,\ 305,\ 345);}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00093}\mbox{\hyperlink{score_8h_afb4c3703e5755f5a6156baa007248c13}{00093}}\ \textcolor{keywordtype}{void}\ draw\_time\_remaining(\textcolor{keywordtype}{int}\ time\_remaining)\ \{}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00094}00094\ \ \ \textcolor{keywordtype}{char}\ time\_str[10];}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00095}00095\ \ \ sprintf(time\_str,\ \textcolor{stringliteral}{"{}TIME\ \%02d"{}},\ time\_remaining);}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00096}00096\ \ \ draw\_string(time\_str,\ 675,\ 10);}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{score_8c_source_l00098}00098\ }
+
+\end{DoxyCode}

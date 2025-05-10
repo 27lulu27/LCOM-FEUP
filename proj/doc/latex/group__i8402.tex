@@ -1,0 +1,367 @@
+\doxysection{i8402}
+\hypertarget{group__i8402}{}\label{group__i8402}\index{i8402@{i8402}}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga1a522aa19bcb695a9df30032a893bee3}{DELAY\+\_\+\+US}}~20000
+\item 
+\#define \mbox{\hyperlink{group__i8402_gaade608c2b485d0c1238c401e073bbbdc}{STATUS\+\_\+\+REGISTER}}~0x64
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga42623faaacf8f8d4d780650277a79856}{INPUT\+\_\+\+BUFFER\+\_\+\+COMMANDS}}~0x64
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga727f73f94247554b6c804fb2b6381761}{INPUT\+\_\+\+BUFFER\+\_\+\+ARGUMENTS}}~0x60
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga85dd25ad45d47136734196ec996419cd}{OUTPUT\+\_\+\+BUFFER}}~0x60
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga45967c9e25447ba853cf6fb4ac545fe6}{OBF}}~BIT(0)
+\begin{DoxyCompactList}\small\item\em Output buffer full -\/ data available for reading. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga3c48b10907056351582baf9f6478598e}{IBF}}~BIT(1)
+\begin{DoxyCompactList}\small\item\em Input buffer full don’t write commands or arguments. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga03f542f1e0e2ba512c4ed189decfee3d}{INH}}~BIT(4)
+\begin{DoxyCompactList}\small\item\em Inhibit flag\+: 0 if keyboard is inhibited. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga1b41fd2be63532d4ab910f8b256c3811}{AUX}}~BIT(5)
+\begin{DoxyCompactList}\small\item\em Mouse data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga45ba202b05caf39795aeca91b0ae547e}{TIMEOUT}}~BIT(6)
+\begin{DoxyCompactList}\small\item\em Timeout error -\/ invalid data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_gaf6996d12e71a534569c41a25de7d6d52}{PARITY}}~BIT(7)
+\begin{DoxyCompactList}\small\item\em Parity error -\/ invalid data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_gad62cdd5fda070b9af70ae3fff25cedb7}{READ\+\_\+\+COM\+\_\+\+BYTE}}~0x20
+\begin{DoxyCompactList}\small\item\em Returns Command Byte. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_gaab181eb16a40d9dffe372854ab88b888}{WRITE\+\_\+\+COM\+\_\+\+BYTE}}~0x60
+\begin{DoxyCompactList}\small\item\em Takes Arguments\+: Command Byte. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group__i8402_ga32dfca0455c987adcf22db3d2043ed63}{COMMAND\+\_\+\+MOUSE}}~0x\+D4
+\item 
+\#define \mbox{\hyperlink{group__i8402_gab3919f33b46e0808c4ed1c56a6a423f2}{STREAM\+\_\+\+MODE}}~0x\+EA
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga618bdf461c25d552e654d6b899de2d37}{ENABLE\+\_\+\+MOUSE}}~0x\+F4
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga12d3b0abea66d191d47fe6860e58865e}{DISABLE\+\_\+\+MOUSE}}~0x\+F5
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga5388784cb69a0b869c4e5f60c839ca24}{IRQ2}}~2
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga37360776bcc1dd3b5da93b025177551f}{IRQ1}}~1
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga8885a13da4dafeb2cb209ce1b7ec3107}{IRQ0}}~0
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga57276d1481230d81d2bba849f935ce5a}{IRQ12}}~12
+\item 
+\#define \mbox{\hyperlink{group__i8402_gaf4bced5cf8ed55746d4b5d34f9a0fe39}{ENTER}}~0x1C
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga4af1b6159e447ba72652bb7fcdfa726e}{ESC}}~0x81
+\item 
+\#define \mbox{\hyperlink{group__i8402_gafd8bf8957488cb511e510ff32f28c6d6}{WK}}~0x11
+\item 
+\#define \mbox{\hyperlink{group__i8402_gac3a341ede33bbed651abe7f847361a6e}{AK}}~0x1e
+\item 
+\#define \mbox{\hyperlink{group__i8402_ga78970dd75cad4541ac7435082258c2ea}{DK}}~0x20
+\item 
+\#define \mbox{\hyperlink{group__i8402_gae55d82000e15df69860ea33e540f1b07}{SK}}~0x1f
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Constants for programming the i8402 Keyboard. Needs to be completed. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{group__i8402_gac3a341ede33bbed651abe7f847361a6e}\label{group__i8402_gac3a341ede33bbed651abe7f847361a6e} 
+\index{i8402@{i8402}!AK@{AK}}
+\index{AK@{AK}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{AK}{AK}}
+{\footnotesize\ttfamily \#define AK~0x1e}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00064}{64}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga1b41fd2be63532d4ab910f8b256c3811}\label{group__i8402_ga1b41fd2be63532d4ab910f8b256c3811} 
+\index{i8402@{i8402}!AUX@{AUX}}
+\index{AUX@{AUX}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{AUX}{AUX}}
+{\footnotesize\ttfamily \#define AUX~BIT(5)}
+
+
+
+Mouse data. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00036}{36}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga32dfca0455c987adcf22db3d2043ed63}\label{group__i8402_ga32dfca0455c987adcf22db3d2043ed63} 
+\index{i8402@{i8402}!COMMAND\_MOUSE@{COMMAND\_MOUSE}}
+\index{COMMAND\_MOUSE@{COMMAND\_MOUSE}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{COMMAND\_MOUSE}{COMMAND\_MOUSE}}
+{\footnotesize\ttfamily \#define COMMAND\+\_\+\+MOUSE~0x\+D4}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00048}{48}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga1a522aa19bcb695a9df30032a893bee3}\label{group__i8402_ga1a522aa19bcb695a9df30032a893bee3} 
+\index{i8402@{i8402}!DELAY\_US@{DELAY\_US}}
+\index{DELAY\_US@{DELAY\_US}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{DELAY\_US}{DELAY\_US}}
+{\footnotesize\ttfamily \#define DELAY\+\_\+\+US~20000}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00015}{15}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga12d3b0abea66d191d47fe6860e58865e}\label{group__i8402_ga12d3b0abea66d191d47fe6860e58865e} 
+\index{i8402@{i8402}!DISABLE\_MOUSE@{DISABLE\_MOUSE}}
+\index{DISABLE\_MOUSE@{DISABLE\_MOUSE}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{DISABLE\_MOUSE}{DISABLE\_MOUSE}}
+{\footnotesize\ttfamily \#define DISABLE\+\_\+\+MOUSE~0x\+F5}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00054}{54}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga78970dd75cad4541ac7435082258c2ea}\label{group__i8402_ga78970dd75cad4541ac7435082258c2ea} 
+\index{i8402@{i8402}!DK@{DK}}
+\index{DK@{DK}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{DK}{DK}}
+{\footnotesize\ttfamily \#define DK~0x20}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00065}{65}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga618bdf461c25d552e654d6b899de2d37}\label{group__i8402_ga618bdf461c25d552e654d6b899de2d37} 
+\index{i8402@{i8402}!ENABLE\_MOUSE@{ENABLE\_MOUSE}}
+\index{ENABLE\_MOUSE@{ENABLE\_MOUSE}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{ENABLE\_MOUSE}{ENABLE\_MOUSE}}
+{\footnotesize\ttfamily \#define ENABLE\+\_\+\+MOUSE~0x\+F4}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00052}{52}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_gaf4bced5cf8ed55746d4b5d34f9a0fe39}\label{group__i8402_gaf4bced5cf8ed55746d4b5d34f9a0fe39} 
+\index{i8402@{i8402}!ENTER@{ENTER}}
+\index{ENTER@{ENTER}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{ENTER}{ENTER}}
+{\footnotesize\ttfamily \#define ENTER~0x1C}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00061}{61}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga4af1b6159e447ba72652bb7fcdfa726e}\label{group__i8402_ga4af1b6159e447ba72652bb7fcdfa726e} 
+\index{i8402@{i8402}!ESC@{ESC}}
+\index{ESC@{ESC}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{ESC}{ESC}}
+{\footnotesize\ttfamily \#define ESC~0x81}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00062}{62}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga3c48b10907056351582baf9f6478598e}\label{group__i8402_ga3c48b10907056351582baf9f6478598e} 
+\index{i8402@{i8402}!IBF@{IBF}}
+\index{IBF@{IBF}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{IBF}{IBF}}
+{\footnotesize\ttfamily \#define IBF~BIT(1)}
+
+
+
+Input buffer full don’t write commands or arguments. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00032}{32}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga03f542f1e0e2ba512c4ed189decfee3d}\label{group__i8402_ga03f542f1e0e2ba512c4ed189decfee3d} 
+\index{i8402@{i8402}!INH@{INH}}
+\index{INH@{INH}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{INH}{INH}}
+{\footnotesize\ttfamily \#define INH~BIT(4)}
+
+
+
+Inhibit flag\+: 0 if keyboard is inhibited. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00034}{34}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga727f73f94247554b6c804fb2b6381761}\label{group__i8402_ga727f73f94247554b6c804fb2b6381761} 
+\index{i8402@{i8402}!INPUT\_BUFFER\_ARGUMENTS@{INPUT\_BUFFER\_ARGUMENTS}}
+\index{INPUT\_BUFFER\_ARGUMENTS@{INPUT\_BUFFER\_ARGUMENTS}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{INPUT\_BUFFER\_ARGUMENTS}{INPUT\_BUFFER\_ARGUMENTS}}
+{\footnotesize\ttfamily \#define INPUT\+\_\+\+BUFFER\+\_\+\+ARGUMENTS~0x60}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00024}{24}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga42623faaacf8f8d4d780650277a79856}\label{group__i8402_ga42623faaacf8f8d4d780650277a79856} 
+\index{i8402@{i8402}!INPUT\_BUFFER\_COMMANDS@{INPUT\_BUFFER\_COMMANDS}}
+\index{INPUT\_BUFFER\_COMMANDS@{INPUT\_BUFFER\_COMMANDS}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{INPUT\_BUFFER\_COMMANDS}{INPUT\_BUFFER\_COMMANDS}}
+{\footnotesize\ttfamily \#define INPUT\+\_\+\+BUFFER\+\_\+\+COMMANDS~0x64}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00022}{22}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga8885a13da4dafeb2cb209ce1b7ec3107}\label{group__i8402_ga8885a13da4dafeb2cb209ce1b7ec3107} 
+\index{i8402@{i8402}!IRQ0@{IRQ0}}
+\index{IRQ0@{IRQ0}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{IRQ0}{IRQ0}}
+{\footnotesize\ttfamily \#define IRQ0~0}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00058}{58}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga37360776bcc1dd3b5da93b025177551f}\label{group__i8402_ga37360776bcc1dd3b5da93b025177551f} 
+\index{i8402@{i8402}!IRQ1@{IRQ1}}
+\index{IRQ1@{IRQ1}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{IRQ1}{IRQ1}}
+{\footnotesize\ttfamily \#define IRQ1~1}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00057}{57}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga57276d1481230d81d2bba849f935ce5a}\label{group__i8402_ga57276d1481230d81d2bba849f935ce5a} 
+\index{i8402@{i8402}!IRQ12@{IRQ12}}
+\index{IRQ12@{IRQ12}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{IRQ12}{IRQ12}}
+{\footnotesize\ttfamily \#define IRQ12~12}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00059}{59}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga5388784cb69a0b869c4e5f60c839ca24}\label{group__i8402_ga5388784cb69a0b869c4e5f60c839ca24} 
+\index{i8402@{i8402}!IRQ2@{IRQ2}}
+\index{IRQ2@{IRQ2}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{IRQ2}{IRQ2}}
+{\footnotesize\ttfamily \#define IRQ2~2}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00056}{56}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga45967c9e25447ba853cf6fb4ac545fe6}\label{group__i8402_ga45967c9e25447ba853cf6fb4ac545fe6} 
+\index{i8402@{i8402}!OBF@{OBF}}
+\index{OBF@{OBF}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{OBF}{OBF}}
+{\footnotesize\ttfamily \#define OBF~BIT(0)}
+
+
+
+Output buffer full -\/ data available for reading. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00030}{30}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga85dd25ad45d47136734196ec996419cd}\label{group__i8402_ga85dd25ad45d47136734196ec996419cd} 
+\index{i8402@{i8402}!OUTPUT\_BUFFER@{OUTPUT\_BUFFER}}
+\index{OUTPUT\_BUFFER@{OUTPUT\_BUFFER}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{OUTPUT\_BUFFER}{OUTPUT\_BUFFER}}
+{\footnotesize\ttfamily \#define OUTPUT\+\_\+\+BUFFER~0x60}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00026}{26}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_gaf6996d12e71a534569c41a25de7d6d52}\label{group__i8402_gaf6996d12e71a534569c41a25de7d6d52} 
+\index{i8402@{i8402}!PARITY@{PARITY}}
+\index{PARITY@{PARITY}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{PARITY}{PARITY}}
+{\footnotesize\ttfamily \#define PARITY~BIT(7)}
+
+
+
+Parity error -\/ invalid data. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00040}{40}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_gad62cdd5fda070b9af70ae3fff25cedb7}\label{group__i8402_gad62cdd5fda070b9af70ae3fff25cedb7} 
+\index{i8402@{i8402}!READ\_COM\_BYTE@{READ\_COM\_BYTE}}
+\index{READ\_COM\_BYTE@{READ\_COM\_BYTE}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{READ\_COM\_BYTE}{READ\_COM\_BYTE}}
+{\footnotesize\ttfamily \#define READ\+\_\+\+COM\+\_\+\+BYTE~0x20}
+
+
+
+Returns Command Byte. 
+
+COMMANDS 
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00044}{44}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_gae55d82000e15df69860ea33e540f1b07}\label{group__i8402_gae55d82000e15df69860ea33e540f1b07} 
+\index{i8402@{i8402}!SK@{SK}}
+\index{SK@{SK}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{SK}{SK}}
+{\footnotesize\ttfamily \#define SK~0x1f}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00066}{66}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_gaade608c2b485d0c1238c401e073bbbdc}\label{group__i8402_gaade608c2b485d0c1238c401e073bbbdc} 
+\index{i8402@{i8402}!STATUS\_REGISTER@{STATUS\_REGISTER}}
+\index{STATUS\_REGISTER@{STATUS\_REGISTER}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{STATUS\_REGISTER}{STATUS\_REGISTER}}
+{\footnotesize\ttfamily \#define STATUS\+\_\+\+REGISTER~0x64}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00020}{20}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_gab3919f33b46e0808c4ed1c56a6a423f2}\label{group__i8402_gab3919f33b46e0808c4ed1c56a6a423f2} 
+\index{i8402@{i8402}!STREAM\_MODE@{STREAM\_MODE}}
+\index{STREAM\_MODE@{STREAM\_MODE}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{STREAM\_MODE}{STREAM\_MODE}}
+{\footnotesize\ttfamily \#define STREAM\+\_\+\+MODE~0x\+EA}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00050}{50}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_ga45ba202b05caf39795aeca91b0ae547e}\label{group__i8402_ga45ba202b05caf39795aeca91b0ae547e} 
+\index{i8402@{i8402}!TIMEOUT@{TIMEOUT}}
+\index{TIMEOUT@{TIMEOUT}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{TIMEOUT}{TIMEOUT}}
+{\footnotesize\ttfamily \#define TIMEOUT~BIT(6)}
+
+
+
+Timeout error -\/ invalid data. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00038}{38}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_gafd8bf8957488cb511e510ff32f28c6d6}\label{group__i8402_gafd8bf8957488cb511e510ff32f28c6d6} 
+\index{i8402@{i8402}!WK@{WK}}
+\index{WK@{WK}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{WK}{WK}}
+{\footnotesize\ttfamily \#define WK~0x11}
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00063}{63}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+
+\Hypertarget{group__i8402_gaab181eb16a40d9dffe372854ab88b888}\label{group__i8402_gaab181eb16a40d9dffe372854ab88b888} 
+\index{i8402@{i8402}!WRITE\_COM\_BYTE@{WRITE\_COM\_BYTE}}
+\index{WRITE\_COM\_BYTE@{WRITE\_COM\_BYTE}!i8402@{i8402}}
+\doxysubsubsection{\texorpdfstring{WRITE\_COM\_BYTE}{WRITE\_COM\_BYTE}}
+{\footnotesize\ttfamily \#define WRITE\+\_\+\+COM\+\_\+\+BYTE~0x60}
+
+
+
+Takes Arguments\+: Command Byte. 
+
+
+
+Definition at line \mbox{\hyperlink{i8042_8h_source_l00046}{46}} of file \mbox{\hyperlink{i8042_8h_source}{i8042.\+h}}.
+

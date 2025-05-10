@@ -1,0 +1,113 @@
+\doxysection{src/player.h File Reference}
+\hypertarget{player_8h}{}\label{player_8h}\index{src/player.h@{src/player.h}}
+
+
+Header file for player management in the game.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for player.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{player_8h_ae7a5d2990396c2adcedb1b75686061d9}{draw\+\_\+player}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the player spaceship at the specified position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player_8h_a1cc0db435c23941866802a30bdaf88ed}{delete\+\_\+player}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the player spaceship from the specified position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{player_8h_a3e0fc7221ce28519cfbedeec759fbdaa}{player\+\_\+x}}
+\begin{DoxyCompactList}\small\item\em External variables for player position. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{player_8h_a7b1a7175078ec67b0e88cc383cc7400c}{player\+\_\+y}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for player management in the game. 
+
+
+
+Definition in file \mbox{\hyperlink{player_8h_source}{player.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player_8h_a1cc0db435c23941866802a30bdaf88ed}\label{player_8h_a1cc0db435c23941866802a30bdaf88ed} 
+\index{player.h@{player.h}!delete\_player@{delete\_player}}
+\index{delete\_player@{delete\_player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{delete\_player()}{delete\_player()}}
+{\footnotesize\ttfamily int delete\+\_\+player (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the player spaceship from the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X position to delete the player. \\
+\hline
+{\em y} & Y position to delete the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{player_8c_source_l00030}{30}} of file \mbox{\hyperlink{player_8c_source}{player.\+c}}.
+
+\Hypertarget{player_8h_ae7a5d2990396c2adcedb1b75686061d9}\label{player_8h_ae7a5d2990396c2adcedb1b75686061d9} 
+\index{player.h@{player.h}!draw\_player@{draw\_player}}
+\index{draw\_player@{draw\_player}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{draw\_player()}{draw\_player()}}
+{\footnotesize\ttfamily int draw\+\_\+player (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the player spaceship at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X position to draw the player. \\
+\hline
+{\em y} & Y position to draw the player. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{player_8c_source_l00021}{21}} of file \mbox{\hyperlink{player_8c_source}{player.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{player_8h_a3e0fc7221ce28519cfbedeec759fbdaa}\label{player_8h_a3e0fc7221ce28519cfbedeec759fbdaa} 
+\index{player.h@{player.h}!player\_x@{player\_x}}
+\index{player\_x@{player\_x}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_x}{player\_x}}
+{\footnotesize\ttfamily int player\+\_\+x\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+External variables for player position. 
+
+
+
+Definition at line \mbox{\hyperlink{player_8c_source_l00018}{18}} of file \mbox{\hyperlink{player_8c_source}{player.\+c}}.
+
+\Hypertarget{player_8h_a7b1a7175078ec67b0e88cc383cc7400c}\label{player_8h_a7b1a7175078ec67b0e88cc383cc7400c} 
+\index{player.h@{player.h}!player\_y@{player\_y}}
+\index{player\_y@{player\_y}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{player\_y}{player\_y}}
+{\footnotesize\ttfamily int player\+\_\+y\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{player_8c_source_l00019}{19}} of file \mbox{\hyperlink{player_8c_source}{player.\+c}}.
+

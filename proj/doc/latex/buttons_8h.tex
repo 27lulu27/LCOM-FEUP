@@ -1,0 +1,543 @@
+\doxysection{src/buttons.h File Reference}
+\hypertarget{buttons_8h}{}\label{buttons_8h}\index{src/buttons.h@{src/buttons.h}}
+
+
+Header file containing function prototypes for button manipulation.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+Include dependency graph for buttons.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{buttons_8h_a567a48ac4004f709ef32412a547d16db}{draw\+\_\+quit}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the quit button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a2fe639b56e44e9d0b1e0ef34fe377521}{draw\+\_\+start}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the start button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a78400a5bb1324fd0237d5f094b31ab96}{draw\+\_\+back}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8h_a0cfe25be9b80ae05fd6ba99948f977a8}{draw\+\_\+easy}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8h_aacd6f0843018d2e178583d3787553005}{draw\+\_\+medium}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8h_a938443c37463e01ce88deafde4fb8ce4}{draw\+\_\+hard}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{buttons_8h_a98eaec294a3dc3166cf741e33d9ed6f8}{draw\+\_\+selected\+\_\+start}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the selected start button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_af4ffb26e4b4c4e1c075c7b4256496c87}{draw\+\_\+selected\+\_\+quit}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the selected quit button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a3b1d8eb76d7d6e9f7176c8aae56d2dc7}{draw\+\_\+selected\+\_\+back}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the selected back button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a5b687aebb1e82a95354d74d2491f177a}{draw\+\_\+selected\+\_\+easy}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the selected easy button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a3835237a5f62b6dc7d1e29ec96f0a2e8}{draw\+\_\+selected\+\_\+medium}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the selected medium button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_af821d2d7619acd31028aaaaf3e6f4da2}{draw\+\_\+selected\+\_\+hard}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the selected hard button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a26185e1d23d44d6eeaca62d42551bd28}{delete\+\_\+quit}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the quit button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_ae2e94933b27c5371a155003a27ce248e}{delete\+\_\+start}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the start button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_ad29ac9cc0a7056585ff492dbe49b904c}{delete\+\_\+back}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the back button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_abf4efd9e76da64d689ca528c043df980}{delete\+\_\+easy}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the back button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a846f62fff652c325949c64763e471b74}{delete\+\_\+medium}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the medium button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a08ca191d17268650a1f97b97da4ba9ab}{delete\+\_\+hard}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the hard button sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a3b9b0b72e9b77e46bd844304ea203920}{delete\+\_\+win}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the win message sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_aeec93f15db7e213af69ba409e3262bc9}{delete\+\_\+gameover}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws the game over message sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a981daeff7b27e48310ba355aaf8dc9cc}{draw\+\_\+game\+\_\+over}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the game over message sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{buttons_8h_a6ab47d4a4a6b6a7a7475fa561fe72295}{draw\+\_\+win}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes the win message sprite at the specified coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file containing function prototypes for button manipulation. 
+
+
+
+Definition in file \mbox{\hyperlink{buttons_8h_source}{buttons.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{buttons_8h_ad29ac9cc0a7056585ff492dbe49b904c}\label{buttons_8h_ad29ac9cc0a7056585ff492dbe49b904c} 
+\index{buttons.h@{buttons.h}!delete\_back@{delete\_back}}
+\index{delete\_back@{delete\_back}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{delete\_back()}{delete\_back()}}
+{\footnotesize\ttfamily int delete\+\_\+back (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the back button sprite at the specified coordinates. 
+
+This function deletes the back button sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the back button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the back button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00188}{188}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_abf4efd9e76da64d689ca528c043df980}\label{buttons_8h_abf4efd9e76da64d689ca528c043df980} 
+\index{buttons.h@{buttons.h}!delete\_easy@{delete\_easy}}
+\index{delete\_easy@{delete\_easy}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{delete\_easy()}{delete\_easy()}}
+{\footnotesize\ttfamily int delete\+\_\+easy (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the back button sprite at the specified coordinates. 
+
+This function deletes the back button sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the back button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the back button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00197}{197}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_aeec93f15db7e213af69ba409e3262bc9}\label{buttons_8h_aeec93f15db7e213af69ba409e3262bc9} 
+\index{buttons.h@{buttons.h}!delete\_gameover@{delete\_gameover}}
+\index{delete\_gameover@{delete\_gameover}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{delete\_gameover()}{delete\_gameover()}}
+{\footnotesize\ttfamily int delete\+\_\+gameover (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the game over message sprite at the specified coordinates. 
+
+This function draws the game over message sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the game over message sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the game over message sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00252}{252}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a08ca191d17268650a1f97b97da4ba9ab}\label{buttons_8h_a08ca191d17268650a1f97b97da4ba9ab} 
+\index{buttons.h@{buttons.h}!delete\_hard@{delete\_hard}}
+\index{delete\_hard@{delete\_hard}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{delete\_hard()}{delete\_hard()}}
+{\footnotesize\ttfamily int delete\+\_\+hard (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the hard button sprite at the specified coordinates. 
+
+This function deletes the hard button sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the hard button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the hard button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00215}{215}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a846f62fff652c325949c64763e471b74}\label{buttons_8h_a846f62fff652c325949c64763e471b74} 
+\index{buttons.h@{buttons.h}!delete\_medium@{delete\_medium}}
+\index{delete\_medium@{delete\_medium}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{delete\_medium()}{delete\_medium()}}
+{\footnotesize\ttfamily int delete\+\_\+medium (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the medium button sprite at the specified coordinates. 
+
+This function deletes the medium button sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the medium button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the medium button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00206}{206}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a26185e1d23d44d6eeaca62d42551bd28}\label{buttons_8h_a26185e1d23d44d6eeaca62d42551bd28} 
+\index{buttons.h@{buttons.h}!delete\_quit@{delete\_quit}}
+\index{delete\_quit@{delete\_quit}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{delete\_quit()}{delete\_quit()}}
+{\footnotesize\ttfamily int delete\+\_\+quit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the quit button sprite at the specified coordinates. 
+
+This function deletes the quit button sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the quit button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the quit button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00170}{170}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_ae2e94933b27c5371a155003a27ce248e}\label{buttons_8h_ae2e94933b27c5371a155003a27ce248e} 
+\index{buttons.h@{buttons.h}!delete\_start@{delete\_start}}
+\index{delete\_start@{delete\_start}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{delete\_start()}{delete\_start()}}
+{\footnotesize\ttfamily int delete\+\_\+start (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the start button sprite at the specified coordinates. 
+
+This function deletes the start button sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the start button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the start button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00179}{179}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a3b9b0b72e9b77e46bd844304ea203920}\label{buttons_8h_a3b9b0b72e9b77e46bd844304ea203920} 
+\index{buttons.h@{buttons.h}!delete\_win@{delete\_win}}
+\index{delete\_win@{delete\_win}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{delete\_win()}{delete\_win()}}
+{\footnotesize\ttfamily int delete\+\_\+win (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the win message sprite at the specified coordinates. 
+
+This function draws the win message sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the win message sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the win message sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00242}{242}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a78400a5bb1324fd0237d5f094b31ab96}\label{buttons_8h_a78400a5bb1324fd0237d5f094b31ab96} 
+\index{buttons.h@{buttons.h}!draw\_back@{draw\_back}}
+\index{draw\_back@{draw\_back}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_back()}{draw\_back()}}
+{\footnotesize\ttfamily int draw\+\_\+back (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00099}{99}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a0cfe25be9b80ae05fd6ba99948f977a8}\label{buttons_8h_a0cfe25be9b80ae05fd6ba99948f977a8} 
+\index{buttons.h@{buttons.h}!draw\_easy@{draw\_easy}}
+\index{draw\_easy@{draw\_easy}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_easy()}{draw\_easy()}}
+{\footnotesize\ttfamily int draw\+\_\+easy (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00117}{117}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a981daeff7b27e48310ba355aaf8dc9cc}\label{buttons_8h_a981daeff7b27e48310ba355aaf8dc9cc} 
+\index{buttons.h@{buttons.h}!draw\_game\_over@{draw\_game\_over}}
+\index{draw\_game\_over@{draw\_game\_over}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_game\_over()}{draw\_game\_over()}}
+{\footnotesize\ttfamily int draw\+\_\+game\+\_\+over (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the game over message sprite at the specified coordinates. 
+
+This function deletes the game over message sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the game over message sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the game over message sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00224}{224}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a938443c37463e01ce88deafde4fb8ce4}\label{buttons_8h_a938443c37463e01ce88deafde4fb8ce4} 
+\index{buttons.h@{buttons.h}!draw\_hard@{draw\_hard}}
+\index{draw\_hard@{draw\_hard}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_hard()}{draw\_hard()}}
+{\footnotesize\ttfamily int draw\+\_\+hard (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00152}{152}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_aacd6f0843018d2e178583d3787553005}\label{buttons_8h_aacd6f0843018d2e178583d3787553005} 
+\index{buttons.h@{buttons.h}!draw\_medium@{draw\_medium}}
+\index{draw\_medium@{draw\_medium}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_medium()}{draw\_medium()}}
+{\footnotesize\ttfamily int draw\+\_\+medium (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00134}{134}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a567a48ac4004f709ef32412a547d16db}\label{buttons_8h_a567a48ac4004f709ef32412a547d16db} 
+\index{buttons.h@{buttons.h}!draw\_quit@{draw\_quit}}
+\index{draw\_quit@{draw\_quit}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_quit()}{draw\_quit()}}
+{\footnotesize\ttfamily int draw\+\_\+quit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the quit button sprite at the specified coordinates. 
+
+This function draws the quit button sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the quit button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the quit button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00063}{63}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a3b1d8eb76d7d6e9f7176c8aae56d2dc7}\label{buttons_8h_a3b1d8eb76d7d6e9f7176c8aae56d2dc7} 
+\index{buttons.h@{buttons.h}!draw\_selected\_back@{draw\_selected\_back}}
+\index{draw\_selected\_back@{draw\_selected\_back}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_selected\_back()}{draw\_selected\_back()}}
+{\footnotesize\ttfamily int draw\+\_\+selected\+\_\+back (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the selected back button sprite at the specified coordinates. 
+
+This function draws the selected back button sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the selected back button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the selected back button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00108}{108}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a5b687aebb1e82a95354d74d2491f177a}\label{buttons_8h_a5b687aebb1e82a95354d74d2491f177a} 
+\index{buttons.h@{buttons.h}!draw\_selected\_easy@{draw\_selected\_easy}}
+\index{draw\_selected\_easy@{draw\_selected\_easy}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_selected\_easy()}{draw\_selected\_easy()}}
+{\footnotesize\ttfamily int draw\+\_\+selected\+\_\+easy (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the selected easy button sprite at the specified coordinates. 
+
+This function draws the selected easy button sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the selected easy button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the selected easy button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00126}{126}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_af821d2d7619acd31028aaaaf3e6f4da2}\label{buttons_8h_af821d2d7619acd31028aaaaf3e6f4da2} 
+\index{buttons.h@{buttons.h}!draw\_selected\_hard@{draw\_selected\_hard}}
+\index{draw\_selected\_hard@{draw\_selected\_hard}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_selected\_hard()}{draw\_selected\_hard()}}
+{\footnotesize\ttfamily int draw\+\_\+selected\+\_\+hard (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the selected hard button sprite at the specified coordinates. 
+
+This function draws the selected hard button sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the selected hard button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the selected hard button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00161}{161}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a3835237a5f62b6dc7d1e29ec96f0a2e8}\label{buttons_8h_a3835237a5f62b6dc7d1e29ec96f0a2e8} 
+\index{buttons.h@{buttons.h}!draw\_selected\_medium@{draw\_selected\_medium}}
+\index{draw\_selected\_medium@{draw\_selected\_medium}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_selected\_medium()}{draw\_selected\_medium()}}
+{\footnotesize\ttfamily int draw\+\_\+selected\+\_\+medium (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the selected medium button sprite at the specified coordinates. 
+
+This function draws the selected medium button sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the selected medium button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the selected medium button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00143}{143}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_af4ffb26e4b4c4e1c075c7b4256496c87}\label{buttons_8h_af4ffb26e4b4c4e1c075c7b4256496c87} 
+\index{buttons.h@{buttons.h}!draw\_selected\_quit@{draw\_selected\_quit}}
+\index{draw\_selected\_quit@{draw\_selected\_quit}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_selected\_quit()}{draw\_selected\_quit()}}
+{\footnotesize\ttfamily int draw\+\_\+selected\+\_\+quit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the selected quit button sprite at the specified coordinates. 
+
+This function draws the selected quit button sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the selected quit button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the selected quit button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00072}{72}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a98eaec294a3dc3166cf741e33d9ed6f8}\label{buttons_8h_a98eaec294a3dc3166cf741e33d9ed6f8} 
+\index{buttons.h@{buttons.h}!draw\_selected\_start@{draw\_selected\_start}}
+\index{draw\_selected\_start@{draw\_selected\_start}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_selected\_start()}{draw\_selected\_start()}}
+{\footnotesize\ttfamily int draw\+\_\+selected\+\_\+start (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the selected start button sprite at the specified coordinates. 
+
+This function draws the selected start button sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the selected start button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the selected start button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00090}{90}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a2fe639b56e44e9d0b1e0ef34fe377521}\label{buttons_8h_a2fe639b56e44e9d0b1e0ef34fe377521} 
+\index{buttons.h@{buttons.h}!draw\_start@{draw\_start}}
+\index{draw\_start@{draw\_start}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_start()}{draw\_start()}}
+{\footnotesize\ttfamily int draw\+\_\+start (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws the start button sprite at the specified coordinates. 
+
+This function draws the start button sprite at the given (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the start button sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the start button sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00081}{81}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+
+\Hypertarget{buttons_8h_a6ab47d4a4a6b6a7a7475fa561fe72295}\label{buttons_8h_a6ab47d4a4a6b6a7a7475fa561fe72295} 
+\index{buttons.h@{buttons.h}!draw\_win@{draw\_win}}
+\index{draw\_win@{draw\_win}!buttons.h@{buttons.h}}
+\doxysubsubsection{\texorpdfstring{draw\_win()}{draw\_win()}}
+{\footnotesize\ttfamily int draw\+\_\+win (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes the win message sprite at the specified coordinates. 
+
+This function deletes the win message sprite at the given (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the win message sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the win message sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{buttons_8c_source_l00233}{233}} of file \mbox{\hyperlink{buttons_8c_source}{buttons.\+c}}.
+

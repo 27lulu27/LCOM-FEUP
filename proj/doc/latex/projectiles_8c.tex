@@ -1,0 +1,310 @@
+\doxysection{projectiles.\+c File Reference}
+\hypertarget{projectiles_8c}{}\label{projectiles_8c}\index{projectiles.c@{projectiles.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lab5.\+h$>$}\newline
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include "{}projectiles.\+h"{}}\newline
+{\ttfamily \#include "{}sprites.\+h"{}}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+{\ttfamily \#include "{}alien.\+h"{}}\newline
+{\ttfamily \#include "{}score.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+Include dependency graph for projectiles.\+c\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{projectiles_8c_adbc131e9b147b67d84003e054b355365}{MAX\+\_\+\+PROJECTILES}}~10
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{projectiles_8c_a75b2e3f4f5c0b6a135e65819f50da536}{draw\+\_\+spaceship\+\_\+projectile}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{projectiles_8c_a5c8bc7a8fbe25be6ee70ec68bce1fab3}{delete\+\_\+spaceship\+\_\+projectile}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{projectiles_8c_ac03afb9aa3c6bad4beee5192a9c8de83}{draw\+\_\+alien\+\_\+projectile}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{projectiles_8c_aa5407431b1ae4dc385923d5848eb26ba}{delete\+\_\+alien\+\_\+projectile}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+bool \mbox{\hyperlink{projectiles_8c_a035a6c229364d0eb432ad3b1ccc12d73}{check\+\_\+collision}} (\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}projectile, int \texorpdfstring{$\ast$}{*}alien\+\_\+index)
+\item 
+void \mbox{\hyperlink{projectiles_8c_a66ecda55abdf0ac8db4f8c32e04c2b75}{move\+\_\+projectiles}} ()
+\item 
+void \mbox{\hyperlink{projectiles_8c_af3bc30d4d2c3a93f08d5f5f16aebfc18}{move\+\_\+projectile}} (\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}projectile)
+\item 
+int \mbox{\hyperlink{projectiles_8c_aca8401afcc3908dbb2c6e4ea46c7547e}{calc\+\_\+x}} (\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}projectile)
+\item 
+int \mbox{\hyperlink{projectiles_8c_a84a78d400030a02fe43acb1811c8840a}{calc\+\_\+y}} (\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}projectile)
+\item 
+void \mbox{\hyperlink{projectiles_8c_a18f61fed2471257dd4d0b8a4e9004427}{create\+\_\+projectile}} (int xi, int yi, int xf, int yf, int16\+\_\+t speed, \mbox{\hyperlink{projectiles_8h_a7af6aebb429588b2abecb84a3c01625e}{Projectile\+Type}} type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{projectiles_8c_abf0bbb9ad6b48c7cc9cd7e32bcdeb943}{spaceship\+\_\+projectile\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{projectiles_8c_aa64f763fe8b3ffb82a41b37d101c8d0d}{spaceship\+\_\+projectile\+\_\+black\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{projectiles_8c_a38e20bcb4c17a43014b12ad18e7efb15}{alien\+\_\+projectile\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{projectiles_8c_ab4f48739ad51e423641edddc645c285d}{alien\+\_\+projectile\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{projectiles_8c_a906a7c717ca53c491c9360f200c72ec9}{img\+\_\+spaceship\+\_\+projectile\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{projectiles_8c_a4d93ca20c4ebc0d4d858699516a7b4a1}{img\+\_\+spaceship\+\_\+projectile\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{projectiles_8c_aaf1e000687f8b056bff7c5fd486b96bc}{img\+\_\+alien\+\_\+projectile\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{projectiles_8c_ae2072e50b3b8fe521b05533330f5af52}{img\+\_\+alien\+\_\+projectile\+\_\+black\+\_\+sprite}}
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{projectiles_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\+\_\+p}}
+\item 
+bool \mbox{\hyperlink{projectiles_8c_a1646041a2b7cdad9336eac98de3b0f36}{cooldown}} = false
+\item 
+int \mbox{\hyperlink{projectiles_8c_a815d6115db52b228b3f6de3358ce5a2d}{projectile\+\_\+count}} = 0
+\item 
+\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{projectiles_8c_a036279a45c872c076b218bfa0a3deac9}{projectiles}} \mbox{[}\mbox{\hyperlink{projectiles_8c_adbc131e9b147b67d84003e054b355365}{MAX\+\_\+\+PROJECTILES}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{projectiles_8c_adbc131e9b147b67d84003e054b355365}\label{projectiles_8c_adbc131e9b147b67d84003e054b355365} 
+\index{projectiles.c@{projectiles.c}!MAX\_PROJECTILES@{MAX\_PROJECTILES}}
+\index{MAX\_PROJECTILES@{MAX\_PROJECTILES}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{MAX\_PROJECTILES}{MAX\_PROJECTILES}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+PROJECTILES~10}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00025}{25}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{projectiles_8c_aca8401afcc3908dbb2c6e4ea46c7547e}\label{projectiles_8c_aca8401afcc3908dbb2c6e4ea46c7547e} 
+\index{projectiles.c@{projectiles.c}!calc\_x@{calc\_x}}
+\index{calc\_x@{calc\_x}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{calc\_x()}{calc\_x()}}
+{\footnotesize\ttfamily int calc\+\_\+x (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}}]{projectile }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00181}{181}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_a84a78d400030a02fe43acb1811c8840a}\label{projectiles_8c_a84a78d400030a02fe43acb1811c8840a} 
+\index{projectiles.c@{projectiles.c}!calc\_y@{calc\_y}}
+\index{calc\_y@{calc\_y}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{calc\_y()}{calc\_y()}}
+{\footnotesize\ttfamily int calc\+\_\+y (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}}]{projectile }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00186}{186}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_a035a6c229364d0eb432ad3b1ccc12d73}\label{projectiles_8c_a035a6c229364d0eb432ad3b1ccc12d73} 
+\index{projectiles.c@{projectiles.c}!check\_collision@{check\_collision}}
+\index{check\_collision@{check\_collision}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{check\_collision()}{check\_collision()}}
+{\footnotesize\ttfamily bool check\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}}]{projectile,  }\item[{int \texorpdfstring{$\ast$}{*}}]{alien\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00063}{63}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_a18f61fed2471257dd4d0b8a4e9004427}\label{projectiles_8c_a18f61fed2471257dd4d0b8a4e9004427} 
+\index{projectiles.c@{projectiles.c}!create\_projectile@{create\_projectile}}
+\index{create\_projectile@{create\_projectile}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{create\_projectile()}{create\_projectile()}}
+{\footnotesize\ttfamily void create\+\_\+projectile (\begin{DoxyParamCaption}\item[{int}]{xi,  }\item[{int}]{yi,  }\item[{int}]{xf,  }\item[{int}]{yf,  }\item[{int16\+\_\+t}]{speed,  }\item[{\mbox{\hyperlink{projectiles_8h_a7af6aebb429588b2abecb84a3c01625e}{Projectile\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00191}{191}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_aa5407431b1ae4dc385923d5848eb26ba}\label{projectiles_8c_aa5407431b1ae4dc385923d5848eb26ba} 
+\index{projectiles.c@{projectiles.c}!delete\_alien\_projectile@{delete\_alien\_projectile}}
+\index{delete\_alien\_projectile@{delete\_alien\_projectile}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{delete\_alien\_projectile()}{delete\_alien\_projectile()}}
+{\footnotesize\ttfamily int delete\+\_\+alien\+\_\+projectile (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00054}{54}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_a5c8bc7a8fbe25be6ee70ec68bce1fab3}\label{projectiles_8c_a5c8bc7a8fbe25be6ee70ec68bce1fab3} 
+\index{projectiles.c@{projectiles.c}!delete\_spaceship\_projectile@{delete\_spaceship\_projectile}}
+\index{delete\_spaceship\_projectile@{delete\_spaceship\_projectile}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{delete\_spaceship\_projectile()}{delete\_spaceship\_projectile()}}
+{\footnotesize\ttfamily int delete\+\_\+spaceship\+\_\+projectile (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00038}{38}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_ac03afb9aa3c6bad4beee5192a9c8de83}\label{projectiles_8c_ac03afb9aa3c6bad4beee5192a9c8de83} 
+\index{projectiles.c@{projectiles.c}!draw\_alien\_projectile@{draw\_alien\_projectile}}
+\index{draw\_alien\_projectile@{draw\_alien\_projectile}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{draw\_alien\_projectile()}{draw\_alien\_projectile()}}
+{\footnotesize\ttfamily int draw\+\_\+alien\+\_\+projectile (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00046}{46}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_a75b2e3f4f5c0b6a135e65819f50da536}\label{projectiles_8c_a75b2e3f4f5c0b6a135e65819f50da536} 
+\index{projectiles.c@{projectiles.c}!draw\_spaceship\_projectile@{draw\_spaceship\_projectile}}
+\index{draw\_spaceship\_projectile@{draw\_spaceship\_projectile}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{draw\_spaceship\_projectile()}{draw\_spaceship\_projectile()}}
+{\footnotesize\ttfamily int draw\+\_\+spaceship\+\_\+projectile (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00030}{30}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_af3bc30d4d2c3a93f08d5f5f16aebfc18}\label{projectiles_8c_af3bc30d4d2c3a93f08d5f5f16aebfc18} 
+\index{projectiles.c@{projectiles.c}!move\_projectile@{move\_projectile}}
+\index{move\_projectile@{move\_projectile}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{move\_projectile()}{move\_projectile()}}
+{\footnotesize\ttfamily void move\+\_\+projectile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}}]{projectile }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00157}{157}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_a66ecda55abdf0ac8db4f8c32e04c2b75}\label{projectiles_8c_a66ecda55abdf0ac8db4f8c32e04c2b75} 
+\index{projectiles.c@{projectiles.c}!move\_projectiles@{move\_projectiles}}
+\index{move\_projectiles@{move\_projectiles}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{move\_projectiles()}{move\_projectiles()}}
+{\footnotesize\ttfamily void move\+\_\+projectiles (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00088}{88}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{projectiles_8c_ab4f48739ad51e423641edddc645c285d}\label{projectiles_8c_ab4f48739ad51e423641edddc645c285d} 
+\index{projectiles.c@{projectiles.c}!alien\_projectile\_black\_sprite@{alien\_projectile\_black\_sprite}}
+\index{alien\_projectile\_black\_sprite@{alien\_projectile\_black\_sprite}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{alien\_projectile\_black\_sprite}{alien\_projectile\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} alien\+\_\+projectile\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00033}{33}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{projectiles_8c_a38e20bcb4c17a43014b12ad18e7efb15}\label{projectiles_8c_a38e20bcb4c17a43014b12ad18e7efb15} 
+\index{projectiles.c@{projectiles.c}!alien\_projectile\_sprite@{alien\_projectile\_sprite}}
+\index{alien\_projectile\_sprite@{alien\_projectile\_sprite}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{alien\_projectile\_sprite}{alien\_projectile\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} alien\+\_\+projectile\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00032}{32}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{projectiles_8c_a1646041a2b7cdad9336eac98de3b0f36}\label{projectiles_8c_a1646041a2b7cdad9336eac98de3b0f36} 
+\index{projectiles.c@{projectiles.c}!cooldown@{cooldown}}
+\index{cooldown@{cooldown}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{cooldown}{cooldown}}
+{\footnotesize\ttfamily bool cooldown = false}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00023}{23}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_ae2072e50b3b8fe521b05533330f5af52}\label{projectiles_8c_ae2072e50b3b8fe521b05533330f5af52} 
+\index{projectiles.c@{projectiles.c}!img\_alien\_projectile\_black\_sprite@{img\_alien\_projectile\_black\_sprite}}
+\index{img\_alien\_projectile\_black\_sprite@{img\_alien\_projectile\_black\_sprite}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{img\_alien\_projectile\_black\_sprite}{img\_alien\_projectile\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+alien\+\_\+projectile\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00055}{55}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{projectiles_8c_aaf1e000687f8b056bff7c5fd486b96bc}\label{projectiles_8c_aaf1e000687f8b056bff7c5fd486b96bc} 
+\index{projectiles.c@{projectiles.c}!img\_alien\_projectile\_sprite@{img\_alien\_projectile\_sprite}}
+\index{img\_alien\_projectile\_sprite@{img\_alien\_projectile\_sprite}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{img\_alien\_projectile\_sprite}{img\_alien\_projectile\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+alien\+\_\+projectile\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00054}{54}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{projectiles_8c_a4d93ca20c4ebc0d4d858699516a7b4a1}\label{projectiles_8c_a4d93ca20c4ebc0d4d858699516a7b4a1} 
+\index{projectiles.c@{projectiles.c}!img\_spaceship\_projectile\_black\_sprite@{img\_spaceship\_projectile\_black\_sprite}}
+\index{img\_spaceship\_projectile\_black\_sprite@{img\_spaceship\_projectile\_black\_sprite}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{img\_spaceship\_projectile\_black\_sprite}{img\_spaceship\_projectile\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+spaceship\+\_\+projectile\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00053}{53}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{projectiles_8c_a906a7c717ca53c491c9360f200c72ec9}\label{projectiles_8c_a906a7c717ca53c491c9360f200c72ec9} 
+\index{projectiles.c@{projectiles.c}!img\_spaceship\_projectile\_sprite@{img\_spaceship\_projectile\_sprite}}
+\index{img\_spaceship\_projectile\_sprite@{img\_spaceship\_projectile\_sprite}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{img\_spaceship\_projectile\_sprite}{img\_spaceship\_projectile\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+spaceship\+\_\+projectile\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00052}{52}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{projectiles_8c_a815d6115db52b228b3f6de3358ce5a2d}\label{projectiles_8c_a815d6115db52b228b3f6de3358ce5a2d} 
+\index{projectiles.c@{projectiles.c}!projectile\_count@{projectile\_count}}
+\index{projectile\_count@{projectile\_count}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{projectile\_count}{projectile\_count}}
+{\footnotesize\ttfamily int projectile\+\_\+count = 0}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00027}{27}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_a036279a45c872c076b218bfa0a3deac9}\label{projectiles_8c_a036279a45c872c076b218bfa0a3deac9} 
+\index{projectiles.c@{projectiles.c}!projectiles@{projectiles}}
+\index{projectiles@{projectiles}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{projectiles}{projectiles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_projectile}{Projectile}}\texorpdfstring{$\ast$}{*} projectiles\mbox{[}\mbox{\hyperlink{projectiles_8c_adbc131e9b147b67d84003e054b355365}{MAX\+\_\+\+PROJECTILES}}\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00028}{28}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8c_aa64f763fe8b3ffb82a41b37d101c8d0d}\label{projectiles_8c_aa64f763fe8b3ffb82a41b37d101c8d0d} 
+\index{projectiles.c@{projectiles.c}!spaceship\_projectile\_black\_sprite@{spaceship\_projectile\_black\_sprite}}
+\index{spaceship\_projectile\_black\_sprite@{spaceship\_projectile\_black\_sprite}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{spaceship\_projectile\_black\_sprite}{spaceship\_projectile\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} spaceship\+\_\+projectile\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00031}{31}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{projectiles_8c_abf0bbb9ad6b48c7cc9cd7e32bcdeb943}\label{projectiles_8c_abf0bbb9ad6b48c7cc9cd7e32bcdeb943} 
+\index{projectiles.c@{projectiles.c}!spaceship\_projectile\_sprite@{spaceship\_projectile\_sprite}}
+\index{spaceship\_projectile\_sprite@{spaceship\_projectile\_sprite}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{spaceship\_projectile\_sprite}{spaceship\_projectile\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} spaceship\+\_\+projectile\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00030}{30}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{projectiles_8c_a26081be7a771e5c611b33f15caaf831e}\label{projectiles_8c_a26081be7a771e5c611b33f15caaf831e} 
+\index{projectiles.c@{projectiles.c}!vmi\_p@{vmi\_p}}
+\index{vmi\_p@{vmi\_p}!projectiles.c@{projectiles.c}}
+\doxysubsubsection{\texorpdfstring{vmi\_p}{vmi\_p}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t vmi\+\_\+p\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00005}{5}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+

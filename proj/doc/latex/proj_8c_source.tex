@@ -1,0 +1,1505 @@
+\doxysection{proj.\+c}
+\hypertarget{proj_8c_source}{}\label{proj_8c_source}\index{src/proj.c@{src/proj.c}}
+\mbox{\hyperlink{proj_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <lcom/lab5.h>}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00008}00008\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00010}00010\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00011}00011\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00014}00014\ \textcolor{comment}{//\ Any\ header\ files\ included\ below\ this\ line\ should\ have\ been\ created\ by\ you}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{alien_8h}{alien.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{bg_8h}{bg.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{buttons_8h}{buttons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{cursor_8h}{cursor.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}i8042.h"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00020}00020\ \textcolor{preprocessor}{\#include\ "{}i8254.h"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00021}00021\ \textcolor{preprocessor}{\#include\ "{}keyboards.h"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{letters_8h}{letters.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}mouse.h"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{player_8h}{player.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00025}00025\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{projectiles_8h}{projectiles.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00026}00026\ \textcolor{preprocessor}{\#include\ "{}rtc.h"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00027}00027\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{score_8h}{score.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00028}00028\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{sprites_8h}{sprites.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00029}00029\ \textcolor{preprocessor}{\#include\ "{}time.h"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00030}00030\ \textcolor{preprocessor}{\#include\ "{}video.h"{}}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00032}00032\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ scancode;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00033}00033\ \textcolor{keyword}{extern}\ vbe\_mode\_info\_t\ vmi\_p;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00034}00034\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ hook\_id;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00035}00035\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ x\_mouse;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00036}00036\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ y\_mouse;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00037}00037\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }packet\ packet0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00038}00038\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ error\_reading;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00039}00039\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ counter\_mouse;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00040}00040\ \textcolor{keywordtype}{int}\ selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00041}00041\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_projectile}{Projectile}}\ *projectiles;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00042}00042\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ projectile\_count;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00043}00043\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{bool}\ cooldown;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00044}00044\ \textcolor{keyword}{extern}\ uint8\_t\ hours;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00045}00045\ \textcolor{keywordtype}{int}\ mouselock\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00051}\mbox{\hyperlink{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285}{00051}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ MAINMENU,}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MODEMENU,}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PLAYING,}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QUIT,}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GAMEOVER,}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ WIN\ \}\ \mbox{\hyperlink{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00059}00059\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{\ EASY,}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MEDIUM,}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HARD\ \}\ Mode;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00067}\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{00067}}\ \mbox{\hyperlink{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285}{GameState}}\ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ MAINMENU;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00068}00068\ Mode\ mode\ =\ MEDIUM;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00078}\mbox{\hyperlink{proj_8c_a0ddf1224851353fc92bfbff6f499fa97}{00078}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{proj_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00079}00079\ \ \ \textcolor{comment}{//\ sets\ the\ language\ of\ LCF\ messages\ (can\ be\ either\ EN-\/US\ or\ PT-\/PT)}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00080}00080\ \ \ lcf\_set\_language(\textcolor{stringliteral}{"{}EN-\/US"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00082}00082\ \ \ \textcolor{comment}{//\ enables\ to\ log\ function\ invocations\ that\ are\ being\ "{}wrapped"{}\ by\ LCF}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00083}00083\ \ \ \textcolor{comment}{//\ [comment\ this\ out\ if\ you\ don't\ want/need\ it]}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00084}00084\ \ \ lcf\_trace\_calls(\textcolor{stringliteral}{"{}/home/lcom/labs/lab5/trace.txt"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00086}00086\ \ \ \textcolor{comment}{//\ enables\ to\ save\ the\ output\ of\ printf\ function\ calls\ on\ a\ file}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00087}00087\ \ \ \textcolor{comment}{//\ [comment\ this\ out\ if\ you\ don't\ want/need\ it]}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00088}00088\ \ \ lcf\_log\_output(\textcolor{stringliteral}{"{}/home/lcom/labs/lab5/output.txt"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00090}00090\ \ \ \textcolor{comment}{//\ handles\ control\ over\ to\ LCF}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00091}00091\ \ \ \textcolor{comment}{//\ [LCF\ handles\ command\ line\ arguments\ and\ invokes\ the\ right\ function]}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00092}00092\ \ \ \textcolor{keywordflow}{if}\ (lcf\_start(argc,\ argv))}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00095}00095\ \ \ \textcolor{comment}{//\ LCF\ clean\ up\ tasks}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00096}00096\ \ \ \textcolor{comment}{//\ [must\ be\ the\ last\ statement\ before\ return]}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00097}00097\ \ \ lcf\_cleanup();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00099}00099\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00108}\mbox{\hyperlink{proj_8c_a05848de25ac2dbec233935058a1d24b4}{00108}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{proj_8c_a05848de25ac2dbec233935058a1d24b4}{init}}()\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00109}00109\ \ \ uint8\_t\ bit\_no\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00111}00111\ \ \ \textcolor{keywordflow}{if}\ (timer\_subscribe\_int(\&bit\_no)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00113}00113\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00115}00115\ \ \ \textcolor{keywordflow}{if}\ (kbc\_subscribe\_int()\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00117}00117\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00119}00119\ \ \ \textcolor{keywordflow}{if}\ (mouse\_subscribe\_int()\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00121}00121\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00123}00123\ \ \ \textcolor{keywordflow}{if}\ (vg\_initi(0x115)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00125}00125\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00127}00127\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00136}\mbox{\hyperlink{proj_8c_ae63cb26dfb386d58b08424700673026b}{00136}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{proj_8c_ae63cb26dfb386d58b08424700673026b}{leave}}()\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00137}00137\ \ \ \textcolor{keywordflow}{if}\ (timer\_unsubscribe\_int()\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00138}00138\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00139}00139\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00141}00141\ \ \ \textcolor{keywordflow}{if}\ (kbc\_unsubscribe\_int()\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00143}00143\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00145}00145\ \ \ \textcolor{keywordflow}{if}\ (mouse\_unsubscribe\_int()\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00147}00147\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00149}00149\ \ \ \textcolor{keywordflow}{if}\ (vg\_exit()\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00151}00151\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00153}00153\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00154}00154\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00162}\mbox{\hyperlink{proj_8c_a919b97c5b762b497d13f579e6be3b150}{00162}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{proj_8c_a919b97c5b762b497d13f579e6be3b150}{render\_screen}}(\textcolor{keywordtype}{int}\ *selected\_option)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00163}00163\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ w\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00164}00164\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ s\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00166}00166\ \ \ \textcolor{keywordflow}{switch}\ (scancode)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{case}\ ENTER:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00168}00168\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00169}00169\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ MODEMENU;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00170}00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_start(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00176}00176\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_quit(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00180}00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00181}00181\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00182}00182\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ QUIT;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00184}00184\ \ \ \ \ \ \ \ \ scancode\ =\ ESC;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00185}00185\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00186}00186\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00188}00188\ \ \ \ \ \textcolor{keywordflow}{case}\ WK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00189}00189\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!w\_key\_handled)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00190}00190\ \ \ \ \ \ \ \ \ w\_key\_handled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00191}00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00212}00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00213}00213\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00214}00214\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00216}00216\ \ \ \ \ \textcolor{keywordflow}{case}\ SK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00217}00217\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!s\_key\_handled)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ s\_key\_handled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00229}00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00240}00240\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00241}00241\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00242}00242\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00244}00244\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00245}00245\ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ current\ selection\ state}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00246}00246\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00247}00247\ \ \ \ \ \ \ \ \ draw\_mmbg();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00251}00251\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00255}00255\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00256}00256\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00257}00257\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint8\_t\ *\ hours\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00259}00259\ \ \ \ \ \ \ \ \ draw\_mmbg();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00260}00260\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00263}00263\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00267}00267\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00268}00268\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00269}00269\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00270}00270\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00272}00272\ \ \ \textcolor{comment}{//\ Handle\ mouse\ interactions}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00273}00273\ \ \ \textcolor{keywordflow}{if}\ (x\_mouse\ >\ 325\ \&\&\ x\_mouse\ <\ 453)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00274}00274\ \ \ \ \ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 223\ \&\&\ y\_mouse\ <\ 263)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00275}00275\ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00276}00276\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00277}00277\ \ \ \ \ \ \ \ \ mouselock\ =\ 10;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00278}00278\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ MODEMENU;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00279}00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00281}00281\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_start(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00285}00285\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00286}00286\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_quit(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00289}00289\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00290}00290\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00291}00291\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00292}00292\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 270\ \&\&\ y\_mouse\ <\ 313)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00293}00293\ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00294}00294\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00295}00295\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ QUIT;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00296}00296\ \ \ \ \ \ \ \ \ scancode\ =\ ESC;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00297}00297\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00298}00298\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00299}00299\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00301}00301\ \ \ \textcolor{comment}{//\ Reset\ scancode\ and\ key\ handled\ flags}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00302}00302\ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ WK)}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00303}00303\ \ \ \ \ w\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00304}00304\ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ SK)}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00305}00305\ \ \ \ \ s\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00306}00306\ \ \ scancode\ =\ 0;\ \textcolor{comment}{//\ Reset\ scancode\ after\ handling\ it}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00307}00307\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00317}\mbox{\hyperlink{proj_8c_a6b3b62d31a5ee90fe6293b1d34abcaee}{00317}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{proj_8c_a6b3b62d31a5ee90fe6293b1d34abcaee}{render\_mode\_screen}}(\textcolor{keywordtype}{int}\ *selected\_option)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00318}00318\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ w\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00319}00319\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ s\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00321}00321\ \ \ \ \ \textcolor{keywordflow}{switch}\ (scancode)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ENTER:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (*selected\_option)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Deleting\ all\ buttons\ and\ background\ for\ transition\ to\ PLAYING\ state...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ background\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_easy(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ easy\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_medium(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ medium\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_hard(325,\ 350)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ hard\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ back\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ =\ (*selected\_option\ ==\ 0)\ ?\ EASY\ :\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*selected\_option\ ==\ 1)\ ?\ MEDIUM\ :\ HARD;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ PLAYING;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ MAINMENU;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Deleting\ all\ buttons\ and\ background\ for\ transition\ to\ MAINMENU\ state...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_easy(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ easy\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_medium(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ medium\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_hard(325,\ 350)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ hard\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ back\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00377}00377\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00378}00378\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ WK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!w\_key\_handled)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ w\_key\_handled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ (*selected\_option\ -\/\ 1)\ <\ 0\ ?\ 3\ :\ (*selected\_option\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00385}00385\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!s\_key\_handled)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\_key\_handled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ (*selected\_option\ +\ 1)\ >\ 3\ ?\ 0\ :\ (*selected\_option\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00392}00392\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00394}00394\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00396}00396\ \ \ \ \ \textcolor{comment}{//\ Draw\ buttons\ based\ on\ selected\ option}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00397}00397\ \ \ \ \ draw\_mmbg();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00398}00398\ \ \ \ \ \textcolor{keywordflow}{switch}\ (*selected\_option)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00399}00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_easy(325,\ 250)\ !=\ 0\ ||\ draw\_medium(325,\ 300)\ !=\ 0\ ||\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_hard(325,\ 350)\ !=\ 0\ ||\ draw\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00406}00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_easy(325,\ 250)\ !=\ 0\ ||\ draw\_selected\_medium(325,\ 300)\ !=\ 0\ ||\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_hard(325,\ 350)\ !=\ 0\ ||\ draw\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00413}00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_easy(325,\ 250)\ !=\ 0\ ||\ draw\_medium(325,\ 300)\ !=\ 0\ ||\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_selected\_hard(325,\ 350)\ !=\ 0\ ||\ draw\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00420}00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_easy(325,\ 250)\ !=\ 0\ ||\ draw\_medium(325,\ 300)\ !=\ 0\ ||\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_hard(325,\ 350)\ !=\ 0\ ||\ draw\_selected\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00427}00427\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00429}00429\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00431}00431\ \ \ \ \ \textcolor{comment}{//\ Handle\ mouse\ interactions}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00432}00432\ \ \ \ \ \textcolor{keywordflow}{if}\ (x\_mouse\ >\ 325\ \&\&\ x\_mouse\ <\ 453)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00433}00433\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 223\ \&\&\ y\_mouse\ <\ 263)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb\ \&\&\ mouselock\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00436}00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Deleting\ all\ buttons\ and\ background\ for\ transition\ to\ EASY\ mode...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00438}00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ background\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_easy(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00442}00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ easy\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_medium(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ medium\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_hard(325,\ 350)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ hard\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ back\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00457}00457\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ =\ EASY;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ PLAYING;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00462}00462\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00463}00463\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 270\ \&\&\ y\_mouse\ <\ 313)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Deleting\ all\ buttons\ and\ background\ for\ transition\ to\ MAINMENU...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ background\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_easy(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ easy\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_medium(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ medium\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_hard(325,\ 350)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ hard\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ back\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ =\ MEDIUM;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ PLAYING;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00491}00491\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00492}00492\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 323\ \&\&\ y\_mouse\ <\ 363)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00493}00493\ \ \ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Deleting\ all\ buttons\ and\ background\ for\ transition\ to\ MAINMENU...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ background\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_easy(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ easy\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_medium(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ medium\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_hard(325,\ 350)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ hard\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ back\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ =\ HARD;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ PLAYING;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00518}00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00519}00519\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00520}00520\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00521}00521\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 373\ \&\&\ y\_mouse\ <\ 413)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 3;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Deleting\ all\ buttons\ and\ background\ for\ transition\ to\ MAINMENU...\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ background\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_easy(325,\ 250)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ easy\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_medium(325,\ 300)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ medium\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_hard(325,\ 350)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ hard\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00540}00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00541}00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_back(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ delete\ back\ button\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00544}00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ MAINMENU;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00549}00549\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00550}00550\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00552}00552\ \ \ \ \ \textcolor{comment}{//\ Reset\ scancode\ and\ key\ handled\ flags}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00553}00553\ \ \ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ WK)}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00554}00554\ \ \ \ \ \ \ \ \ w\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00555}00555\ \ \ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ SK)}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00556}00556\ \ \ \ \ \ \ \ \ s\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00557}00557\ \ \ \ \ scancode\ =\ 0;\ \textcolor{comment}{//\ Reset\ scancode\ after\ handling\ it}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00558}00558\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00559}00559\ \ \ \ \ \textcolor{comment}{//\ If\ gameState\ has\ changed,\ immediately\ handle\ the\ new\ state}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00560}00560\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ MAINMENU)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00561}00561\ \ \ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00562}00562\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a919b97c5b762b497d13f579e6be3b150}{render\_screen}}(selected\_option);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00563}00563\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00564}00564\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00565}00565\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00566}00566\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00573}\mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{00573}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\_cursor\_on\_top}}()\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00574}00574\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ MAINMENU)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00575}00575\ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_cursor(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00576}00576\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00577}00577\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00578}00578\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00579}00579\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ MODEMENU)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00580}00580\ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_cursor(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00581}00581\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00582}00582\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00583}00583\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00584}00584\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ PLAYING)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00585}00585\ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_target(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00586}00586\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00587}00587\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00588}00588\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00589}00589\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ WIN)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00590}00590\ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_cursor(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00591}00591\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00592}00592\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00593}00593\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00594}00594\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ GAMEOVER)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00595}00595\ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_cursor(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00596}00596\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00597}00597\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00598}00598\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00599}00599\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00600}00600\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00601}00601\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00603}00603\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00609}\mbox{\hyperlink{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}{00609}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}{handle\_cursor\_movement}}()\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00610}00610\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ MAINMENU)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00611}00611\ \ \ \ \ \textcolor{keywordflow}{if}\ (counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00612}00612\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_cursor(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00613}00613\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ cursor\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00614}00614\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00615}00615\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00616}00616\ \ \ \ \ \ \ move\_cursor();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00617}00617\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00618}00618\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00619}00619\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ MODEMENU)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00620}00620\ \ \ \ \ \textcolor{keywordflow}{if}\ (counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00621}00621\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_cursor(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00622}00622\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ cursor\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00623}00623\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00624}00624\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00625}00625\ \ \ \ \ \ \ move\_cursor();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00626}00626\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00627}00627\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00628}00628\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ PLAYING)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00629}00629\ \ \ \ \ \textcolor{keywordflow}{if}\ (counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00630}00630\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_target(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00631}00631\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ cursor\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00632}00632\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00633}00633\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00634}00634\ \ \ \ \ \ \ move\_cursor();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00635}00635\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00636}00636\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00637}00637\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ GAMEOVER)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00638}00638\ \ \ \ \ \textcolor{keywordflow}{if}\ (counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00639}00639\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_cursor(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00640}00640\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ cursor\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00641}00641\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00642}00642\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00643}00643\ \ \ \ \ \ \ move\_cursor();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00644}00644\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00645}00645\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00646}00646\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ WIN)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00647}00647\ \ \ \ \ \textcolor{keywordflow}{if}\ (counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00648}00648\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_cursor(x\_mouse,\ y\_mouse)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00649}00649\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ cursor\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00650}00650\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00651}00651\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00652}00652\ \ \ \ \ \ \ move\_cursor();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00653}00653\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00654}00654\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00655}00655\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00656}00656\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00657}00657\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00658}00658\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00672}\mbox{\hyperlink{proj_8c_af77b4df6765271737095f0e9f525f93c}{00672}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{proj_8c_af77b4df6765271737095f0e9f525f93c}{create\_spaceship\_projectiles}}(\textcolor{keywordtype}{int}\ xi,\ \textcolor{keywordtype}{int}\ yi,\ \textcolor{keywordtype}{int}\ xf,\ \textcolor{keywordtype}{int}\ yf,\ \textcolor{keywordtype}{int}\ speed)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00673}00673\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ PLAYING)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00674}00674\ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb\ ==\ \textcolor{keyword}{true}\ \&\&\ yf\ <\ yi\ \&\&\ !cooldown)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00675}00675\ \ \ \ \ \ \ cooldown\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00676}00676\ \ \ \ \ \ \ packet0.lb\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00677}00677\ \ \ \ \ \ \ create\_projectile(xi,\ yi,\ xf,\ yf,\ speed,\ PLAYER\_PROJECTILE);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00678}00678\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00679}00679\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00680}00680\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00681}00681\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00682}00682\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00683}00683\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00691}\mbox{\hyperlink{proj_8c_adcad4094b8e47223f990493cc6438074}{00691}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{proj_8c_adcad4094b8e47223f990493cc6438074}{render\_gameover\_screen}}(\textcolor{keywordtype}{int}\ *selected\_option)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00692}00692\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ w\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00693}00693\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ s\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00694}00694\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00695}00695\ \ \ \textcolor{keywordflow}{switch}\ (scancode)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00696}00696\ \ \ \ \ \textcolor{keywordflow}{case}\ ENTER:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00697}00697\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00698}00698\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ PLAYING;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00699}00699\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00701}00701\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00702}00702\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00704}00704\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00705}00705\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00706}00706\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00707}00707\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00709}00709\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00710}00710\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_gameover(270,\ 135)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00711}00711\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00713}00713\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00714}00714\ \ \ \ \ \ \ \ \ init\_score(\&game\_score,\ 3);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00715}00715\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00716}00716\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00717}00717\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ QUIT;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00718}00718\ \ \ \ \ \ \ \ \ scancode\ =\ ESC;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00719}00719\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00720}00720\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00721}00721\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00722}00722\ \ \ \ \ \textcolor{keywordflow}{case}\ WK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00723}00723\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!w\_key\_handled)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00724}00724\ \ \ \ \ \ \ \ \ w\_key\_handled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00725}00725\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00727}00727\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00728}00728\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00729}00729\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00730}00730\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00731}00731\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00733}00733\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00734}00734\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00735}00735\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00736}00736\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00737}00737\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00739}00739\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00742}00742\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00743}00743\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00744}00744\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00746}00746\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00747}00747\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00748}00748\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00749}00749\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00750}00750\ \ \ \ \ \textcolor{keywordflow}{case}\ SK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00751}00751\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!s\_key\_handled)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00752}00752\ \ \ \ \ \ \ \ \ s\_key\_handled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00753}00753\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00763}00763\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00764}00764\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00765}00765\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00767}00767\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00768}00768\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00769}00769\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00770}00770\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00771}00771\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00772}00772\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00774}00774\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00775}00775\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00776}00776\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00777}00777\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00778}00778\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00779}00779\ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ current\ selection\ state}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00780}00780\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00781}00781\ \ \ \ \ \ \ \ \ draw\_mmbg();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00782}00782\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_game\_over(270,\ 135)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00784}00784\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00785}00785\ \ \ \ \ \ \ \ \ draw\_final\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00786}00786\ \ \ \ \ \ \ \ \ draw\_best\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00787}00787\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00790}00790\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00791}00791\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00792}00792\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00793}00793\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00794}00794\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00795}00795\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00796}00796\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00797}00797\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint8\_t\ *\ hours\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00798}00798\ \ \ \ \ \ \ \ \ draw\_mmbg();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00799}00799\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_game\_over(270,\ 135)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00800}00800\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00801}00801\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00802}00802\ \ \ \ \ \ \ \ \ draw\_final\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00803}00803\ \ \ \ \ \ \ \ \ draw\_best\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00804}00804\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00805}00805\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00806}00806\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00807}00807\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00808}00808\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00809}00809\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00810}00810\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00811}00811\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00812}00812\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00813}00813\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00814}00814\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00815}00815\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00816}00816\ \ \ \textcolor{comment}{//\ vg\_draw\_rect(0,\ 0,\ vmi\_p.XResolution,\ vmi\_p.YResolution,\ 0);}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00817}00817\ \ \ \textcolor{comment}{//\ \ Handle\ mouse\ interactions}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00818}00818\ \ \ \textcolor{keywordflow}{if}\ (x\_mouse\ >\ 325\ \&\&\ x\_mouse\ <\ 453)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00819}00819\ \ \ \ \ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 400\ \&\&\ y\_mouse\ <\ 440)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00820}00820\ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00821}00821\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00822}00822\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00823}00823\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ PLAYING;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00824}00824\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00826}00826\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00827}00827\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00828}00828\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00830}00830\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00831}00831\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00832}00832\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00833}00833\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00834}00834\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00835}00835\ \ \ \ \ \ \ \ \ init\_score(\&game\_score,\ 3);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00836}00836\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00837}00837\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00838}00838\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 450\ \&\&\ y\_mouse\ <\ 493)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00839}00839\ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00840}00840\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00841}00841\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ QUIT;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00842}00842\ \ \ \ \ \ \ \ \ scancode\ =\ ESC;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00843}00843\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00844}00844\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00845}00845\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00846}00846\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00847}00847\ \ \ \textcolor{comment}{//\ Reset\ scancode\ and\ key\ handled\ flags}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00848}00848\ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ WK)}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00849}00849\ \ \ \ \ w\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00850}00850\ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ SK)}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00851}00851\ \ \ \ \ s\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00852}00852\ \ \ scancode\ =\ 0;\ \textcolor{comment}{//\ Reset\ scancode\ after\ handling\ it}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00853}00853\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00854}00854\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00855}00855\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00856}00856\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00864}\mbox{\hyperlink{proj_8c_ae8c1261f0c223eea63828e6241e0a155}{00864}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{proj_8c_ae8c1261f0c223eea63828e6241e0a155}{render\_win\_screen}}(\textcolor{keywordtype}{int}\ *selected\_option)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00865}00865\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ w\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00866}00866\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ s\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00867}00867\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00868}00868\ \ \ \textcolor{keywordflow}{switch}\ (scancode)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00869}00869\ \ \ \ \ \textcolor{keywordflow}{case}\ ENTER:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00870}00870\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00871}00871\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ PLAYING;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00872}00872\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00873}00873\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00874}00874\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00875}00875\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00876}00876\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00877}00877\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00878}00878\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00879}00879\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00880}00880\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00882}00882\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00883}00883\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_win(270,\ 135)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00884}00884\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00885}00885\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00886}00886\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00887}00887\ \ \ \ \ \ \ \ \ init\_score(\&game\_score,\ 3);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00888}00888\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00889}00889\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00890}00890\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ QUIT;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00891}00891\ \ \ \ \ \ \ \ \ scancode\ =\ ESC;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00892}00892\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00893}00893\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00894}00894\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00895}00895\ \ \ \ \ \textcolor{keywordflow}{case}\ WK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00896}00896\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!w\_key\_handled)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00897}00897\ \ \ \ \ \ \ \ \ w\_key\_handled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00898}00898\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00899}00899\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00900}00900\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00901}00901\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00902}00902\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00903}00903\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00904}00904\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00905}00905\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00906}00906\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00907}00907\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00908}00908\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00909}00909\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00910}00910\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00911}00911\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00912}00912\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00913}00913\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00914}00914\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00915}00915\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00916}00916\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00917}00917\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00918}00918\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00919}00919\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00920}00920\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00921}00921\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00922}00922\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00923}00923\ \ \ \ \ \textcolor{keywordflow}{case}\ SK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00924}00924\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!s\_key\_handled)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00925}00925\ \ \ \ \ \ \ \ \ s\_key\_handled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00926}00926\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00927}00927\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00928}00928\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00929}00929\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00930}00930\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00931}00931\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00932}00932\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00933}00933\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00934}00934\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00935}00935\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00936}00936\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00937}00937\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00938}00938\ \ \ \ \ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00939}00939\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00940}00940\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00941}00941\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00942}00942\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00943}00943\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00944}00944\ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00945}00945\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00946}00946\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00947}00947\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00948}00948\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00949}00949\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00950}00950\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00951}00951\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00952}00952\ \ \ \ \ \ \ \textcolor{comment}{//\ Draw\ the\ current\ selection\ state}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00953}00953\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00954}00954\ \ \ \ \ \ \ \ \ draw\_mmbg();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00955}00955\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_win(225,\ 150)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00956}00956\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00957}00957\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00958}00958\ \ \ \ \ \ \ \ \ draw\_final\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00959}00959\ \ \ \ \ \ \ \ \ draw\_best\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00960}00960\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00961}00961\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00962}00962\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00963}00963\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00964}00964\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00965}00965\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00966}00966\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00967}00967\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00968}00968\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00969}00969\ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*selected\_option\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00970}00970\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uint8\_t\ *\ hours\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00971}00971\ \ \ \ \ \ \ \ \ draw\_mmbg();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00972}00972\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_win(225,\ 150)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00973}00973\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00974}00974\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00975}00975\ \ \ \ \ \ \ \ \ draw\_final\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00976}00976\ \ \ \ \ \ \ \ \ draw\_best\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00977}00977\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00978}00978\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00979}00979\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00980}00980\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00981}00981\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_selected\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00982}00982\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00983}00983\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00984}00984\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00985}00985\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00986}00986\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00987}00987\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00988}00988\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00989}00989\ \ \ \textcolor{comment}{//\ vg\_draw\_rect(0,\ 0,\ vmi\_p.XResolution,\ vmi\_p.YResolution,\ 0);}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00990}00990\ \ \ \textcolor{comment}{//\ \ Handle\ mouse\ interactions}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00991}00991\ \ \ \textcolor{keywordflow}{if}\ (x\_mouse\ >\ 325\ \&\&\ x\_mouse\ <\ 453)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00992}00992\ \ \ \ \ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 400\ \&\&\ y\_mouse\ <\ 440)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00993}00993\ \ \ \ \ \ \ *selected\_option\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00994}00994\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb\ ==\ \textcolor{keyword}{true}\ \&\&\ mouselock\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00995}00995\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ PLAYING;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00996}00996\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_mmbg(hours)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00997}00997\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00998}00998\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l00999}00999\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_start(325,\ 400)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01000}01000\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01001}01001\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01002}01002\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01003}01003\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_quit(325,\ 450)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01004}01004\ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01005}01005\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01006}01006\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01007}01007\ \ \ \ \ \ \ \ \ init\_score(\&game\_score,\ 3);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01008}01008\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01009}01009\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01010}01010\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (y\_mouse\ >\ 450\ \&\&\ y\_mouse\ <\ 493)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01011}01011\ \ \ \ \ \ \ *selected\_option\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01012}01012\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (packet0.lb\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01013}01013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ QUIT;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01014}01014\ \ \ \ \ \ \ \ \ scancode\ =\ ESC;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01015}01015\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01016}01016\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01017}01017\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01018}01018\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01019}01019\ \ \ \textcolor{comment}{//\ Reset\ scancode\ and\ key\ handled\ flags}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01020}01020\ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ WK)}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01021}01021\ \ \ \ \ w\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01022}01022\ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ SK)}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01023}01023\ \ \ \ \ s\_key\_handled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01024}01024\ \ \ scancode\ =\ 0;\ \textcolor{comment}{//\ Reset\ scancode\ after\ handling\ it}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01025}01025\ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01026}01026\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01027}01027\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01028}01028\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01044}\mbox{\hyperlink{proj_8c_a7a72220d8366dd84709e79ce415862e5}{01044}}\ int(\mbox{\hyperlink{proj_8c_a7a72220d8366dd84709e79ce415862e5}{proj\_main\_loop}})(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01045}01045\ \ \ uint8\_t\ bit\_no\_mouse\ =\ IRQ2;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01046}01046\ \ \ uint8\_t\ bit\_no\_kbd\ =\ IRQ1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01047}01047\ \ \ uint8\_t\ bit\_no\_timer\ =\ IRQ0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01048}01048\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01049}01049\ \ \ uint8\_t\ irq\_set\_mouse\ =\ BIT(bit\_no\_mouse);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01050}01050\ \ \ uint8\_t\ irq\_set\_kbd\ =\ BIT(bit\_no\_kbd);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01051}01051\ \ \ uint8\_t\ irq\_set\_timer\ =\ BIT(bit\_no\_timer);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01052}01052\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01053}01053\ \ \ rtc\_getTime();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01054}01054\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01055}01055\ \ \ \textcolor{comment}{//\ initialize\ timer\ frequency\ to\ 60\ Hz}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01056}01056\ \ \ \textcolor{keywordflow}{if}\ (timer\_set\_frequency(0,\ 60)\ !=\ OK)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01057}01057\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ set\ timer\ frequency\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01058}01058\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01059}01059\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01060}01060\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01061}01061\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_a05848de25ac2dbec233935058a1d24b4}{init}}()\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01062}01062\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Couldn't\ init\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01063}01063\ \ \ \ \ \mbox{\hyperlink{proj_8c_ae63cb26dfb386d58b08424700673026b}{leave}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01064}01064\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01065}01065\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01066}01066\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01067}01067\ \ \ load\_xpm();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01068}01068\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01069}01069\ \ \ \textcolor{comment}{//\ Initialize\ aliens\ with\ screen\ resolution}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01070}01070\ \ \ \textcolor{keywordflow}{if}\ (vbe\_get\_mode\_info(0x115,\ \&vmi\_p)\ !=\ OK)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01071}01071\ \ \ \ \ printf(\textcolor{stringliteral}{"{}Failed\ to\ get\ VBE\ mode\ info\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01072}01072\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01073}01073\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01074}01074\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01075}01075\ \ \ init\_score(\&game\_score,\ 3);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01076}01076\ \ \ init\_aliens(vmi\_p.XResolution,\ vmi\_p.YResolution);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01077}01077\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01078}01078\ \ \ \textcolor{keywordtype}{int}\ ipc\_status;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01079}01079\ \ \ message\ msg;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01080}01080\ \ \ \textcolor{keywordtype}{double}\ r\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01081}01081\ \ \ \textcolor{keywordtype}{int}\ timer\_counter\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01082}01082\ \ \ \textcolor{keywordtype}{int}\ alien\_shoot\_timer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01083}01083\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01084}01084\ \ \ \textcolor{keywordflow}{while}\ (scancode\ !=\ ESC\ \&\&\ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ !=\ QUIT)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01085}01085\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ MAINMENU\ \&\&\ scancode\ !=\ ESC)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01086}01086\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((r\ =\ driver\_receive(ANY,\ \&msg,\ \&ipc\_status))\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01087}01087\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}driver\_receive\ failed\ with:\ \%d"{}},\ r);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01088}01088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01089}01089\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01090}01090\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01091}01091\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_ipc\_notify(ipc\_status))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01092}01092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_ENDPOINT\_P(msg.m\_source))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01093}01093\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HARDWARE:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01094}01094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_mouse)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01095}01095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mouse\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01096}01096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01097}01097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\_reading\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01098}01098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01099}01099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01100}01100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01101}01101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01102}01102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ get\_mouse\_coordinates();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01103}01103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}{handle\_cursor\_movement}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01104}01104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01105}01105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01106}01106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_kbd)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01107}01107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kbc\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01108}01108\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01109}01109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_timer)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01110}01110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_int\_handler();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01111}01111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a919b97c5b762b497d13f579e6be3b150}{render\_screen}}(\&selected\_option);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01112}01112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\_cursor\_on\_top}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01113}01113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\_buffer();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01114}01114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01115}01115\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01116}01116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01117}01117\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01118}01118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01119}01119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01120}01120\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01121}01121\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01122}01122\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01123}01123\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ MODEMENU\ \&\&\ scancode\ !=\ ESC)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01124}01124\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((r\ =\ driver\_receive(ANY,\ \&msg,\ \&ipc\_status))\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01125}01125\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}driver\_receive\ failed\ with:\ \%d"{}},\ r);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01126}01126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01127}01127\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01128}01128\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01129}01129\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_ipc\_notify(ipc\_status))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01130}01130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_ENDPOINT\_P(msg.m\_source))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01131}01131\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HARDWARE:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01132}01132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_mouse)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01133}01133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mouse\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01134}01134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01135}01135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\_reading\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01136}01136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01137}01137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01138}01138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01139}01139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01140}01140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ get\_mouse\_coordinates();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01141}01141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}{handle\_cursor\_movement}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01142}01142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01143}01143\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01144}01144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_kbd)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01145}01145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kbc\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01146}01146\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01147}01147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_timer)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01148}01148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_int\_handler();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01149}01149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a6b3b62d31a5ee90fe6293b1d34abcaee}{render\_mode\_screen}}(\&selected\_option);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01150}01150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\_cursor\_on\_top}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01151}01151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\_buffer();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01152}01152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mouselock\ !=\ 0)\ \{mouselock\ -\/=\ 1;\}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01153}01153\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01154}01154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01155}01155\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01156}01156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01157}01157\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01158}01158\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01159}01159\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01160}01160\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01161}01161\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ PLAYING\ \&\&\ scancode\ !=\ ESC)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01162}01162\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((r\ =\ driver\_receive(ANY,\ \&msg,\ \&ipc\_status))\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01163}01163\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}driver\_receive\ failed\ with:\ \%d"{}},\ r);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01164}01164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01165}01165\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01166}01166\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01167}01167\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_ipc\_notify(ipc\_status))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01168}01168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_ENDPOINT\_P(msg.m\_source))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01169}01169\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HARDWARE:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01170}01170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_mouse)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01171}01171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mouse\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01172}01172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01173}01173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\_reading\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01174}01174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01175}01175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01176}01176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01177}01177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01178}01178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ get\_mouse\_coordinates();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01179}01179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}{handle\_cursor\_movement}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01180}01180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01181}01181\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01182}01182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_kbd)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01183}01183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kbc\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01184}01184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01185}01185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01186}01186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01187}01187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01188}01188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (scancode)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01189}01189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ WK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01190}01190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player\_y\ -\/\ 15\ >=\ 425)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01191}01191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01192}01192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ player\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01193}01193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01194}01194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01195}01195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player\_y\ -\/=\ 15;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01196}01196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01197}01197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01198}01198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01199}01199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01200}01200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01201}01201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01202}01202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ AK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01203}01203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player\_x\ -\/\ 15\ >=\ 5)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01204}01204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01205}01205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ player\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01206}01206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01207}01207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01208}01208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player\_x\ -\/=\ 15;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01209}01209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01210}01210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01211}01211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01212}01212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01213}01213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01214}01214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01215}01215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01216}01216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player\_x\ +\ 15\ <=\ vmi\_p.XResolution\ -\/\ 132)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01217}01217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01218}01218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ player\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01219}01219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01220}01220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01221}01221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player\_x\ +=\ 15;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01222}01222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01223}01223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01224}01224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01225}01225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01226}01226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01227}01227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01228}01228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ SK:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01229}01229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (player\_y\ +\ 15\ <\ vmi\_p.YResolution\ -\/\ 125)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01230}01230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (delete\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01231}01231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}failed\ to\ delete\ player\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01232}01232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01233}01233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01234}01234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ player\_y\ +=\ 15;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01235}01235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (draw\_player(player\_x,\ player\_y)\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01236}01236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}xpm\ failed\ to\ load\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01237}01237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01238}01238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01239}01239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01240}01240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01241}01241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01242}01242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01243}01243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01244}01244\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01245}01245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_timer)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01246}01246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ EASY)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01247}01247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_int\_handler();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01248}01248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_counter++;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01249}01249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alien\_shoot\_timer++;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01250}01250\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01251}01251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ \%\ 50\ ==\ 0)\ \{\ \textcolor{comment}{//\ moves\ aliens\ after\ 20\ 60hz\ ticks}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01252}01252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_aliens();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01253}01253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01254}01254\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01255}01255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ \%\ 60\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01256}01256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cooldown\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01257}01257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ timer\_counter\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01258}01258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01259}01259\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01260}01260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cooldown\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01261}01261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_Rw(590,\ 563);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01262}01262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lew(606,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01263}01263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_llw(622,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01264}01264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_low(638,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01265}01265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_law(654,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01266}01266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_ldw(670,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01267}01267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_liw(686,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01268}01268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lnw(702,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01269}01269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lgw(718,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01270}01270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(734,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01271}01271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(750,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01272}01272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(768,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01273}01273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01274}01274\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01275}01275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cooldown\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01276}01276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(590,\ 563);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01277}01277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(606,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01278}01278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(622,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01279}01279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(638,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01280}01280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(654,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01281}01281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(670,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01282}01282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(686,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01283}01283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(702,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01284}01284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(718,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01285}01285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(734,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01286}01286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(750,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01287}01287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(768,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01288}01288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01289}01289\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01290}01290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alien\_shoot\_timer\ >=\ alien\_shoot\_interval)\ \{\ \textcolor{comment}{//\ aliens\ shoot\ every\ 3\ seconds,\ decrease\ alien\_shoot\_interval\ for\ harder\ difficulty}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01291}01291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01292}01292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aliens[i].alive)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01293}01293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ create\_projectile(aliens[i].x\ +\ 30,\ aliens[i].y\ +\ 45,\ player\_x\ +\ 30,\ player\_y\ +\ 22,\ 1,\ ALIEN\_PROJECTILE);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01294}01294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alien\_shoot\_timer\ =\ 0;\ \textcolor{comment}{//\ reset\ the\ timer\ after\ shooting}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01295}01295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01296}01296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01297}01297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01298}01298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01299}01299\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01300}01300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_projectiles();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01301}01301\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01302}01302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game\_score.lives\ ==\ 0)\ \{\ \textcolor{comment}{//\ end\ game\ if\ player\ has\ no\ lives\ left}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01303}01303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ GAMEOVER;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01304}01304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01305}01305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01306}01306\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01307}01307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (check\_all\_aliens\_dead())\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01308}01308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ init\_aliens(vmi\_p.XResolution,\ vmi\_p.YResolution);\ \textcolor{comment}{//\ respawn\ aliens\ after\ the\ last\ one\ was\ killed}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01309}01309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01310}01310\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01311}01311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ ==\ 1000)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01312}01312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ WIN;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01313}01313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game\_score.score\ +=\ 1000\ *\ game\_score.lives;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01314}01314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01315}01315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01316}01316\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01317}01317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01318}01318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lives(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01319}01319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ \%\ 60\ ==\ 0)\{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01320}01320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_time\_remaining(60\ -\/\ (timer\_counter/60));}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01321}01321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01322}01322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_af77b4df6765271737095f0e9f525f93c}{create\_spaceship\_projectiles}}(player\_x\ +\ 56,\ player\_y\ -\/\ 10,\ x\_mouse,\ y\_mouse,\ 30);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01323}01323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_aliens();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01324}01324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_player(player\_x,\ player\_y);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01325}01325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\_cursor\_on\_top}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01326}01326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\_buffer();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01327}01327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01328}01328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ MEDIUM)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01329}01329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_int\_handler();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01330}01330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_counter++;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01331}01331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alien\_shoot\_timer++;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01332}01332\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01333}01333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ \%\ 20\ ==\ 0)\ \{\ \textcolor{comment}{//\ moves\ aliens\ after\ 20\ 60hz\ ticks}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01334}01334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_aliens();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01335}01335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01336}01336\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01337}01337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ \%\ 60\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01338}01338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cooldown\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01339}01339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ timer\_counter\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01340}01340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01341}01341\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01342}01342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cooldown\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01343}01343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_Rw(590,\ 563);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01344}01344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lew(606,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01345}01345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_llw(622,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01346}01346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_low(638,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01347}01347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_law(654,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01348}01348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_ldw(670,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01349}01349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_liw(686,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01350}01350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lnw(702,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01351}01351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lgw(718,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01352}01352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(734,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01353}01353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(750,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01354}01354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(768,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01355}01355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01356}01356\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01357}01357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cooldown\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01358}01358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(590,\ 563);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01359}01359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(606,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01360}01360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(622,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01361}01361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(638,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01362}01362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(654,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01363}01363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(670,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01364}01364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(686,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01365}01365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(702,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01366}01366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(718,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01367}01367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(734,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01368}01368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(750,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01369}01369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(768,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01370}01370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01371}01371\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01372}01372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alien\_shoot\_timer\ >=\ alien\_shoot\_interval)\ \{\ \textcolor{comment}{//\ aliens\ shoot\ every\ 3\ seconds,\ decrease\ alien\_shoot\_interval\ for\ harder\ difficulty}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01373}01373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01374}01374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aliens[i].alive)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01375}01375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ create\_projectile(aliens[i].x\ +\ 30,\ aliens[i].y\ +\ 45,\ player\_x\ +\ 30,\ player\_y\ +\ 22,\ 3,\ ALIEN\_PROJECTILE);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01376}01376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alien\_shoot\_timer\ =\ 0;\ \textcolor{comment}{//\ reset\ the\ timer\ after\ shooting}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01377}01377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01378}01378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01379}01379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01380}01380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01381}01381\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01382}01382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_projectiles();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01383}01383\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01384}01384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game\_score.lives\ ==\ 0)\ \{\ \textcolor{comment}{//\ end\ game\ if\ player\ has\ no\ lives\ left}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01385}01385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ GAMEOVER;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01386}01386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01387}01387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01388}01388\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01389}01389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (check\_all\_aliens\_dead())\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01390}01390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ init\_aliens(vmi\_p.XResolution,\ vmi\_p.YResolution);\ \textcolor{comment}{//\ respawn\ aliens\ after\ the\ last\ one\ was\ killed}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01391}01391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01392}01392\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01393}01393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ ==\ 5000)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01394}01394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ WIN;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01395}01395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game\_score.score\ +=\ 1000\ *\ game\_score.lives;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01396}01396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01397}01397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01398}01398\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01399}01399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01400}01400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lives(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01401}01401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_af77b4df6765271737095f0e9f525f93c}{create\_spaceship\_projectiles}}(player\_x\ +\ 56,\ player\_y\ -\/\ 10,\ x\_mouse,\ y\_mouse,\ 20);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01402}01402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_aliens();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01403}01403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_player(player\_x,\ player\_y);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01404}01404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\_cursor\_on\_top}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01405}01405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\_buffer();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01406}01406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01407}01407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ HARD)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01408}01408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_int\_handler();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01409}01409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_counter++;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01410}01410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alien\_shoot\_timer++;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01411}01411\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01412}01412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ \%\ 5\ ==\ 0)\ \{\ \textcolor{comment}{//\ moves\ aliens\ after\ 20\ 60hz\ ticks}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01413}01413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_aliens();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01414}01414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01415}01415\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01416}01416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ \%\ 60\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01417}01417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cooldown\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01418}01418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ timer\_counter\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01419}01419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01420}01420\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01421}01421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cooldown\ ==\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01422}01422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_Rw(590,\ 563);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01423}01423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lew(606,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01424}01424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_llw(622,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01425}01425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_low(638,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01426}01426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_law(654,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01427}01427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_ldw(670,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01428}01428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_liw(686,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01429}01429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lnw(702,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01430}01430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lgw(718,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01431}01431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(734,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01432}01432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(750,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01433}01433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_dotw(768,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01434}01434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01435}01435\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01436}01436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cooldown\ ==\ \textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01437}01437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(590,\ 563);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01438}01438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(606,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01439}01439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(622,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01440}01440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(638,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01441}01441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(654,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01442}01442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(670,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01443}01443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(686,\ 560);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01444}01444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(702,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01445}01445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(718,\ 564);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01446}01446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(734,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01447}01447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(750,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01448}01448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ erasewhiteletters(768,\ 572);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01449}01449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01450}01450\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01451}01451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (alien\_shoot\_timer\ >=\ alien\_shoot\_interval)\ \{\ \textcolor{comment}{//\ aliens\ shoot\ every\ 3\ seconds,\ decrease\ alien\_shoot\_interval\ for\ harder\ difficulty}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01452}01452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ ALIEN\_COUNT;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01453}01453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (aliens[i].alive)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01454}01454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ create\_projectile(aliens[i].x\ +\ 30,\ aliens[i].y\ +\ 45,\ player\_x\ +\ 30,\ player\_y\ +\ 22,\ 5,\ ALIEN\_PROJECTILE);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01455}01455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ alien\_shoot\_timer\ =\ 0;\ \textcolor{comment}{//\ reset\ the\ timer\ after\ shooting}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01456}01456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01457}01457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01458}01458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01459}01459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01460}01460\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01461}01461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ move\_projectiles();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01462}01462\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01463}01463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (game\_score.lives\ ==\ 0)\ \{\ \textcolor{comment}{//\ end\ game\ if\ player\ has\ no\ lives\ left}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01464}01464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ GAMEOVER;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01465}01465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01466}01466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01467}01467\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01468}01468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (check\_all\_aliens\_dead())\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01469}01469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ init\_aliens(vmi\_p.XResolution,\ vmi\_p.YResolution);\ \textcolor{comment}{//\ respawn\ aliens\ after\ the\ last\ one\ was\ killed}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01470}01470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01471}01471\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01472}01472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ ==\ 9000)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01473}01473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ WIN;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01474}01474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ game\_score.score\ +=\ 1000\ *\ game\_score.lives;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01475}01475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01476}01476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01477}01477\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01478}01478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_score(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01479}01479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_lives(\&game\_score);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01480}01480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timer\_counter\ \%\ 60\ ==\ 0)\{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01481}01481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_time\_remaining(60\ -\/\ (timer\_counter/60));}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01482}01482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01483}01483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_af77b4df6765271737095f0e9f525f93c}{create\_spaceship\_projectiles}}(player\_x\ +\ 56,\ player\_y\ -\/\ 10,\ x\_mouse,\ y\_mouse,\ 15);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01484}01484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_aliens();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01485}01485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\_player(player\_x,\ player\_y);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01486}01486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\_cursor\_on\_top}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01487}01487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\_buffer();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01488}01488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01489}01489\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01490}01490\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01491}01491\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01492}01492\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01493}01493\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01494}01494\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01495}01495\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01496}01496\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01497}01497\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ GAMEOVER)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01498}01498\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((r\ =\ driver\_receive(ANY,\ \&msg,\ \&ipc\_status))\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01499}01499\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}driver\_receive\ failed\ with:\ \%d"{}},\ r);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01500}01500\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01501}01501\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01502}01502\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01503}01503\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_ipc\_notify(ipc\_status))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01504}01504\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_ENDPOINT\_P(msg.m\_source))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01505}01505\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HARDWARE:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01506}01506\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_mouse)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01507}01507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mouse\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01508}01508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01509}01509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\_reading\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01510}01510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01511}01511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01512}01512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01513}01513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01514}01514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ get\_mouse\_coordinates();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01515}01515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}{handle\_cursor\_movement}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01516}01516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01517}01517\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01518}01518\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_kbd)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01519}01519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kbc\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01520}01520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ ESC)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01521}01521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ QUIT;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01522}01522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01523}01523\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01524}01524\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_timer)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01525}01525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_int\_handler();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01526}01526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_adcad4094b8e47223f990493cc6438074}{render\_gameover\_screen}}(\&selected\_option);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01527}01527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\_cursor\_on\_top}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01528}01528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_counter\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01529}01529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ init\_aliens(vmi\_p.XResolution,\ vmi\_p.YResolution);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01530}01530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\_buffer();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01531}01531\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01532}01532\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01533}01533\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01534}01534\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01535}01535\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01536}01536\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01537}01537\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01538}01538\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01539}01539\ \ \ \ \ \textcolor{keywordflow}{while}\ (\mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ ==\ WIN)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01540}01540\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((r\ =\ driver\_receive(ANY,\ \&msg,\ \&ipc\_status))\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01541}01541\ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}driver\_receive\ failed\ with:\ \%d"{}},\ r);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01542}01542\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01543}01543\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01544}01544\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01545}01545\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_ipc\_notify(ipc\_status))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01546}01546\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_ENDPOINT\_P(msg.m\_source))\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01547}01547\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ HARDWARE:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01548}01548\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_mouse)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01549}01549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mouse\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01550}01550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01551}01551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\_reading\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01552}01552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01553}01553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (error\_reading\ \&\&\ counter\_mouse\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01554}01554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01555}01555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01556}01556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ get\_mouse\_coordinates();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01557}01557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}{handle\_cursor\_movement}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01558}01558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01559}01559\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01560}01560\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_kbd)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01561}01561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kbc\_ih();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01562}01562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (scancode\ ==\ ESC)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01563}01563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{gameState}}\ =\ QUIT;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01564}01564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01565}01565\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01566}01566\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (msg.m\_notify.interrupts\ \&\ irq\_set\_timer)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01567}01567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_int\_handler();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01568}01568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_ae8c1261f0c223eea63828e6241e0a155}{render\_win\_screen}}(\&selected\_option);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01569}01569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\_cursor\_on\_top}}();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01570}01570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ timer\_counter\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01571}01571\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ init\_aliens(vmi\_p.XResolution,\ vmi\_p.YResolution);}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01572}01572\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ double\_buffer();}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01573}01573\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01574}01574\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01575}01575\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01576}01576\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01577}01577\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01578}01578\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01579}01579\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01580}01580\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01581}01581\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01582}01582\ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{proj_8c_ae63cb26dfb386d58b08424700673026b}{leave}}()\ !=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01583}01583\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01584}01584\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01585}01585\ }
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01586}01586\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{proj_8c_source_l01587}01587\ \}}
+
+\end{DoxyCode}

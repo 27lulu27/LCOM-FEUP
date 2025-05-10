@@ -1,0 +1,258 @@
+\doxysection{src/score.h File Reference}
+\hypertarget{score_8h}{}\label{score_8h}\index{src/score.h@{src/score.h}}
+
+
+Header file for score management in the game.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for score.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_score}{Score}}
+\begin{DoxyCompactList}\small\item\em Struct to represent the score and lives of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{score_8h_ad412bd4b019684f65ffc0a7329230b4c}{init\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info, int initial\+\_\+lives)
+\begin{DoxyCompactList}\small\item\em Initializes the score information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_aaee542d3d50b8381ae32a7988de45265}{update\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info, int points)
+\begin{DoxyCompactList}\small\item\em Updates the score by adding points. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_a19b87e2c11783731fd604db62f573636}{decrement\+\_\+lives}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Decrements the number of lives by one. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_af02807ea1d130a53010007ea1b78b69c}{draw\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Draws the current score on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_a80435eec9f6ce3ca56ec5f983f331aa6}{draw\+\_\+lives}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Draws the remaining lives on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_a8b3f30b0e190034dea2801d4da83d7c1}{draw\+\_\+final\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Draws the final score on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_ac9d2010d9375c17d14455a279167fecd}{draw\+\_\+best\+\_\+score}} (\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}score\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Draws the best score on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8h_afb4c3703e5755f5a6156baa007248c13}{draw\+\_\+time\+\_\+remaining}} (int time\+\_\+remaining)
+\begin{DoxyCompactList}\small\item\em Draws the time remaining on the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{score_8h_a3951b025e02a4bfd74ff02dcac77a8c3}{alien\+\_\+score\+\_\+value}}
+\begin{DoxyCompactList}\small\item\em Global variable indicating the score value of each alien kill. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_score}{Score}} \mbox{\hyperlink{score_8h_adc7277eea8958dea6b52f5e3dbe65a7e}{game\+\_\+score}}
+\begin{DoxyCompactList}\small\item\em Global variable to hold the current game score. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{score_8h_ac3816f3d5c6e0dce27cf9b2b18ed94ca}{best\+\_\+score}}
+\begin{DoxyCompactList}\small\item\em Global variable to hold the best score achieved. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for score management in the game. 
+
+
+
+Definition in file \mbox{\hyperlink{score_8h_source}{score.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{score_8h_a19b87e2c11783731fd604db62f573636}\label{score_8h_a19b87e2c11783731fd604db62f573636} 
+\index{score.h@{score.h}!decrement\_lives@{decrement\_lives}}
+\index{decrement\_lives@{decrement\_lives}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{decrement\_lives()}{decrement\_lives()}}
+{\footnotesize\ttfamily void decrement\+\_\+lives (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Decrements the number of lives by one. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+\_\+info} & Pointer to the \doxylink{struct_score}{Score} struct. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00025}{25}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_ac9d2010d9375c17d14455a279167fecd}\label{score_8h_ac9d2010d9375c17d14455a279167fecd} 
+\index{score.h@{score.h}!draw\_best\_score@{draw\_best\_score}}
+\index{draw\_best\_score@{draw\_best\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{draw\_best\_score()}{draw\_best\_score()}}
+{\footnotesize\ttfamily void draw\+\_\+best\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Draws the best score on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+\_\+info} & Pointer to the \doxylink{struct_score}{Score} struct. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00084}{84}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_a8b3f30b0e190034dea2801d4da83d7c1}\label{score_8h_a8b3f30b0e190034dea2801d4da83d7c1} 
+\index{score.h@{score.h}!draw\_final\_score@{draw\_final\_score}}
+\index{draw\_final\_score@{draw\_final\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{draw\_final\_score()}{draw\_final\_score()}}
+{\footnotesize\ttfamily void draw\+\_\+final\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Draws the final score on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+\_\+info} & Pointer to the \doxylink{struct_score}{Score} struct. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00072}{72}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_a80435eec9f6ce3ca56ec5f983f331aa6}\label{score_8h_a80435eec9f6ce3ca56ec5f983f331aa6} 
+\index{score.h@{score.h}!draw\_lives@{draw\_lives}}
+\index{draw\_lives@{draw\_lives}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{draw\_lives()}{draw\_lives()}}
+{\footnotesize\ttfamily void draw\+\_\+lives (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Draws the remaining lives on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+\_\+info} & Pointer to the \doxylink{struct_score}{Score} struct. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00078}{78}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_af02807ea1d130a53010007ea1b78b69c}\label{score_8h_af02807ea1d130a53010007ea1b78b69c} 
+\index{score.h@{score.h}!draw\_score@{draw\_score}}
+\index{draw\_score@{draw\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{draw\_score()}{draw\_score()}}
+{\footnotesize\ttfamily void draw\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Draws the current score on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+\_\+info} & Pointer to the \doxylink{struct_score}{Score} struct. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00066}{66}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_afb4c3703e5755f5a6156baa007248c13}\label{score_8h_afb4c3703e5755f5a6156baa007248c13} 
+\index{score.h@{score.h}!draw\_time\_remaining@{draw\_time\_remaining}}
+\index{draw\_time\_remaining@{draw\_time\_remaining}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{draw\_time\_remaining()}{draw\_time\_remaining()}}
+{\footnotesize\ttfamily void draw\+\_\+time\+\_\+remaining (\begin{DoxyParamCaption}\item[{int}]{time\+\_\+remaining }\end{DoxyParamCaption})}
+
+
+
+Draws the time remaining on the screen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em time\+\_\+remaining} & The time remaining to be displayed. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00093}{93}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_ad412bd4b019684f65ffc0a7329230b4c}\label{score_8h_ad412bd4b019684f65ffc0a7329230b4c} 
+\index{score.h@{score.h}!init\_score@{init\_score}}
+\index{init\_score@{init\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{init\_score()}{init\_score()}}
+{\footnotesize\ttfamily void init\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info,  }\item[{int}]{initial\+\_\+lives }\end{DoxyParamCaption})}
+
+
+
+Initializes the score information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+\_\+info} & Pointer to the \doxylink{struct_score}{Score} struct to initialize. \\
+\hline
+{\em initial\+\_\+lives} & The initial number of lives for the player. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00016}{16}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_aaee542d3d50b8381ae32a7988de45265}\label{score_8h_aaee542d3d50b8381ae32a7988de45265} 
+\index{score.h@{score.h}!update\_score@{update\_score}}
+\index{update\_score@{update\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{update\_score()}{update\_score()}}
+{\footnotesize\ttfamily void update\+\_\+score (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_score}{Score}} \texorpdfstring{$\ast$}{*}}]{score\+\_\+info,  }\item[{int}]{points }\end{DoxyParamCaption})}
+
+
+
+Updates the score by adding points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em score\+\_\+info} & Pointer to the \doxylink{struct_score}{Score} struct. \\
+\hline
+{\em points} & Number of points to add to the score. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00021}{21}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{score_8h_a3951b025e02a4bfd74ff02dcac77a8c3}\label{score_8h_a3951b025e02a4bfd74ff02dcac77a8c3} 
+\index{score.h@{score.h}!alien\_score\_value@{alien\_score\_value}}
+\index{alien\_score\_value@{alien\_score\_value}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{alien\_score\_value}{alien\_score\_value}}
+{\footnotesize\ttfamily int alien\+\_\+score\+\_\+value\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global variable indicating the score value of each alien kill. 
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00012}{12}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_ac3816f3d5c6e0dce27cf9b2b18ed94ca}\label{score_8h_ac3816f3d5c6e0dce27cf9b2b18ed94ca} 
+\index{score.h@{score.h}!best\_score@{best\_score}}
+\index{best\_score@{best\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{best\_score}{best\_score}}
+{\footnotesize\ttfamily int best\+\_\+score\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global variable to hold the best score achieved. 
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00014}{14}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+
+\Hypertarget{score_8h_adc7277eea8958dea6b52f5e3dbe65a7e}\label{score_8h_adc7277eea8958dea6b52f5e3dbe65a7e} 
+\index{score.h@{score.h}!game\_score@{game\_score}}
+\index{game\_score@{game\_score}!score.h@{score.h}}
+\doxysubsubsection{\texorpdfstring{game\_score}{game\_score}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_score}{Score}} game\+\_\+score\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Global variable to hold the current game score. 
+
+
+
+Definition at line \mbox{\hyperlink{score_8c_source_l00013}{13}} of file \mbox{\hyperlink{score_8c_source}{score.\+c}}.
+

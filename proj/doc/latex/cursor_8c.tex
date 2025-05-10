@@ -1,0 +1,168 @@
+\doxysection{cursor.\+c File Reference}
+\hypertarget{cursor_8c}{}\label{cursor_8c}\index{cursor.c@{cursor.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lab5.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}sprites.\+h"{}}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+Include dependency graph for cursor.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{cursor_8c_a7ec6b5ad2b086d4e45c05fbe54d54a5e}{draw\+\_\+cursor}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{cursor_8c_a36d730aa71c9f641239b42446e70a016}{delete\+\_\+cursor}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{cursor_8c_a66772f0d798122c3a6a6461952c81dc0}{draw\+\_\+target}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{cursor_8c_a634e1ef48eb6cb5227080f4158c8fcb7}{delete\+\_\+target}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cursor_8c_a989a8aab4e1ef9238c27f076897eef97}{cursor\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cursor_8c_a2a394692f4181a331570b11e7f482cc4}{cursor\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{cursor_8c_a45a240c2bb7a4cbfc8120fe5291c754b}{img\+\_\+cursor\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{cursor_8c_a71736981ad064d7642b9ad888753bacb}{img\+\_\+cursor\+\_\+black\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cursor_8c_a9eefa438f932724cc94258ca61961941}{target\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cursor_8c_afbea88419e107d594293bf4b570f0471}{target\+\_\+black\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{cursor_8c_a0431fff1756f9edfd0354d92fd1b46d5}{img\+\_\+target\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{cursor_8c_a62ec0b472933b909d6de55e43d720f60}{img\+\_\+target\+\_\+black\+\_\+sprite}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cursor_8c_a36d730aa71c9f641239b42446e70a016}\label{cursor_8c_a36d730aa71c9f641239b42446e70a016} 
+\index{cursor.c@{cursor.c}!delete\_cursor@{delete\_cursor}}
+\index{delete\_cursor@{delete\_cursor}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{delete\_cursor()}{delete\_cursor()}}
+{\footnotesize\ttfamily int delete\+\_\+cursor (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{cursor_8c_source_l00031}{31}} of file \mbox{\hyperlink{cursor_8c_source}{cursor.\+c}}.
+
+\Hypertarget{cursor_8c_a634e1ef48eb6cb5227080f4158c8fcb7}\label{cursor_8c_a634e1ef48eb6cb5227080f4158c8fcb7} 
+\index{cursor.c@{cursor.c}!delete\_target@{delete\_target}}
+\index{delete\_target@{delete\_target}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{delete\_target()}{delete\_target()}}
+{\footnotesize\ttfamily int delete\+\_\+target (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{cursor_8c_source_l00049}{49}} of file \mbox{\hyperlink{cursor_8c_source}{cursor.\+c}}.
+
+\Hypertarget{cursor_8c_a7ec6b5ad2b086d4e45c05fbe54d54a5e}\label{cursor_8c_a7ec6b5ad2b086d4e45c05fbe54d54a5e} 
+\index{cursor.c@{cursor.c}!draw\_cursor@{draw\_cursor}}
+\index{draw\_cursor@{draw\_cursor}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{draw\_cursor()}{draw\_cursor()}}
+{\footnotesize\ttfamily int draw\+\_\+cursor (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{cursor_8c_source_l00022}{22}} of file \mbox{\hyperlink{cursor_8c_source}{cursor.\+c}}.
+
+\Hypertarget{cursor_8c_a66772f0d798122c3a6a6461952c81dc0}\label{cursor_8c_a66772f0d798122c3a6a6461952c81dc0} 
+\index{cursor.c@{cursor.c}!draw\_target@{draw\_target}}
+\index{draw\_target@{draw\_target}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{draw\_target()}{draw\_target()}}
+{\footnotesize\ttfamily int draw\+\_\+target (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{cursor_8c_source_l00040}{40}} of file \mbox{\hyperlink{cursor_8c_source}{cursor.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{cursor_8c_a2a394692f4181a331570b11e7f482cc4}\label{cursor_8c_a2a394692f4181a331570b11e7f482cc4} 
+\index{cursor.c@{cursor.c}!cursor\_black\_sprite@{cursor\_black\_sprite}}
+\index{cursor\_black\_sprite@{cursor\_black\_sprite}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{cursor\_black\_sprite}{cursor\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} cursor\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00025}{25}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{cursor_8c_a989a8aab4e1ef9238c27f076897eef97}\label{cursor_8c_a989a8aab4e1ef9238c27f076897eef97} 
+\index{cursor.c@{cursor.c}!cursor\_sprite@{cursor\_sprite}}
+\index{cursor\_sprite@{cursor\_sprite}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{cursor\_sprite}{cursor\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} cursor\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00024}{24}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{cursor_8c_a71736981ad064d7642b9ad888753bacb}\label{cursor_8c_a71736981ad064d7642b9ad888753bacb} 
+\index{cursor.c@{cursor.c}!img\_cursor\_black\_sprite@{img\_cursor\_black\_sprite}}
+\index{img\_cursor\_black\_sprite@{img\_cursor\_black\_sprite}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{img\_cursor\_black\_sprite}{img\_cursor\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+cursor\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00047}{47}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{cursor_8c_a45a240c2bb7a4cbfc8120fe5291c754b}\label{cursor_8c_a45a240c2bb7a4cbfc8120fe5291c754b} 
+\index{cursor.c@{cursor.c}!img\_cursor\_sprite@{img\_cursor\_sprite}}
+\index{img\_cursor\_sprite@{img\_cursor\_sprite}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{img\_cursor\_sprite}{img\_cursor\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+cursor\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00046}{46}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{cursor_8c_a62ec0b472933b909d6de55e43d720f60}\label{cursor_8c_a62ec0b472933b909d6de55e43d720f60} 
+\index{cursor.c@{cursor.c}!img\_target\_black\_sprite@{img\_target\_black\_sprite}}
+\index{img\_target\_black\_sprite@{img\_target\_black\_sprite}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{img\_target\_black\_sprite}{img\_target\_black\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+target\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00051}{51}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{cursor_8c_a0431fff1756f9edfd0354d92fd1b46d5}\label{cursor_8c_a0431fff1756f9edfd0354d92fd1b46d5} 
+\index{cursor.c@{cursor.c}!img\_target\_sprite@{img\_target\_sprite}}
+\index{img\_target\_sprite@{img\_target\_sprite}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{img\_target\_sprite}{img\_target\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+target\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00050}{50}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{cursor_8c_afbea88419e107d594293bf4b570f0471}\label{cursor_8c_afbea88419e107d594293bf4b570f0471} 
+\index{cursor.c@{cursor.c}!target\_black\_sprite@{target\_black\_sprite}}
+\index{target\_black\_sprite@{target\_black\_sprite}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{target\_black\_sprite}{target\_black\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} target\+\_\+black\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00029}{29}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{cursor_8c_a9eefa438f932724cc94258ca61961941}\label{cursor_8c_a9eefa438f932724cc94258ca61961941} 
+\index{cursor.c@{cursor.c}!target\_sprite@{target\_sprite}}
+\index{target\_sprite@{target\_sprite}!cursor.c@{cursor.c}}
+\doxysubsubsection{\texorpdfstring{target\_sprite}{target\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} target\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00028}{28}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+

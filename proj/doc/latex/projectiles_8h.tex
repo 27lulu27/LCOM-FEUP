@@ -1,0 +1,195 @@
+\doxysection{src/projectiles.h File Reference}
+\hypertarget{projectiles_8h}{}\label{projectiles_8h}\index{src/projectiles.h@{src/projectiles.h}}
+
+
+Header file for projectile management in the game.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_projectile}{Projectile}}
+\begin{DoxyCompactList}\small\item\em Struct to represent a projectile. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{projectiles_8h_a7af6aebb429588b2abecb84a3c01625e}{Projectile\+Type}} \{ {\bfseries PLAYER\+\_\+\+PROJECTILE}
+, {\bfseries ALIEN\+\_\+\+PROJECTILE}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration for projectile types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{projectiles_8h_a18f61fed2471257dd4d0b8a4e9004427}{create\+\_\+projectile}} (int xi, int yi, int xf, int yf, int16\+\_\+t speed, \mbox{\hyperlink{projectiles_8h_a7af6aebb429588b2abecb84a3c01625e}{Projectile\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Creates a new projectile. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectiles_8h_a7ca2f1a9421424da02438cd8121a6bbb}{move\+\_\+projectiles}} (void)
+\begin{DoxyCompactList}\small\item\em Moves all projectiles in the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{projectiles_8h_af3bc30d4d2c3a93f08d5f5f16aebfc18}{move\+\_\+projectile}} (\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}projectile)
+\begin{DoxyCompactList}\small\item\em Moves a single projectile. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{projectiles_8h_aca8401afcc3908dbb2c6e4ea46c7547e}{calc\+\_\+x}} (\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}projectile)
+\begin{DoxyCompactList}\small\item\em Calculates the x position of a projectile based on its parameters. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{projectiles_8h_a84a78d400030a02fe43acb1811c8840a}{calc\+\_\+y}} (\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}projectile)
+\begin{DoxyCompactList}\small\item\em Calculates the y position of a projectile based on its parameters. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{projectiles_8h_a035a6c229364d0eb432ad3b1ccc12d73}{check\+\_\+collision}} (\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}projectile, int \texorpdfstring{$\ast$}{*}alien\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Checks for collision of a projectile with an alien or the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for projectile management in the game. 
+
+
+
+Definition in file \mbox{\hyperlink{projectiles_8h_source}{projectiles.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{projectiles_8h_a7af6aebb429588b2abecb84a3c01625e}\label{projectiles_8h_a7af6aebb429588b2abecb84a3c01625e} 
+\index{projectiles.h@{projectiles.h}!ProjectileType@{ProjectileType}}
+\index{ProjectileType@{ProjectileType}!projectiles.h@{projectiles.h}}
+\doxysubsubsection{\texorpdfstring{ProjectileType}{ProjectileType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{projectiles_8h_a7af6aebb429588b2abecb84a3c01625e}{Projectile\+Type}}}
+
+
+
+Enumeration for projectile types. 
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8h_source_l00012}{12}} of file \mbox{\hyperlink{projectiles_8h_source}{projectiles.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{projectiles_8h_aca8401afcc3908dbb2c6e4ea46c7547e}\label{projectiles_8h_aca8401afcc3908dbb2c6e4ea46c7547e} 
+\index{projectiles.h@{projectiles.h}!calc\_x@{calc\_x}}
+\index{calc\_x@{calc\_x}!projectiles.h@{projectiles.h}}
+\doxysubsubsection{\texorpdfstring{calc\_x()}{calc\_x()}}
+{\footnotesize\ttfamily int calc\+\_\+x (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}}]{projectile }\end{DoxyParamCaption})}
+
+
+
+Calculates the x position of a projectile based on its parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projectile} & Pointer to the \doxylink{struct_projectile}{Projectile} struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Calculated x position. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00181}{181}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8h_a84a78d400030a02fe43acb1811c8840a}\label{projectiles_8h_a84a78d400030a02fe43acb1811c8840a} 
+\index{projectiles.h@{projectiles.h}!calc\_y@{calc\_y}}
+\index{calc\_y@{calc\_y}!projectiles.h@{projectiles.h}}
+\doxysubsubsection{\texorpdfstring{calc\_y()}{calc\_y()}}
+{\footnotesize\ttfamily int calc\+\_\+y (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}}]{projectile }\end{DoxyParamCaption})}
+
+
+
+Calculates the y position of a projectile based on its parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projectile} & Pointer to the \doxylink{struct_projectile}{Projectile} struct. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Calculated y position. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00186}{186}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8h_a035a6c229364d0eb432ad3b1ccc12d73}\label{projectiles_8h_a035a6c229364d0eb432ad3b1ccc12d73} 
+\index{projectiles.h@{projectiles.h}!check\_collision@{check\_collision}}
+\index{check\_collision@{check\_collision}!projectiles.h@{projectiles.h}}
+\doxysubsubsection{\texorpdfstring{check\_collision()}{check\_collision()}}
+{\footnotesize\ttfamily bool check\+\_\+collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}}]{projectile,  }\item[{int \texorpdfstring{$\ast$}{*}}]{alien\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+Checks for collision of a projectile with an alien or the player. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projectile} & Pointer to the \doxylink{struct_projectile}{Projectile} struct. \\
+\hline
+{\em alien\+\_\+index} & Pointer to store the index of the alien hit (if any). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a collision is detected, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00063}{63}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8h_a18f61fed2471257dd4d0b8a4e9004427}\label{projectiles_8h_a18f61fed2471257dd4d0b8a4e9004427} 
+\index{projectiles.h@{projectiles.h}!create\_projectile@{create\_projectile}}
+\index{create\_projectile@{create\_projectile}!projectiles.h@{projectiles.h}}
+\doxysubsubsection{\texorpdfstring{create\_projectile()}{create\_projectile()}}
+{\footnotesize\ttfamily void create\+\_\+projectile (\begin{DoxyParamCaption}\item[{int}]{xi,  }\item[{int}]{yi,  }\item[{int}]{xf,  }\item[{int}]{yf,  }\item[{int16\+\_\+t}]{speed,  }\item[{\mbox{\hyperlink{projectiles_8h_a7af6aebb429588b2abecb84a3c01625e}{Projectile\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Creates a new projectile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xi} & Initial x position. \\
+\hline
+{\em yi} & Initial y position. \\
+\hline
+{\em xf} & Final x position. \\
+\hline
+{\em yf} & Final y position. \\
+\hline
+{\em speed} & Speed of the projectile. \\
+\hline
+{\em type} & Type of the projectile. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00191}{191}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8h_af3bc30d4d2c3a93f08d5f5f16aebfc18}\label{projectiles_8h_af3bc30d4d2c3a93f08d5f5f16aebfc18} 
+\index{projectiles.h@{projectiles.h}!move\_projectile@{move\_projectile}}
+\index{move\_projectile@{move\_projectile}!projectiles.h@{projectiles.h}}
+\doxysubsubsection{\texorpdfstring{move\_projectile()}{move\_projectile()}}
+{\footnotesize\ttfamily void move\+\_\+projectile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*}}]{projectile }\end{DoxyParamCaption})}
+
+
+
+Moves a single projectile. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em projectile} & Pointer to the \doxylink{struct_projectile}{Projectile} struct. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00157}{157}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{projectiles_8h_a7ca2f1a9421424da02438cd8121a6bbb}\label{projectiles_8h_a7ca2f1a9421424da02438cd8121a6bbb} 
+\index{projectiles.h@{projectiles.h}!move\_projectiles@{move\_projectiles}}
+\index{move\_projectiles@{move\_projectiles}!projectiles.h@{projectiles.h}}
+\doxysubsubsection{\texorpdfstring{move\_projectiles()}{move\_projectiles()}}
+{\footnotesize\ttfamily void move\+\_\+projectiles (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Moves all projectiles in the game. 
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00088}{88}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+

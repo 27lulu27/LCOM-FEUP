@@ -1,0 +1,549 @@
+\doxysection{src/proj.c File Reference}
+\hypertarget{proj_8c}{}\label{proj_8c}\index{src/proj.c@{src/proj.c}}
+
+
+This file contains the main implementation of the game project.  
+
+
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lab5.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$sys/types.\+h$>$}\newline
+{\ttfamily \#include "{}alien.\+h"{}}\newline
+{\ttfamily \#include "{}bg.\+h"{}}\newline
+{\ttfamily \#include "{}buttons.\+h"{}}\newline
+{\ttfamily \#include "{}cursor.\+h"{}}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+{\ttfamily \#include "{}i8254.\+h"{}}\newline
+{\ttfamily \#include "{}keyboards.\+h"{}}\newline
+{\ttfamily \#include "{}letters.\+h"{}}\newline
+{\ttfamily \#include "{}mouse.\+h"{}}\newline
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include "{}projectiles.\+h"{}}\newline
+{\ttfamily \#include "{}rtc.\+h"{}}\newline
+{\ttfamily \#include "{}score.\+h"{}}\newline
+{\ttfamily \#include "{}sprites.\+h"{}}\newline
+{\ttfamily \#include "{}time.\+h"{}}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+Include dependency graph for proj.\+c\+:
+% FIG 0
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \{ \newline
+{\bfseries MAINMENU}
+, {\bfseries MODEMENU}
+, {\bfseries PLAYING}
+, {\bfseries QUIT}
+, \newline
+{\bfseries GAMEOVER}
+, {\bfseries WIN}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum representing the different game states. \end{DoxyCompactList}\item 
+enum {\bfseries Mode} \{ {\bfseries EASY}
+, {\bfseries MEDIUM}
+, {\bfseries HARD}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{proj_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main function of the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{proj_8c_a05848de25ac2dbec233935058a1d24b4}{init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{proj_8c_ae63cb26dfb386d58b08424700673026b}{leave}} ()
+\begin{DoxyCompactList}\small\item\em Cleans up resources and exits the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{proj_8c_a919b97c5b762b497d13f579e6be3b150}{render\+\_\+screen}} (int \texorpdfstring{$\ast$}{*}selected\+\_\+option)
+\begin{DoxyCompactList}\small\item\em Renders the main menu screen and handles user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{proj_8c_a6b3b62d31a5ee90fe6293b1d34abcaee}{render\+\_\+mode\+\_\+screen}} (int \texorpdfstring{$\ast$}{*}selected\+\_\+option)
+\begin{DoxyCompactList}\small\item\em Renders the mode selection screen and handles user interaction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}{draw\+\_\+cursor\+\_\+on\+\_\+top}} ()
+\begin{DoxyCompactList}\small\item\em Draws the cursor on top of the game screen based on the current game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}{handle\+\_\+cursor\+\_\+movement}} ()
+\begin{DoxyCompactList}\small\item\em Handles cursor movement based on the current game state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{proj_8c_af77b4df6765271737095f0e9f525f93c}{create\+\_\+spaceship\+\_\+projectiles}} (int xi, int yi, int xf, int yf, int speed)
+\begin{DoxyCompactList}\small\item\em Creates projectiles fired by the spaceship. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{proj_8c_adcad4094b8e47223f990493cc6438074}{render\+\_\+gameover\+\_\+screen}} (int \texorpdfstring{$\ast$}{*}selected\+\_\+option)
+\begin{DoxyCompactList}\small\item\em Renders the game over screen and handles user interaction. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{proj_8c_ae8c1261f0c223eea63828e6241e0a155}{render\+\_\+win\+\_\+screen}} (int \texorpdfstring{$\ast$}{*}selected\+\_\+option)
+\begin{DoxyCompactList}\small\item\em Renders the win screen and handles user interaction. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{proj_8c_a7a72220d8366dd84709e79ce415862e5}{proj\+\_\+main\+\_\+loop}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main loop of the project, responsible for handling game states, user input, and rendering. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{proj_8c_ab100c3940bcc51c739758e8ab77b5330}{scancode}}
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{proj_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\+\_\+p}}
+\item 
+int \mbox{\hyperlink{proj_8c_a96f78a87d064e47d627d222f67a8d012}{hook\+\_\+id}}
+\item 
+int \mbox{\hyperlink{proj_8c_a35a74a52bea7b832dc8631092d567881}{x\+\_\+mouse}}
+\item 
+int \mbox{\hyperlink{proj_8c_a71a2343b1f1be8aa683af2f581daa604}{y\+\_\+mouse}}
+\item 
+struct packet \mbox{\hyperlink{proj_8c_a2624f94fdd37f75b6f95cc211e319626}{packet0}}
+\item 
+bool \mbox{\hyperlink{proj_8c_ad50f2bee48c1d4eb880b20ffa5354098}{error\+\_\+reading}}
+\item 
+int \mbox{\hyperlink{proj_8c_a913773c9d479d1739a332b92cea6fbfa}{counter\+\_\+mouse}}
+\item 
+int \mbox{\hyperlink{proj_8c_aaf558ead87ecf9d261b5704fac3a2165}{selected\+\_\+option}} = 1
+\item 
+\mbox{\hyperlink{struct_projectile}{Projectile}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{proj_8c_a01fddc97291b144ab8cd1afdeee5e035}{projectiles}}
+\item 
+int \mbox{\hyperlink{proj_8c_a815d6115db52b228b3f6de3358ce5a2d}{projectile\+\_\+count}}
+\item 
+bool \mbox{\hyperlink{proj_8c_a1646041a2b7cdad9336eac98de3b0f36}{cooldown}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{proj_8c_a00a531a34a1d603329df5778f1203ab6}{hours}}
+\item 
+int \mbox{\hyperlink{proj_8c_a41f4ce9e3c0c6f4aff165a8ed2104626}{mouselock}} = 0
+\item 
+\mbox{\hyperlink{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} \mbox{\hyperlink{proj_8c_a2706ed05d331ef3b53c728a6868bda26}{game\+State}} = MAINMENU
+\begin{DoxyCompactList}\small\item\em Global variable representing the current game state. \end{DoxyCompactList}\item 
+Mode \mbox{\hyperlink{proj_8c_a2618e89b4c26dc851feae865df3a1a49}{mode}} = MEDIUM
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the main implementation of the game project. 
+
+
+
+Definition in file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285}\label{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285} 
+\index{proj.c@{proj.c}!GameState@{GameState}}
+\index{GameState@{GameState}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{GameState}{GameState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}}}
+
+
+
+Enum representing the different game states. 
+
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00051}{51}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+\Hypertarget{proj_8c_a46c8a310cf4c094f8c80e1cb8dc1f911}\label{proj_8c_a46c8a310cf4c094f8c80e1cb8dc1f911} 
+\index{proj.c@{proj.c}!Mode@{Mode}}
+\index{Mode@{Mode}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily enum Mode}
+
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00059}{59}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{proj_8c_af77b4df6765271737095f0e9f525f93c}\label{proj_8c_af77b4df6765271737095f0e9f525f93c} 
+\index{proj.c@{proj.c}!create\_spaceship\_projectiles@{create\_spaceship\_projectiles}}
+\index{create\_spaceship\_projectiles@{create\_spaceship\_projectiles}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{create\_spaceship\_projectiles()}{create\_spaceship\_projectiles()}}
+{\footnotesize\ttfamily void create\+\_\+spaceship\+\_\+projectiles (\begin{DoxyParamCaption}\item[{int}]{xi,  }\item[{int}]{yi,  }\item[{int}]{xf,  }\item[{int}]{yf,  }\item[{int}]{speed }\end{DoxyParamCaption})}
+
+
+
+Creates projectiles fired by the spaceship. 
+
+This function creates projectiles fired by the spaceship when the left mouse button is pressed. It checks if the game state is PLAYING, if the left mouse button is pressed, if the direction of the projectile is upwards, and if the cooldown for firing is inactive. If all conditions are met, a projectile is created with the specified coordinates, speed, and type (PLAYER\+\_\+\+PROJECTILE). 
+\begin{DoxyParams}{Parameters}
+{\em xi} & Initial x-\/coordinate of the projectile. \\
+\hline
+{\em yi} & Initial y-\/coordinate of the projectile. \\
+\hline
+{\em xf} & Final x-\/coordinate of the projectile. \\
+\hline
+{\em yf} & Final y-\/coordinate of the projectile. \\
+\hline
+{\em speed} & Speed of the projectile. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00672}{672}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the caller graph for this function\+:
+% FIG 1
+\Hypertarget{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9}\label{proj_8c_a468f8fe6f4ee3a1e1cb8ab047bf693f9} 
+\index{proj.c@{proj.c}!draw\_cursor\_on\_top@{draw\_cursor\_on\_top}}
+\index{draw\_cursor\_on\_top@{draw\_cursor\_on\_top}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{draw\_cursor\_on\_top()}{draw\_cursor\_on\_top()}}
+{\footnotesize\ttfamily void draw\+\_\+cursor\+\_\+on\+\_\+top (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Draws the cursor on top of the game screen based on the current game state. 
+
+This function draws the cursor at the specified coordinates on the game screen based on the current game state. It is called during gameplay to display the cursor or target for the player\textquotesingle{}s interaction. 
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00573}{573}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the caller graph for this function\+:
+% FIG 2
+\Hypertarget{proj_8c_aec2a0664fcae32a93017ae63e1912c8b}\label{proj_8c_aec2a0664fcae32a93017ae63e1912c8b} 
+\index{proj.c@{proj.c}!handle\_cursor\_movement@{handle\_cursor\_movement}}
+\index{handle\_cursor\_movement@{handle\_cursor\_movement}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{handle\_cursor\_movement()}{handle\_cursor\_movement()}}
+{\footnotesize\ttfamily void handle\+\_\+cursor\+\_\+movement (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles cursor movement based on the current game state. 
+
+This function handles the movement of the cursor based on the current game state. It updates the cursor position and redraws it on the screen accordingly. 
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00609}{609}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the caller graph for this function\+:
+% FIG 3
+\Hypertarget{proj_8c_a05848de25ac2dbec233935058a1d24b4}\label{proj_8c_a05848de25ac2dbec233935058a1d24b4} 
+\index{proj.c@{proj.c}!init@{init}}
+\index{init@{init}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily int init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the game. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00108}{108}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the caller graph for this function\+:
+% FIG 4
+\Hypertarget{proj_8c_ae63cb26dfb386d58b08424700673026b}\label{proj_8c_ae63cb26dfb386d58b08424700673026b} 
+\index{proj.c@{proj.c}!leave@{leave}}
+\index{leave@{leave}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{leave()}{leave()}}
+{\footnotesize\ttfamily int leave (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Cleans up resources and exits the game. 
+
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00136}{136}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the caller graph for this function\+:
+% FIG 5
+\Hypertarget{proj_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{proj_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{proj.c@{proj.c}!main@{main}}
+\index{main@{main}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Main function of the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command-\/line arguments. \\
+\hline
+{\em argv} & Array of command-\/line arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00078}{78}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+\Hypertarget{proj_8c_a7a72220d8366dd84709e79ce415862e5}\label{proj_8c_a7a72220d8366dd84709e79ce415862e5} 
+\index{proj.c@{proj.c}!proj\_main\_loop@{proj\_main\_loop}}
+\index{proj\_main\_loop@{proj\_main\_loop}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{proj\_main\_loop()}{proj\_main\_loop()}}
+{\footnotesize\ttfamily int proj\+\_\+main\+\_\+loop (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Main loop of the project, responsible for handling game states, user input, and rendering. 
+
+This function serves as the main loop of the project, where the game states are managed, user input is handled, and the rendering of the game screen is performed. It includes sub-\/loops for each game state (MAINMENU, MODEMENU, PLAYING, GAMEOVER, WIN), each of which processes different types of user input and performs specific actions accordingly. The function also utilizes interrupt handlers to respond to mouse, keyboard, and timer events. Depending on the game state and difficulty mode, the function updates the game state, player position, alien movement, projectile creation, and screen rendering. It continuously loops until the user presses the ESC key or the game state transitions to the QUIT state. Upon exiting the loop, it performs cleanup tasks before returning. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of command-\/line arguments. \\
+\hline
+{\em argv} & Array of command-\/line arguments. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns 0 upon successful completion, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l01044}{1044}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the call graph for this function\+:
+% FIG 6
+\Hypertarget{proj_8c_adcad4094b8e47223f990493cc6438074}\label{proj_8c_adcad4094b8e47223f990493cc6438074} 
+\index{proj.c@{proj.c}!render\_gameover\_screen@{render\_gameover\_screen}}
+\index{render\_gameover\_screen@{render\_gameover\_screen}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{render\_gameover\_screen()}{render\_gameover\_screen()}}
+{\footnotesize\ttfamily void render\+\_\+gameover\+\_\+screen (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{selected\+\_\+option }\end{DoxyParamCaption})}
+
+
+
+Renders the game over screen and handles user interaction. 
+
+This function renders the game over screen and handles user input to select options such as restarting the game or quitting. It transitions to the PLAYING state when the restart option is selected, or to the QUIT state when the quit option is selected. 
+\begin{DoxyParams}{Parameters}
+{\em selected\+\_\+option} & Pointer to the selected option index. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00691}{691}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the caller graph for this function\+:
+% FIG 7
+\Hypertarget{proj_8c_a6b3b62d31a5ee90fe6293b1d34abcaee}\label{proj_8c_a6b3b62d31a5ee90fe6293b1d34abcaee} 
+\index{proj.c@{proj.c}!render\_mode\_screen@{render\_mode\_screen}}
+\index{render\_mode\_screen@{render\_mode\_screen}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{render\_mode\_screen()}{render\_mode\_screen()}}
+{\footnotesize\ttfamily void render\+\_\+mode\+\_\+screen (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{selected\+\_\+option }\end{DoxyParamCaption})}
+
+
+
+Renders the mode selection screen and handles user interaction. 
+
+This function renders the mode selection screen and handles user input to select a game mode. It also transitions to the PLAYING state when a mode is selected, or back to the MAINMENU state if the back button is pressed. 
+\begin{DoxyParams}{Parameters}
+{\em selected\+\_\+option} & Pointer to the selected option index. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00317}{317}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the call graph for this function\+:
+% FIG 8
+Here is the caller graph for this function\+:
+% FIG 9
+\Hypertarget{proj_8c_a919b97c5b762b497d13f579e6be3b150}\label{proj_8c_a919b97c5b762b497d13f579e6be3b150} 
+\index{proj.c@{proj.c}!render\_screen@{render\_screen}}
+\index{render\_screen@{render\_screen}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{render\_screen()}{render\_screen()}}
+{\footnotesize\ttfamily void render\+\_\+screen (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{selected\+\_\+option }\end{DoxyParamCaption})}
+
+
+
+Renders the main menu screen and handles user input. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected\+\_\+option} & Pointer to the selected option. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00162}{162}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the caller graph for this function\+:
+% FIG 10
+\Hypertarget{proj_8c_ae8c1261f0c223eea63828e6241e0a155}\label{proj_8c_ae8c1261f0c223eea63828e6241e0a155} 
+\index{proj.c@{proj.c}!render\_win\_screen@{render\_win\_screen}}
+\index{render\_win\_screen@{render\_win\_screen}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{render\_win\_screen()}{render\_win\_screen()}}
+{\footnotesize\ttfamily void render\+\_\+win\+\_\+screen (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{selected\+\_\+option }\end{DoxyParamCaption})}
+
+
+
+Renders the win screen and handles user interaction. 
+
+This function renders the win screen and handles user input to select options such as restarting the game or quitting. It transitions to the PLAYING state when the restart option is selected, or to the QUIT state when the quit option is selected. 
+\begin{DoxyParams}{Parameters}
+{\em selected\+\_\+option} & Pointer to the selected option index. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00864}{864}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{proj_8c_a1646041a2b7cdad9336eac98de3b0f36}\label{proj_8c_a1646041a2b7cdad9336eac98de3b0f36} 
+\index{proj.c@{proj.c}!cooldown@{cooldown}}
+\index{cooldown@{cooldown}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{cooldown}{cooldown}}
+{\footnotesize\ttfamily bool cooldown\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00023}{23}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{proj_8c_a913773c9d479d1739a332b92cea6fbfa}\label{proj_8c_a913773c9d479d1739a332b92cea6fbfa} 
+\index{proj.c@{proj.c}!counter\_mouse@{counter\_mouse}}
+\index{counter\_mouse@{counter\_mouse}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{counter\_mouse}{counter\_mouse}}
+{\footnotesize\ttfamily int counter\+\_\+mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00012}{12}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{proj_8c_ad50f2bee48c1d4eb880b20ffa5354098}\label{proj_8c_ad50f2bee48c1d4eb880b20ffa5354098} 
+\index{proj.c@{proj.c}!error\_reading@{error\_reading}}
+\index{error\_reading@{error\_reading}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{error\_reading}{error\_reading}}
+{\footnotesize\ttfamily bool error\+\_\+reading\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00011}{11}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{proj_8c_a2706ed05d331ef3b53c728a6868bda26}\label{proj_8c_a2706ed05d331ef3b53c728a6868bda26} 
+\index{proj.c@{proj.c}!gameState@{gameState}}
+\index{gameState@{gameState}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{gameState}{gameState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{proj_8c_a7899b65f1ea0f655e4bbf8d2a5714285}{Game\+State}} game\+State = MAINMENU}
+
+
+
+Global variable representing the current game state. 
+
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00067}{67}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+\Hypertarget{proj_8c_a96f78a87d064e47d627d222f67a8d012}\label{proj_8c_a96f78a87d064e47d627d222f67a8d012} 
+\index{proj.c@{proj.c}!hook\_id@{hook\_id}}
+\index{hook\_id@{hook\_id}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{hook\_id}{hook\_id}}
+{\footnotesize\ttfamily int hook\+\_\+id\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{timer_8c_source_l00010}{10}} of file \mbox{\hyperlink{timer_8c_source}{timer.\+c}}.
+
+\Hypertarget{proj_8c_a00a531a34a1d603329df5778f1203ab6}\label{proj_8c_a00a531a34a1d603329df5778f1203ab6} 
+\index{proj.c@{proj.c}!hours@{hours}}
+\index{hours@{hours}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{hours}{hours}}
+{\footnotesize\ttfamily uint8\+\_\+t hours\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00005}{5}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+\Hypertarget{proj_8c_a2618e89b4c26dc851feae865df3a1a49}\label{proj_8c_a2618e89b4c26dc851feae865df3a1a49} 
+\index{proj.c@{proj.c}!mode@{mode}}
+\index{mode@{mode}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{mode}{mode}}
+{\footnotesize\ttfamily Mode mode = MEDIUM}
+
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00068}{68}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+\Hypertarget{proj_8c_a41f4ce9e3c0c6f4aff165a8ed2104626}\label{proj_8c_a41f4ce9e3c0c6f4aff165a8ed2104626} 
+\index{proj.c@{proj.c}!mouselock@{mouselock}}
+\index{mouselock@{mouselock}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{mouselock}{mouselock}}
+{\footnotesize\ttfamily int mouselock = 0}
+
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00045}{45}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+\Hypertarget{proj_8c_a2624f94fdd37f75b6f95cc211e319626}\label{proj_8c_a2624f94fdd37f75b6f95cc211e319626} 
+\index{proj.c@{proj.c}!packet0@{packet0}}
+\index{packet0@{packet0}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{packet0}{packet0}}
+{\footnotesize\ttfamily struct packet packet0\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00015}{15}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{proj_8c_a815d6115db52b228b3f6de3358ce5a2d}\label{proj_8c_a815d6115db52b228b3f6de3358ce5a2d} 
+\index{proj.c@{proj.c}!projectile\_count@{projectile\_count}}
+\index{projectile\_count@{projectile\_count}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{projectile\_count}{projectile\_count}}
+{\footnotesize\ttfamily int projectile\+\_\+count\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00027}{27}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{proj_8c_a01fddc97291b144ab8cd1afdeee5e035}\label{proj_8c_a01fddc97291b144ab8cd1afdeee5e035} 
+\index{proj.c@{proj.c}!projectiles@{projectiles}}
+\index{projectiles@{projectiles}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{projectiles}{projectiles}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_projectile}{Projectile}}\texorpdfstring{$\ast$}{*} projectiles\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{projectiles_8c_source_l00028}{28}} of file \mbox{\hyperlink{projectiles_8c_source}{projectiles.\+c}}.
+
+\Hypertarget{proj_8c_ab100c3940bcc51c739758e8ab77b5330}\label{proj_8c_ab100c3940bcc51c739758e8ab77b5330} 
+\index{proj.c@{proj.c}!scancode@{scancode}}
+\index{scancode@{scancode}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{scancode}{scancode}}
+{\footnotesize\ttfamily int scancode\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{keyboards_8c_source_l00010}{10}} of file \mbox{\hyperlink{keyboards_8c_source}{keyboards.\+c}}.
+
+\Hypertarget{proj_8c_aaf558ead87ecf9d261b5704fac3a2165}\label{proj_8c_aaf558ead87ecf9d261b5704fac3a2165} 
+\index{proj.c@{proj.c}!selected\_option@{selected\_option}}
+\index{selected\_option@{selected\_option}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{selected\_option}{selected\_option}}
+{\footnotesize\ttfamily int selected\+\_\+option = 1}
+
+
+
+Definition at line \mbox{\hyperlink{proj_8c_source_l00040}{40}} of file \mbox{\hyperlink{proj_8c_source}{proj.\+c}}.
+
+\Hypertarget{proj_8c_a26081be7a771e5c611b33f15caaf831e}\label{proj_8c_a26081be7a771e5c611b33f15caaf831e} 
+\index{proj.c@{proj.c}!vmi\_p@{vmi\_p}}
+\index{vmi\_p@{vmi\_p}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{vmi\_p}{vmi\_p}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t vmi\+\_\+p\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00005}{5}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{proj_8c_a35a74a52bea7b832dc8631092d567881}\label{proj_8c_a35a74a52bea7b832dc8631092d567881} 
+\index{proj.c@{proj.c}!x\_mouse@{x\_mouse}}
+\index{x\_mouse@{x\_mouse}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{x\_mouse}{x\_mouse}}
+{\footnotesize\ttfamily int x\+\_\+mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00016}{16}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+
+\Hypertarget{proj_8c_a71a2343b1f1be8aa683af2f581daa604}\label{proj_8c_a71a2343b1f1be8aa683af2f581daa604} 
+\index{proj.c@{proj.c}!y\_mouse@{y\_mouse}}
+\index{y\_mouse@{y\_mouse}!proj.c@{proj.c}}
+\doxysubsubsection{\texorpdfstring{y\_mouse}{y\_mouse}}
+{\footnotesize\ttfamily int y\+\_\+mouse\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{mouse_8c_source_l00017}{17}} of file \mbox{\hyperlink{mouse_8c_source}{mouse.\+c}}.
+

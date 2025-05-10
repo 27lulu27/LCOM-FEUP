@@ -1,0 +1,2800 @@
+\doxysection{letters.\+c File Reference}
+\hypertarget{letters_8c}{}\label{letters_8c}\index{letters.c@{letters.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include $<$lcom/lab5.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include "{}letters.\+h"{}}\newline
+{\ttfamily \#include "{}sprites.\+h"{}}\newline
+{\ttfamily \#include "{}i8042.\+h"{}}\newline
+Include dependency graph for letters.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{letters_8c_abd592fbcf300ea90c52811aa828eafe2}{draw\+\_\+exclamationw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a64cf9f372eecbfad2899670b018fd487}{draw\+\_\+percentagew}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_acb0dcffaae7b1cde8a494a4a6d3d1ee5}{draw\+\_\+andw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a28954bd651045ec0788cf35be5215358}{draw\+\_\+leftwhite}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ab5ed76e86177d870b0db9472b8545fe9}{draw\+\_\+rightbracketw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ad1cf3db48beb1a2bfa348b6d4e68f7d2}{draw\+\_\+commaw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a61e7da22659748c747b17abd7b9e3f7f}{draw\+\_\+semicolonw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a54ca0e422e1e686f713ad214df797360}{draw\+\_\+zerow}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a1e6a4121b8f39e367716a36ff99fef33}{draw\+\_\+onew}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a1e961f3c7fe7898a1e638ae4c4538485}{draw\+\_\+twow}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a6c21b38f3a8f6055504677bf3c5c2058}{draw\+\_\+threew}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a5ec2b9c360137fefd946cb1503cfc124}{draw\+\_\+fourw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ac2afb855c90295616d354fec8e4951f0}{draw\+\_\+fivew}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_af6c73f67a37253ac536147a88b6e564d}{draw\+\_\+sixw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_adfb1c34c064d424def9929326d6ada5c}{draw\+\_\+sevenw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aa678c911f475344d5588733ef4f5c835}{draw\+\_\+eightw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_abaf4ee6d1ef1cbecb28e990012291a0c}{draw\+\_\+ninew}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_acdbbb39eb33a5010dbb229e8e4785b51}{draw\+\_\+\+Aw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a0cce6307fcd243aa5d54b848949989d9}{draw\+\_\+\+Bw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ac02fe1ba57c81c91dd848d34234903fe}{draw\+\_\+\+Cw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a2e3c453426b6000a938111abd0c2b9ea}{draw\+\_\+Çw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a3d7aa76ba29c26454395c6a35870010c}{draw\+\_\+\+Dw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aae8c85190bec3e3052b8065be37b6454}{draw\+\_\+\+Ew}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a418c102e6f011dd6544c9a2a8540ba57}{draw\+\_\+\+Fw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ac6078e81a04cc78a347f541beed7c491}{draw\+\_\+\+Gw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a7fdd6117e1913c331bf0dd2326c92d14}{draw\+\_\+\+Hw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a360978a6bf6c352d93406eb99a9654e6}{draw\+\_\+\+Iw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a8a0a7b7649b9c0a4d7e16543ad4e4e18}{draw\+\_\+\+Jw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a1b9c8b7afcc76cd8d95634c9aa98836e}{draw\+\_\+\+Kw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ae47302d1c4237e16085a4413687a4cc4}{draw\+\_\+law}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a7d3491e1754a1b645f9cf85d8215cbec}{draw\+\_\+lbw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aa60405e7fa6d9542e779c732d8a02fa2}{draw\+\_\+lcw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a2e85e38bbbd4195cd27dc49c3f7de1eb}{draw\+\_\+lçw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a6636850235804138ef437762db269ac6}{draw\+\_\+ldw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a4611d0af8ccd9cbc7ccdeb2d7fbeca75}{draw\+\_\+lew}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a1ea6d899e4d1e20f01ab0c5cbb606120}{draw\+\_\+lfw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a64020b2b86a407a414808d96255065c0}{draw\+\_\+lgw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aab300d4cbdb6ecc1161db0c628bbc83f}{draw\+\_\+lhw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ab49d20451a838185b75b7058b03d30b4}{draw\+\_\+liw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a3569dc047815d92a9d07508a66bdbea0}{draw\+\_\+ljw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_af068323a8b80556751411e545889d757}{draw\+\_\+lkw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ab177e609c5582f90ff2a7d06a19fa15c}{draw\+\_\+llw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a15bf32e7e9ed78b2e8cdd8e947f8ed46}{draw\+\_\+lmw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a725fa600b50fe7d5786c6213792755db}{draw\+\_\+lnw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a004bfde1e80f8b06eabbd74baf9d450b}{draw\+\_\+low}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ad4b3e0cb4195d63e04f698b8d91309a1}{draw\+\_\+lpw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a2d681a7f55edb4024d40789a9c3e8a35}{draw\+\_\+lqw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a9e44a602a7ae83757102a2846a376cfd}{draw\+\_\+lrw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a3831c7a1336cd1a3087b941ba790fa79}{draw\+\_\+lsw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a6fd2bf9c151b93c2a5c2718309b18bfc}{draw\+\_\+ltw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aca8a10346b4685273e890b9fe90f9e6b}{draw\+\_\+luw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ad0b3be9b83e18955e74a56fad786b824}{draw\+\_\+lvw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ad01c61731a57145fdf8456d86e1dbd27}{draw\+\_\+\+Lw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_af5fedac112c4d5a1ba7d7e6c1cf24b0a}{draw\+\_\+lww}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a261f8c5880e626cac6c1a80ab47d1ee6}{draw\+\_\+lxw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aae3970eb0de6cb84142f4f9673f40a75}{draw\+\_\+lyw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ae7f6cee2587b7db40f4e2d79bb9a3fa0}{draw\+\_\+lzw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a96774c1d07ef56005de22cda775ca1f8}{draw\+\_\+\+Mw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aada78afece5f131097a75879813ed0d5}{draw\+\_\+\+Nw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a7a02cd01c81bcafdf248d753a9019a49}{draw\+\_\+\+Ow}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a095c91788358d0931d65ee78d7a3517e}{draw\+\_\+\+Pw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_acb192266276de67a07a93ff40a44a3fc}{draw\+\_\+\+Qw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a196812e2fb6ed1f39c4446f1d560fdcc}{draw\+\_\+\+Rw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a91388fd8a66b3303b3b9d91e86c36203}{draw\+\_\+\+Sw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aa82c0ca94cee91393ea72c2ee4266253}{draw\+\_\+\+Tw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a9baf450bbe6e43df7c5f5168d91b7910}{draw\+\_\+\+Uw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a04bb91907e20e801b305f7d690680665}{draw\+\_\+\+Vw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a4480a4e08b3ff5ee1e7dbf90d8526b50}{draw\+\_\+\+Ww}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a1fc47ce349d2e1a362a77361bafbe98c}{draw\+\_\+\+Xw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_ad142fcaae0896cfbe607806103ef40e0}{draw\+\_\+\+Yw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a3a386bff99dd78866656e0a10924a81e}{draw\+\_\+\+Zw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_a4b8931a6707fb515ffca3197a9f066a6}{eraseblackletters}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_aa672bf21cdd0175667699e8457d09603}{erasewhiteletters}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{letters_8c_afea1542bb62ff0952ab63b63375eec97}{draw\+\_\+dotw}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ae594e8b9e219f9502ce26d92ba6c3b43}{exclamationw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a75012a54c57023b00894abef433232d7}{start\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ab8273774d679dd8ef1626c28bc6d5eb5}{percentagew\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a95ecfacfe4b022815485d6bd1e523ab2}{andw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_afa03b61cd603d494b4defa6d8e4dbf34}{leftwhite\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a6674f0d7af6c6f44313ffa714648c2f9}{rightbracketw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a4216704f46b06f83f73001f9f6433fda}{commaw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_abb2aa514153c119783ea76d9880d002d}{semicolonw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_af1d55b3a57848cbccd44bd1801260f82}{zerow\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_aeacb6740c28219f83c2e272b887ee7b1}{onew\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a6cf0a7065244b9a11c327ffb2daa5ec4}{twow\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_abbb6ffad264938bb16db4ebe96ddcd05}{threew\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_af6b287e1b101cb5f6ed340d5e09b66d9}{fourw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a9180c64b107fdbc782511a1cd906c274}{fivew\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a8281764253d63362db8c3d1a53dc4179}{sixw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a510a2b19cc6c2d4bee720e85c8835fe7}{sevenw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a811b4481a219aaee7183a4c6dc78ff29}{eightw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a264788cf5b507d4a44a9125829e82024}{ninew\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_af053cf19cad2c6cca491cba0b0f52ace}{Aw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a49c104744a9d439c11ac257fa758fdb3}{Bw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_aa19dddad5be2bdfcb989c1acfb25d314}{Cw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a2ce6fc776cbebc4390d10cf083ed3b32}{Çw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a4ed87295a4ef131a584fdc9a53d5b972}{Dw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ace1a67fa61e99ce8cc8f1a53cc5861a6}{Ew\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a728ea34d5bbc34773ae82205c826f2d2}{Fw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ad8a15086424b441f88d0eb3b0379446c}{Gw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_aa04edc9285ddd29e6f306fee66deecaa}{Hw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a88b9a8c089103b38565462a0a0cf0e4c}{Iw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_abc7986cf3603a54dd52b2d4b7a0cc836}{Jw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_aa947725d9149d83521afe5c185d75314}{Kw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ab70405cb71eafe05595c403adaa86464}{law\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a34c91fcbd1ae2f1aa722655af4ba6eda}{lbw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a75474a1872792ea4e3c2a186d0e9fca0}{lcw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_aa4bb6248cfd624be4b2c8272b11733e7}{lçw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_af3f68eb1129a916bf83192ffdd7b5057}{ldw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a812470d5966c87beef5b7c3cd2232aa8}{lew\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_aba1bb6cd0ae81a80d919c05c8b934ab9}{lfw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a1c7f67c2b9021083b0894e3857fad30b}{lgw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a9be93d396ac48bbdd5fed03069e2a9f1}{lhw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ad41cc85b99f7eac083ca6688a7e56a55}{liw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a4c9e868c2b8c4baf217be997afcc0cf2}{ljw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a8a24650edb585a567c41242d62d2534f}{lkw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_af0320d3018840f8118f73288fbee8c23}{llw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a62a5575f0d3ee480c9ba726f4216d4ff}{lmw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ae334cdc6031a5c38b51864b28777ffa2}{lnw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ab2758a678f565db75c8c978de5b1fea6}{low\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a57c16e1bad2078105db8fc32a146d08a}{lpw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_af2224baf2d674763a2b9b7309b4cc154}{lqw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a38d2391bc68e26075d67e8c988737cda}{lrw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a4aa3e96c2b65905738de5f910cf1f64b}{lsw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_abebf8d8a6773755ad145b80a6356701f}{ltw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a55c443ba329ac9c2667d61f05c79bf7c}{luw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a95cc2438b6975224b494ed7673408b27}{lvw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ad584b67649bf2fce089186ab0be85cc0}{Lw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_abf44b206bbfdfa0acfdf717f425b495d}{lww\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ad13e1701a76ae2165b84169f1d7b870a}{lxw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a6f611e8e418b3c31a6df46b07f526fa7}{lyw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ac28475db4251b1fe0ab4879c989b20c4}{lzw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a3450ff731edd37e48c4895ea89e310a1}{Mw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a01191f9dc5690bc448d5e1d17a07597b}{Nw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a8fe0f73e082a4a693faa3959b48e986b}{Ow\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_aca69559ffcb49ebb0a9a86417a9b8eb7}{Pw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a150badeae3cc2d48376803e0f980d2e2}{questionmarkw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ab1700441da10dc6f5a9c80c620933f5a}{Qw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a9b6149776b238b28a3042e65aca2d25a}{Rw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a326e53698309317d982467f30de09739}{sidebarw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a252632b30d6a48b03b982a2f7786a0df}{Sw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_aa66d035c7c392526b931637d947c5d44}{Tw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_abc3b5b4bc98d7d0aa3e243092ecf766a}{twodotsw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a79af0ccc73a613027914b34b7717598e}{Uw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ac9a0141b95f7265ef8a6a6f338238e1c}{Vw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a0ce9c6094f042570c5a137887713251c}{Ww\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a1e7a300ec48ae0554b6b85f1af2a530f}{Xw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a013204b2d8e1a9e8de138d1fc91e5fc1}{Yw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_ab60aff875bc4b58de8d38355f0eeaabb}{Zw\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a317f78e675c5250106eff448f6af57b8}{eraseblackletters\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a67d10ca94ac1fc8152e86eaef0101ae0}{erasewhiteletters\+\_\+sprite}}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{letters_8c_a34aba25aa4765637ab5b9d0fa7862dcb}{dotw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a3f7ac98b26a30b41ac6e1977e7c8469e}{img\+\_\+exclamationw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_ac7b91a43a4a0811f1a9ac319e52a1b1f}{img\+\_\+start\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_acb886de0bebc0fe84518fb4a2bcbb69f}{img\+\_\+percentagew\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a6d4642285a34b142f7f3b8b7871ec480}{img\+\_\+andw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a3c5a505f10bd1d7d852309f7d9fc8c83}{img\+\_\+leftwhite\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a6df061fb264a0b2e6b625089910c9a60}{img\+\_\+rightbracketw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a10df6ea53e08c826820bee898f5b81d1}{img\+\_\+commaw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a3c236e736804624cfcff09abe7684db2}{img\+\_\+semicolonw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a4f462370e27daab85227d2fb8d84abe1}{img\+\_\+zerow\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a4b44ee3e373349cedbb05f17bbb4d620}{img\+\_\+onew\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a33c147fca47ae31c07fd1e4437056abf}{img\+\_\+twow\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_ac038169a63446e03f9d93473e34b7ea2}{img\+\_\+threew\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a210f1776cb465047af2fcec69aed430f}{img\+\_\+fourw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a707a219809dfc75642c45b29053a6823}{img\+\_\+fivew\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a7f625f93c51e6f751908f7291ca88f41}{img\+\_\+sixw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a9d3b8b760792d960522351e6b2aee307}{img\+\_\+sevenw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a2b5db8fda1c7f66ae276c6837de68d62}{img\+\_\+eightw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a54224e45c81ea19959640ec3db412bfd}{img\+\_\+ninew\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a6fda1491b9785c823f36e585a72b2557}{img\+\_\+\+Aw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a447c7e46610963e76012c6c223ca1625}{img\+\_\+\+Bw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a28efb6fadabef3f075db5859bacbc23a}{img\+\_\+\+Cw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a5508e8b45d3dd2ee6d293873ba4b3d76}{img\+\_\+Çw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a13e56ac8b4a92c77156b4814d4c1aab8}{img\+\_\+\+Dw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_ace78a0ff8f91a5d06694687402da03b0}{img\+\_\+\+Ew\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a4e86e4fd08f9b4db91098384cee98813}{img\+\_\+\+Fw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a0405fbe0474bb13e38efd9b811814718}{img\+\_\+\+Gw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a18b6e609fdb4d04401a7c3cc833a941a}{img\+\_\+\+Hw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_acda3b4060d884fb3c68f739090e00117}{img\+\_\+\+Iw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_aed0f9f82f0042d5ec6138956e43c8c29}{img\+\_\+\+Jw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a23d2e741c40fc812a75b03c63eec96ff}{img\+\_\+\+Kw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a96588b9c335022d85ada1cde8628b073}{img\+\_\+law\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a549019982632163e51f9362d91ecf597}{img\+\_\+lbw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a21090e1fb2cd307a623cbaa40eee6377}{img\+\_\+lcw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a4aafadc1730e021d96c931d02c0ce578}{img\+\_\+lçw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_ac985e6989ee26364017c6b57de2fde95}{img\+\_\+ldw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a784e4df74ff22434f1e952ba6fe55cd4}{img\+\_\+lew\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a07e2050a61cda247a14930c229801770}{img\+\_\+lfw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a717177a1fed444e0a7a846d53292615f}{img\+\_\+lgw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a2e3a3820f724537eb1e26cd5068a3506}{img\+\_\+lhw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a93ebb974b14e8871a8b2c5028ce021d7}{img\+\_\+liw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a8109358016d2af7c58983e89ea43aac7}{img\+\_\+ljw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_ae3a00cea5d4cc020f7817989de18f82b}{img\+\_\+lkw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a00d7fa8fba44d494aa2c5873ed8ecd4a}{img\+\_\+llw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a4911d884fae393aa8cfa680e7e72132b}{img\+\_\+lmw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a584c37a187a80d4605ba9ed797d7cdd7}{img\+\_\+lnw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a82f85028538ae3ad43873ef07e2cd520}{img\+\_\+low\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_ac901e9366ed397f12e6b910a0166f9b0}{img\+\_\+lpw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a2ad3c55482bbcd3732ad1f02406b12d4}{img\+\_\+lqw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_abecb12cacbe95f6ab82b7e7c0789294b}{img\+\_\+lrw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_aadbdf01d25359f91174d21245a9e73ca}{img\+\_\+lsw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_abe38081e2fda66ba71a592c579fa7181}{img\+\_\+ltw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a25b5d09293b66db40b81680aa170be52}{img\+\_\+luw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a78ee9c8ca84fc592bfbfbbc42fd3e9fd}{img\+\_\+lvw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_afd134b5b713c12e985a28633f8928e4b}{img\+\_\+\+Lw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a545ec5385c00ae53672bf0bd8fc1f559}{img\+\_\+lww\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_af8b79a560125e64640d036d54d983cbd}{img\+\_\+lxw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a6d0f4c9dd2b8753f52939984671e0071}{img\+\_\+lyw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a360c2a5ccc002baba256b1b2081d906b}{img\+\_\+lzw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_aecfb4edaca4695bb60c56f44b24925bc}{img\+\_\+\+Mw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_aa6f13964d565b31e65899184fbf919c2}{img\+\_\+\+Nw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a0989bfa23a5ebd77cc4e22b94ebd42ae}{img\+\_\+\+Ow\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a6a961c18002deecd9e9c2539db64a68b}{img\+\_\+\+Pw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a801f12db32a96281c1918f493cd5f516}{img\+\_\+questionmarkw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_ae3eee94e89310d5b1a3eab0c6be0cccd}{img\+\_\+\+Qw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a1332af8942eb181f24021442bbc5d4da}{img\+\_\+\+Rw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a6d3d380cc34e1c9a425b28978788e901}{img\+\_\+sidebarb\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a273eed0e6fb9b5c6827cfe2cf79b0a45}{img\+\_\+sidebarw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a2f12c1f0f7b75e136f74f0f58a24010b}{img\+\_\+\+Sw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a1ec05373b4d37ccd4e1ed2727c4de45f}{img\+\_\+\+Tb\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a7f19f5faac025c3b97f8573b99d3c3de}{img\+\_\+\+Tw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a9c9db3dd31a147a1ba556508124c1838}{img\+\_\+twodotsw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_abea80d7ab7b82d2d9b50171955e94912}{img\+\_\+\+Uw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a189d8ddf2584474c778dbccf80e5d174}{img\+\_\+\+Vw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a864ef25496ee0c759c4f66a705bbad40}{img\+\_\+\+Ww\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a545159036a472e665e347026d64eaa74}{img\+\_\+\+Xw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a2e2aa75637d2706c92363873e75a68f7}{img\+\_\+\+Yw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a56b360df59ec84e6e9a900fae7efa71b}{img\+\_\+\+Zw\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_a2a3838ca72df5678eb98c6fa19b93f1c}{img\+\_\+eraseblackletters\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_aa13a802538411ac96cd3512fffc34b53}{img\+\_\+erasewhiteletters\+\_\+sprite}}
+\item 
+xpm\+\_\+image\+\_\+t \mbox{\hyperlink{letters_8c_aebdfb8c57bca669e6d72f91c96615157}{img\+\_\+dotw\+\_\+sprite}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{letters_8c_a2e3c453426b6000a938111abd0c2b9ea}\label{letters_8c_a2e3c453426b6000a938111abd0c2b9ea} 
+\index{letters.c@{letters.c}!draw\_Çw@{draw\_Çw}}
+\index{draw\_Çw@{draw\_Çw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Çw()}{draw\_Çw()}}
+{\footnotesize\ttfamily int draw\+\_\+Çw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00347}{347}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_acb0dcffaae7b1cde8a494a4a6d3d1ee5}\label{letters_8c_acb0dcffaae7b1cde8a494a4a6d3d1ee5} 
+\index{letters.c@{letters.c}!draw\_andw@{draw\_andw}}
+\index{draw\_andw@{draw\_andw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_andw()}{draw\_andw()}}
+{\footnotesize\ttfamily int draw\+\_\+andw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00194}{194}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_acdbbb39eb33a5010dbb229e8e4785b51}\label{letters_8c_acdbbb39eb33a5010dbb229e8e4785b51} 
+\index{letters.c@{letters.c}!draw\_Aw@{draw\_Aw}}
+\index{draw\_Aw@{draw\_Aw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Aw()}{draw\_Aw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Aw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00323}{323}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a0cce6307fcd243aa5d54b848949989d9}\label{letters_8c_a0cce6307fcd243aa5d54b848949989d9} 
+\index{letters.c@{letters.c}!draw\_Bw@{draw\_Bw}}
+\index{draw\_Bw@{draw\_Bw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Bw()}{draw\_Bw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Bw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00331}{331}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ad1cf3db48beb1a2bfa348b6d4e68f7d2}\label{letters_8c_ad1cf3db48beb1a2bfa348b6d4e68f7d2} 
+\index{letters.c@{letters.c}!draw\_commaw@{draw\_commaw}}
+\index{draw\_commaw@{draw\_commaw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_commaw()}{draw\_commaw()}}
+{\footnotesize\ttfamily int draw\+\_\+commaw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00220}{220}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ac02fe1ba57c81c91dd848d34234903fe}\label{letters_8c_ac02fe1ba57c81c91dd848d34234903fe} 
+\index{letters.c@{letters.c}!draw\_Cw@{draw\_Cw}}
+\index{draw\_Cw@{draw\_Cw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Cw()}{draw\_Cw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Cw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00339}{339}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_afea1542bb62ff0952ab63b63375eec97}\label{letters_8c_afea1542bb62ff0952ab63b63375eec97} 
+\index{letters.c@{letters.c}!draw\_dotw@{draw\_dotw}}
+\index{draw\_dotw@{draw\_dotw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_dotw()}{draw\_dotw()}}
+{\footnotesize\ttfamily int draw\+\_\+dotw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00770}{770}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a3d7aa76ba29c26454395c6a35870010c}\label{letters_8c_a3d7aa76ba29c26454395c6a35870010c} 
+\index{letters.c@{letters.c}!draw\_Dw@{draw\_Dw}}
+\index{draw\_Dw@{draw\_Dw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Dw()}{draw\_Dw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Dw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00355}{355}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aa678c911f475344d5588733ef4f5c835}\label{letters_8c_aa678c911f475344d5588733ef4f5c835} 
+\index{letters.c@{letters.c}!draw\_eightw@{draw\_eightw}}
+\index{draw\_eightw@{draw\_eightw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_eightw()}{draw\_eightw()}}
+{\footnotesize\ttfamily int draw\+\_\+eightw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00307}{307}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aae8c85190bec3e3052b8065be37b6454}\label{letters_8c_aae8c85190bec3e3052b8065be37b6454} 
+\index{letters.c@{letters.c}!draw\_Ew@{draw\_Ew}}
+\index{draw\_Ew@{draw\_Ew}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Ew()}{draw\_Ew()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Ew (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00363}{363}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_abd592fbcf300ea90c52811aa828eafe2}\label{letters_8c_abd592fbcf300ea90c52811aa828eafe2} 
+\index{letters.c@{letters.c}!draw\_exclamationw@{draw\_exclamationw}}
+\index{draw\_exclamationw@{draw\_exclamationw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_exclamationw()}{draw\_exclamationw()}}
+{\footnotesize\ttfamily int draw\+\_\+exclamationw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00175}{175}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ac2afb855c90295616d354fec8e4951f0}\label{letters_8c_ac2afb855c90295616d354fec8e4951f0} 
+\index{letters.c@{letters.c}!draw\_fivew@{draw\_fivew}}
+\index{draw\_fivew@{draw\_fivew}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_fivew()}{draw\_fivew()}}
+{\footnotesize\ttfamily int draw\+\_\+fivew (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00282}{282}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a5ec2b9c360137fefd946cb1503cfc124}\label{letters_8c_a5ec2b9c360137fefd946cb1503cfc124} 
+\index{letters.c@{letters.c}!draw\_fourw@{draw\_fourw}}
+\index{draw\_fourw@{draw\_fourw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_fourw()}{draw\_fourw()}}
+{\footnotesize\ttfamily int draw\+\_\+fourw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00273}{273}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a418c102e6f011dd6544c9a2a8540ba57}\label{letters_8c_a418c102e6f011dd6544c9a2a8540ba57} 
+\index{letters.c@{letters.c}!draw\_Fw@{draw\_Fw}}
+\index{draw\_Fw@{draw\_Fw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Fw()}{draw\_Fw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Fw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00370}{370}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ac6078e81a04cc78a347f541beed7c491}\label{letters_8c_ac6078e81a04cc78a347f541beed7c491} 
+\index{letters.c@{letters.c}!draw\_Gw@{draw\_Gw}}
+\index{draw\_Gw@{draw\_Gw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Gw()}{draw\_Gw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Gw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00378}{378}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a7fdd6117e1913c331bf0dd2326c92d14}\label{letters_8c_a7fdd6117e1913c331bf0dd2326c92d14} 
+\index{letters.c@{letters.c}!draw\_Hw@{draw\_Hw}}
+\index{draw\_Hw@{draw\_Hw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Hw()}{draw\_Hw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Hw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00386}{386}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a360978a6bf6c352d93406eb99a9654e6}\label{letters_8c_a360978a6bf6c352d93406eb99a9654e6} 
+\index{letters.c@{letters.c}!draw\_Iw@{draw\_Iw}}
+\index{draw\_Iw@{draw\_Iw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Iw()}{draw\_Iw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Iw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00394}{394}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a8a0a7b7649b9c0a4d7e16543ad4e4e18}\label{letters_8c_a8a0a7b7649b9c0a4d7e16543ad4e4e18} 
+\index{letters.c@{letters.c}!draw\_Jw@{draw\_Jw}}
+\index{draw\_Jw@{draw\_Jw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Jw()}{draw\_Jw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Jw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00402}{402}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a1b9c8b7afcc76cd8d95634c9aa98836e}\label{letters_8c_a1b9c8b7afcc76cd8d95634c9aa98836e} 
+\index{letters.c@{letters.c}!draw\_Kw@{draw\_Kw}}
+\index{draw\_Kw@{draw\_Kw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Kw()}{draw\_Kw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Kw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00410}{410}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a2e85e38bbbd4195cd27dc49c3f7de1eb}\label{letters_8c_a2e85e38bbbd4195cd27dc49c3f7de1eb} 
+\index{letters.c@{letters.c}!draw\_lçw@{draw\_lçw}}
+\index{draw\_lçw@{draw\_lçw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lçw()}{draw\_lçw()}}
+{\footnotesize\ttfamily int draw\+\_\+lçw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00441}{441}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ae47302d1c4237e16085a4413687a4cc4}\label{letters_8c_ae47302d1c4237e16085a4413687a4cc4} 
+\index{letters.c@{letters.c}!draw\_law@{draw\_law}}
+\index{draw\_law@{draw\_law}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_law()}{draw\_law()}}
+{\footnotesize\ttfamily int draw\+\_\+law (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00418}{418}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a7d3491e1754a1b645f9cf85d8215cbec}\label{letters_8c_a7d3491e1754a1b645f9cf85d8215cbec} 
+\index{letters.c@{letters.c}!draw\_lbw@{draw\_lbw}}
+\index{draw\_lbw@{draw\_lbw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lbw()}{draw\_lbw()}}
+{\footnotesize\ttfamily int draw\+\_\+lbw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00425}{425}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aa60405e7fa6d9542e779c732d8a02fa2}\label{letters_8c_aa60405e7fa6d9542e779c732d8a02fa2} 
+\index{letters.c@{letters.c}!draw\_lcw@{draw\_lcw}}
+\index{draw\_lcw@{draw\_lcw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lcw()}{draw\_lcw()}}
+{\footnotesize\ttfamily int draw\+\_\+lcw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00433}{433}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a6636850235804138ef437762db269ac6}\label{letters_8c_a6636850235804138ef437762db269ac6} 
+\index{letters.c@{letters.c}!draw\_ldw@{draw\_ldw}}
+\index{draw\_ldw@{draw\_ldw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_ldw()}{draw\_ldw()}}
+{\footnotesize\ttfamily int draw\+\_\+ldw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00449}{449}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a28954bd651045ec0788cf35be5215358}\label{letters_8c_a28954bd651045ec0788cf35be5215358} 
+\index{letters.c@{letters.c}!draw\_leftwhite@{draw\_leftwhite}}
+\index{draw\_leftwhite@{draw\_leftwhite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_leftwhite()}{draw\_leftwhite()}}
+{\footnotesize\ttfamily int draw\+\_\+leftwhite (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00203}{203}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a4611d0af8ccd9cbc7ccdeb2d7fbeca75}\label{letters_8c_a4611d0af8ccd9cbc7ccdeb2d7fbeca75} 
+\index{letters.c@{letters.c}!draw\_lew@{draw\_lew}}
+\index{draw\_lew@{draw\_lew}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lew()}{draw\_lew()}}
+{\footnotesize\ttfamily int draw\+\_\+lew (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00457}{457}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a1ea6d899e4d1e20f01ab0c5cbb606120}\label{letters_8c_a1ea6d899e4d1e20f01ab0c5cbb606120} 
+\index{letters.c@{letters.c}!draw\_lfw@{draw\_lfw}}
+\index{draw\_lfw@{draw\_lfw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lfw()}{draw\_lfw()}}
+{\footnotesize\ttfamily int draw\+\_\+lfw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00465}{465}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a64020b2b86a407a414808d96255065c0}\label{letters_8c_a64020b2b86a407a414808d96255065c0} 
+\index{letters.c@{letters.c}!draw\_lgw@{draw\_lgw}}
+\index{draw\_lgw@{draw\_lgw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lgw()}{draw\_lgw()}}
+{\footnotesize\ttfamily int draw\+\_\+lgw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00473}{473}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aab300d4cbdb6ecc1161db0c628bbc83f}\label{letters_8c_aab300d4cbdb6ecc1161db0c628bbc83f} 
+\index{letters.c@{letters.c}!draw\_lhw@{draw\_lhw}}
+\index{draw\_lhw@{draw\_lhw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lhw()}{draw\_lhw()}}
+{\footnotesize\ttfamily int draw\+\_\+lhw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00481}{481}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ab49d20451a838185b75b7058b03d30b4}\label{letters_8c_ab49d20451a838185b75b7058b03d30b4} 
+\index{letters.c@{letters.c}!draw\_liw@{draw\_liw}}
+\index{draw\_liw@{draw\_liw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_liw()}{draw\_liw()}}
+{\footnotesize\ttfamily int draw\+\_\+liw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00489}{489}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a3569dc047815d92a9d07508a66bdbea0}\label{letters_8c_a3569dc047815d92a9d07508a66bdbea0} 
+\index{letters.c@{letters.c}!draw\_ljw@{draw\_ljw}}
+\index{draw\_ljw@{draw\_ljw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_ljw()}{draw\_ljw()}}
+{\footnotesize\ttfamily int draw\+\_\+ljw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00497}{497}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_af068323a8b80556751411e545889d757}\label{letters_8c_af068323a8b80556751411e545889d757} 
+\index{letters.c@{letters.c}!draw\_lkw@{draw\_lkw}}
+\index{draw\_lkw@{draw\_lkw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lkw()}{draw\_lkw()}}
+{\footnotesize\ttfamily int draw\+\_\+lkw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00505}{505}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ab177e609c5582f90ff2a7d06a19fa15c}\label{letters_8c_ab177e609c5582f90ff2a7d06a19fa15c} 
+\index{letters.c@{letters.c}!draw\_llw@{draw\_llw}}
+\index{draw\_llw@{draw\_llw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_llw()}{draw\_llw()}}
+{\footnotesize\ttfamily int draw\+\_\+llw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00513}{513}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a15bf32e7e9ed78b2e8cdd8e947f8ed46}\label{letters_8c_a15bf32e7e9ed78b2e8cdd8e947f8ed46} 
+\index{letters.c@{letters.c}!draw\_lmw@{draw\_lmw}}
+\index{draw\_lmw@{draw\_lmw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lmw()}{draw\_lmw()}}
+{\footnotesize\ttfamily int draw\+\_\+lmw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00521}{521}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a725fa600b50fe7d5786c6213792755db}\label{letters_8c_a725fa600b50fe7d5786c6213792755db} 
+\index{letters.c@{letters.c}!draw\_lnw@{draw\_lnw}}
+\index{draw\_lnw@{draw\_lnw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lnw()}{draw\_lnw()}}
+{\footnotesize\ttfamily int draw\+\_\+lnw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00529}{529}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a004bfde1e80f8b06eabbd74baf9d450b}\label{letters_8c_a004bfde1e80f8b06eabbd74baf9d450b} 
+\index{letters.c@{letters.c}!draw\_low@{draw\_low}}
+\index{draw\_low@{draw\_low}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_low()}{draw\_low()}}
+{\footnotesize\ttfamily int draw\+\_\+low (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00537}{537}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ad4b3e0cb4195d63e04f698b8d91309a1}\label{letters_8c_ad4b3e0cb4195d63e04f698b8d91309a1} 
+\index{letters.c@{letters.c}!draw\_lpw@{draw\_lpw}}
+\index{draw\_lpw@{draw\_lpw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lpw()}{draw\_lpw()}}
+{\footnotesize\ttfamily int draw\+\_\+lpw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00545}{545}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a2d681a7f55edb4024d40789a9c3e8a35}\label{letters_8c_a2d681a7f55edb4024d40789a9c3e8a35} 
+\index{letters.c@{letters.c}!draw\_lqw@{draw\_lqw}}
+\index{draw\_lqw@{draw\_lqw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lqw()}{draw\_lqw()}}
+{\footnotesize\ttfamily int draw\+\_\+lqw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00553}{553}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a9e44a602a7ae83757102a2846a376cfd}\label{letters_8c_a9e44a602a7ae83757102a2846a376cfd} 
+\index{letters.c@{letters.c}!draw\_lrw@{draw\_lrw}}
+\index{draw\_lrw@{draw\_lrw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lrw()}{draw\_lrw()}}
+{\footnotesize\ttfamily int draw\+\_\+lrw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00561}{561}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a3831c7a1336cd1a3087b941ba790fa79}\label{letters_8c_a3831c7a1336cd1a3087b941ba790fa79} 
+\index{letters.c@{letters.c}!draw\_lsw@{draw\_lsw}}
+\index{draw\_lsw@{draw\_lsw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lsw()}{draw\_lsw()}}
+{\footnotesize\ttfamily int draw\+\_\+lsw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00569}{569}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a6fd2bf9c151b93c2a5c2718309b18bfc}\label{letters_8c_a6fd2bf9c151b93c2a5c2718309b18bfc} 
+\index{letters.c@{letters.c}!draw\_ltw@{draw\_ltw}}
+\index{draw\_ltw@{draw\_ltw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_ltw()}{draw\_ltw()}}
+{\footnotesize\ttfamily int draw\+\_\+ltw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00577}{577}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aca8a10346b4685273e890b9fe90f9e6b}\label{letters_8c_aca8a10346b4685273e890b9fe90f9e6b} 
+\index{letters.c@{letters.c}!draw\_luw@{draw\_luw}}
+\index{draw\_luw@{draw\_luw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_luw()}{draw\_luw()}}
+{\footnotesize\ttfamily int draw\+\_\+luw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00585}{585}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ad0b3be9b83e18955e74a56fad786b824}\label{letters_8c_ad0b3be9b83e18955e74a56fad786b824} 
+\index{letters.c@{letters.c}!draw\_lvw@{draw\_lvw}}
+\index{draw\_lvw@{draw\_lvw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lvw()}{draw\_lvw()}}
+{\footnotesize\ttfamily int draw\+\_\+lvw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00593}{593}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ad01c61731a57145fdf8456d86e1dbd27}\label{letters_8c_ad01c61731a57145fdf8456d86e1dbd27} 
+\index{letters.c@{letters.c}!draw\_Lw@{draw\_Lw}}
+\index{draw\_Lw@{draw\_Lw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Lw()}{draw\_Lw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Lw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00601}{601}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_af5fedac112c4d5a1ba7d7e6c1cf24b0a}\label{letters_8c_af5fedac112c4d5a1ba7d7e6c1cf24b0a} 
+\index{letters.c@{letters.c}!draw\_lww@{draw\_lww}}
+\index{draw\_lww@{draw\_lww}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lww()}{draw\_lww()}}
+{\footnotesize\ttfamily int draw\+\_\+lww (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00609}{609}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a261f8c5880e626cac6c1a80ab47d1ee6}\label{letters_8c_a261f8c5880e626cac6c1a80ab47d1ee6} 
+\index{letters.c@{letters.c}!draw\_lxw@{draw\_lxw}}
+\index{draw\_lxw@{draw\_lxw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lxw()}{draw\_lxw()}}
+{\footnotesize\ttfamily int draw\+\_\+lxw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00617}{617}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aae3970eb0de6cb84142f4f9673f40a75}\label{letters_8c_aae3970eb0de6cb84142f4f9673f40a75} 
+\index{letters.c@{letters.c}!draw\_lyw@{draw\_lyw}}
+\index{draw\_lyw@{draw\_lyw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lyw()}{draw\_lyw()}}
+{\footnotesize\ttfamily int draw\+\_\+lyw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00625}{625}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ae7f6cee2587b7db40f4e2d79bb9a3fa0}\label{letters_8c_ae7f6cee2587b7db40f4e2d79bb9a3fa0} 
+\index{letters.c@{letters.c}!draw\_lzw@{draw\_lzw}}
+\index{draw\_lzw@{draw\_lzw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_lzw()}{draw\_lzw()}}
+{\footnotesize\ttfamily int draw\+\_\+lzw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00633}{633}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a96774c1d07ef56005de22cda775ca1f8}\label{letters_8c_a96774c1d07ef56005de22cda775ca1f8} 
+\index{letters.c@{letters.c}!draw\_Mw@{draw\_Mw}}
+\index{draw\_Mw@{draw\_Mw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Mw()}{draw\_Mw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Mw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00641}{641}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_abaf4ee6d1ef1cbecb28e990012291a0c}\label{letters_8c_abaf4ee6d1ef1cbecb28e990012291a0c} 
+\index{letters.c@{letters.c}!draw\_ninew@{draw\_ninew}}
+\index{draw\_ninew@{draw\_ninew}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_ninew()}{draw\_ninew()}}
+{\footnotesize\ttfamily int draw\+\_\+ninew (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00315}{315}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aada78afece5f131097a75879813ed0d5}\label{letters_8c_aada78afece5f131097a75879813ed0d5} 
+\index{letters.c@{letters.c}!draw\_Nw@{draw\_Nw}}
+\index{draw\_Nw@{draw\_Nw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Nw()}{draw\_Nw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Nw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00649}{649}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a1e6a4121b8f39e367716a36ff99fef33}\label{letters_8c_a1e6a4121b8f39e367716a36ff99fef33} 
+\index{letters.c@{letters.c}!draw\_onew@{draw\_onew}}
+\index{draw\_onew@{draw\_onew}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_onew()}{draw\_onew()}}
+{\footnotesize\ttfamily int draw\+\_\+onew (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00247}{247}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a7a02cd01c81bcafdf248d753a9019a49}\label{letters_8c_a7a02cd01c81bcafdf248d753a9019a49} 
+\index{letters.c@{letters.c}!draw\_Ow@{draw\_Ow}}
+\index{draw\_Ow@{draw\_Ow}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Ow()}{draw\_Ow()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Ow (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00657}{657}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a64cf9f372eecbfad2899670b018fd487}\label{letters_8c_a64cf9f372eecbfad2899670b018fd487} 
+\index{letters.c@{letters.c}!draw\_percentagew@{draw\_percentagew}}
+\index{draw\_percentagew@{draw\_percentagew}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_percentagew()}{draw\_percentagew()}}
+{\footnotesize\ttfamily int draw\+\_\+percentagew (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00185}{185}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a095c91788358d0931d65ee78d7a3517e}\label{letters_8c_a095c91788358d0931d65ee78d7a3517e} 
+\index{letters.c@{letters.c}!draw\_Pw@{draw\_Pw}}
+\index{draw\_Pw@{draw\_Pw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Pw()}{draw\_Pw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Pw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00665}{665}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_acb192266276de67a07a93ff40a44a3fc}\label{letters_8c_acb192266276de67a07a93ff40a44a3fc} 
+\index{letters.c@{letters.c}!draw\_Qw@{draw\_Qw}}
+\index{draw\_Qw@{draw\_Qw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Qw()}{draw\_Qw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Qw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00673}{673}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ab5ed76e86177d870b0db9472b8545fe9}\label{letters_8c_ab5ed76e86177d870b0db9472b8545fe9} 
+\index{letters.c@{letters.c}!draw\_rightbracketw@{draw\_rightbracketw}}
+\index{draw\_rightbracketw@{draw\_rightbracketw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_rightbracketw()}{draw\_rightbracketw()}}
+{\footnotesize\ttfamily int draw\+\_\+rightbracketw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00211}{211}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a196812e2fb6ed1f39c4446f1d560fdcc}\label{letters_8c_a196812e2fb6ed1f39c4446f1d560fdcc} 
+\index{letters.c@{letters.c}!draw\_Rw@{draw\_Rw}}
+\index{draw\_Rw@{draw\_Rw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Rw()}{draw\_Rw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Rw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00681}{681}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a61e7da22659748c747b17abd7b9e3f7f}\label{letters_8c_a61e7da22659748c747b17abd7b9e3f7f} 
+\index{letters.c@{letters.c}!draw\_semicolonw@{draw\_semicolonw}}
+\index{draw\_semicolonw@{draw\_semicolonw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_semicolonw()}{draw\_semicolonw()}}
+{\footnotesize\ttfamily int draw\+\_\+semicolonw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00229}{229}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_adfb1c34c064d424def9929326d6ada5c}\label{letters_8c_adfb1c34c064d424def9929326d6ada5c} 
+\index{letters.c@{letters.c}!draw\_sevenw@{draw\_sevenw}}
+\index{draw\_sevenw@{draw\_sevenw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_sevenw()}{draw\_sevenw()}}
+{\footnotesize\ttfamily int draw\+\_\+sevenw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00299}{299}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_af6c73f67a37253ac536147a88b6e564d}\label{letters_8c_af6c73f67a37253ac536147a88b6e564d} 
+\index{letters.c@{letters.c}!draw\_sixw@{draw\_sixw}}
+\index{draw\_sixw@{draw\_sixw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_sixw()}{draw\_sixw()}}
+{\footnotesize\ttfamily int draw\+\_\+sixw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00291}{291}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a91388fd8a66b3303b3b9d91e86c36203}\label{letters_8c_a91388fd8a66b3303b3b9d91e86c36203} 
+\index{letters.c@{letters.c}!draw\_Sw@{draw\_Sw}}
+\index{draw\_Sw@{draw\_Sw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Sw()}{draw\_Sw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Sw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00689}{689}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a6c21b38f3a8f6055504677bf3c5c2058}\label{letters_8c_a6c21b38f3a8f6055504677bf3c5c2058} 
+\index{letters.c@{letters.c}!draw\_threew@{draw\_threew}}
+\index{draw\_threew@{draw\_threew}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_threew()}{draw\_threew()}}
+{\footnotesize\ttfamily int draw\+\_\+threew (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00265}{265}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aa82c0ca94cee91393ea72c2ee4266253}\label{letters_8c_aa82c0ca94cee91393ea72c2ee4266253} 
+\index{letters.c@{letters.c}!draw\_Tw@{draw\_Tw}}
+\index{draw\_Tw@{draw\_Tw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Tw()}{draw\_Tw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Tw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00697}{697}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a1e961f3c7fe7898a1e638ae4c4538485}\label{letters_8c_a1e961f3c7fe7898a1e638ae4c4538485} 
+\index{letters.c@{letters.c}!draw\_twow@{draw\_twow}}
+\index{draw\_twow@{draw\_twow}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_twow()}{draw\_twow()}}
+{\footnotesize\ttfamily int draw\+\_\+twow (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00256}{256}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a9baf450bbe6e43df7c5f5168d91b7910}\label{letters_8c_a9baf450bbe6e43df7c5f5168d91b7910} 
+\index{letters.c@{letters.c}!draw\_Uw@{draw\_Uw}}
+\index{draw\_Uw@{draw\_Uw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Uw()}{draw\_Uw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Uw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00705}{705}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a04bb91907e20e801b305f7d690680665}\label{letters_8c_a04bb91907e20e801b305f7d690680665} 
+\index{letters.c@{letters.c}!draw\_Vw@{draw\_Vw}}
+\index{draw\_Vw@{draw\_Vw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Vw()}{draw\_Vw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Vw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00713}{713}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a4480a4e08b3ff5ee1e7dbf90d8526b50}\label{letters_8c_a4480a4e08b3ff5ee1e7dbf90d8526b50} 
+\index{letters.c@{letters.c}!draw\_Ww@{draw\_Ww}}
+\index{draw\_Ww@{draw\_Ww}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Ww()}{draw\_Ww()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Ww (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00721}{721}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a1fc47ce349d2e1a362a77361bafbe98c}\label{letters_8c_a1fc47ce349d2e1a362a77361bafbe98c} 
+\index{letters.c@{letters.c}!draw\_Xw@{draw\_Xw}}
+\index{draw\_Xw@{draw\_Xw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Xw()}{draw\_Xw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Xw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00729}{729}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_ad142fcaae0896cfbe607806103ef40e0}\label{letters_8c_ad142fcaae0896cfbe607806103ef40e0} 
+\index{letters.c@{letters.c}!draw\_Yw@{draw\_Yw}}
+\index{draw\_Yw@{draw\_Yw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Yw()}{draw\_Yw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Yw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00737}{737}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a54ca0e422e1e686f713ad214df797360}\label{letters_8c_a54ca0e422e1e686f713ad214df797360} 
+\index{letters.c@{letters.c}!draw\_zerow@{draw\_zerow}}
+\index{draw\_zerow@{draw\_zerow}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_zerow()}{draw\_zerow()}}
+{\footnotesize\ttfamily int draw\+\_\+zerow (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00238}{238}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a3a386bff99dd78866656e0a10924a81e}\label{letters_8c_a3a386bff99dd78866656e0a10924a81e} 
+\index{letters.c@{letters.c}!draw\_Zw@{draw\_Zw}}
+\index{draw\_Zw@{draw\_Zw}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{draw\_Zw()}{draw\_Zw()}}
+{\footnotesize\ttfamily int draw\+\_\+\+Zw (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00745}{745}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_a4b8931a6707fb515ffca3197a9f066a6}\label{letters_8c_a4b8931a6707fb515ffca3197a9f066a6} 
+\index{letters.c@{letters.c}!eraseblackletters@{eraseblackletters}}
+\index{eraseblackletters@{eraseblackletters}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{eraseblackletters()}{eraseblackletters()}}
+{\footnotesize\ttfamily int eraseblackletters (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00753}{753}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+\Hypertarget{letters_8c_aa672bf21cdd0175667699e8457d09603}\label{letters_8c_aa672bf21cdd0175667699e8457d09603} 
+\index{letters.c@{letters.c}!erasewhiteletters@{erasewhiteletters}}
+\index{erasewhiteletters@{erasewhiteletters}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{erasewhiteletters()}{erasewhiteletters()}}
+{\footnotesize\ttfamily int erasewhiteletters (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{letters_8c_source_l00761}{761}} of file \mbox{\hyperlink{letters_8c_source}{letters.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{letters_8c_a2ce6fc776cbebc4390d10cf083ed3b32}\label{letters_8c_a2ce6fc776cbebc4390d10cf083ed3b32} 
+\index{letters.c@{letters.c}!Çw\_sprite@{Çw\_sprite}}
+\index{Çw\_sprite@{Çw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Çw\_sprite}{Çw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Çw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00079}{79}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a95ecfacfe4b022815485d6bd1e523ab2}\label{letters_8c_a95ecfacfe4b022815485d6bd1e523ab2} 
+\index{letters.c@{letters.c}!andw\_sprite@{andw\_sprite}}
+\index{andw\_sprite@{andw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{andw\_sprite}{andw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} andw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00061}{61}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_af053cf19cad2c6cca491cba0b0f52ace}\label{letters_8c_af053cf19cad2c6cca491cba0b0f52ace} 
+\index{letters.c@{letters.c}!Aw\_sprite@{Aw\_sprite}}
+\index{Aw\_sprite@{Aw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Aw\_sprite}{Aw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Aw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00076}{76}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a49c104744a9d439c11ac257fa758fdb3}\label{letters_8c_a49c104744a9d439c11ac257fa758fdb3} 
+\index{letters.c@{letters.c}!Bw\_sprite@{Bw\_sprite}}
+\index{Bw\_sprite@{Bw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Bw\_sprite}{Bw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Bw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00077}{77}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4216704f46b06f83f73001f9f6433fda}\label{letters_8c_a4216704f46b06f83f73001f9f6433fda} 
+\index{letters.c@{letters.c}!commaw\_sprite@{commaw\_sprite}}
+\index{commaw\_sprite@{commaw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{commaw\_sprite}{commaw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} commaw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00064}{64}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aa19dddad5be2bdfcb989c1acfb25d314}\label{letters_8c_aa19dddad5be2bdfcb989c1acfb25d314} 
+\index{letters.c@{letters.c}!Cw\_sprite@{Cw\_sprite}}
+\index{Cw\_sprite@{Cw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Cw\_sprite}{Cw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Cw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00078}{78}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a34aba25aa4765637ab5b9d0fa7862dcb}\label{letters_8c_a34aba25aa4765637ab5b9d0fa7862dcb} 
+\index{letters.c@{letters.c}!dotw\_sprite@{dotw\_sprite}}
+\index{dotw\_sprite@{dotw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{dotw\_sprite}{dotw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} dotw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00135}{135}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4ed87295a4ef131a584fdc9a53d5b972}\label{letters_8c_a4ed87295a4ef131a584fdc9a53d5b972} 
+\index{letters.c@{letters.c}!Dw\_sprite@{Dw\_sprite}}
+\index{Dw\_sprite@{Dw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Dw\_sprite}{Dw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Dw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00080}{80}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a811b4481a219aaee7183a4c6dc78ff29}\label{letters_8c_a811b4481a219aaee7183a4c6dc78ff29} 
+\index{letters.c@{letters.c}!eightw\_sprite@{eightw\_sprite}}
+\index{eightw\_sprite@{eightw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{eightw\_sprite}{eightw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} eightw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00074}{74}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a317f78e675c5250106eff448f6af57b8}\label{letters_8c_a317f78e675c5250106eff448f6af57b8} 
+\index{letters.c@{letters.c}!eraseblackletters\_sprite@{eraseblackletters\_sprite}}
+\index{eraseblackletters\_sprite@{eraseblackletters\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{eraseblackletters\_sprite}{eraseblackletters\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} eraseblackletters\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00133}{133}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a67d10ca94ac1fc8152e86eaef0101ae0}\label{letters_8c_a67d10ca94ac1fc8152e86eaef0101ae0} 
+\index{letters.c@{letters.c}!erasewhiteletters\_sprite@{erasewhiteletters\_sprite}}
+\index{erasewhiteletters\_sprite@{erasewhiteletters\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{erasewhiteletters\_sprite}{erasewhiteletters\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} erasewhiteletters\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00134}{134}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ace1a67fa61e99ce8cc8f1a53cc5861a6}\label{letters_8c_ace1a67fa61e99ce8cc8f1a53cc5861a6} 
+\index{letters.c@{letters.c}!Ew\_sprite@{Ew\_sprite}}
+\index{Ew\_sprite@{Ew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Ew\_sprite}{Ew\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Ew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00081}{81}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ae594e8b9e219f9502ce26d92ba6c3b43}\label{letters_8c_ae594e8b9e219f9502ce26d92ba6c3b43} 
+\index{letters.c@{letters.c}!exclamationw\_sprite@{exclamationw\_sprite}}
+\index{exclamationw\_sprite@{exclamationw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{exclamationw\_sprite}{exclamationw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} exclamationw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00058}{58}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a9180c64b107fdbc782511a1cd906c274}\label{letters_8c_a9180c64b107fdbc782511a1cd906c274} 
+\index{letters.c@{letters.c}!fivew\_sprite@{fivew\_sprite}}
+\index{fivew\_sprite@{fivew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{fivew\_sprite}{fivew\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} fivew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00071}{71}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_af6b287e1b101cb5f6ed340d5e09b66d9}\label{letters_8c_af6b287e1b101cb5f6ed340d5e09b66d9} 
+\index{letters.c@{letters.c}!fourw\_sprite@{fourw\_sprite}}
+\index{fourw\_sprite@{fourw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{fourw\_sprite}{fourw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} fourw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00070}{70}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a728ea34d5bbc34773ae82205c826f2d2}\label{letters_8c_a728ea34d5bbc34773ae82205c826f2d2} 
+\index{letters.c@{letters.c}!Fw\_sprite@{Fw\_sprite}}
+\index{Fw\_sprite@{Fw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Fw\_sprite}{Fw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Fw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00082}{82}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ad8a15086424b441f88d0eb3b0379446c}\label{letters_8c_ad8a15086424b441f88d0eb3b0379446c} 
+\index{letters.c@{letters.c}!Gw\_sprite@{Gw\_sprite}}
+\index{Gw\_sprite@{Gw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Gw\_sprite}{Gw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Gw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00083}{83}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aa04edc9285ddd29e6f306fee66deecaa}\label{letters_8c_aa04edc9285ddd29e6f306fee66deecaa} 
+\index{letters.c@{letters.c}!Hw\_sprite@{Hw\_sprite}}
+\index{Hw\_sprite@{Hw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Hw\_sprite}{Hw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Hw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00084}{84}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a5508e8b45d3dd2ee6d293873ba4b3d76}\label{letters_8c_a5508e8b45d3dd2ee6d293873ba4b3d76} 
+\index{letters.c@{letters.c}!img\_Çw\_sprite@{img\_Çw\_sprite}}
+\index{img\_Çw\_sprite@{img\_Çw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Çw\_sprite}{img\_Çw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+Çw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00157}{157}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6d4642285a34b142f7f3b8b7871ec480}\label{letters_8c_a6d4642285a34b142f7f3b8b7871ec480} 
+\index{letters.c@{letters.c}!img\_andw\_sprite@{img\_andw\_sprite}}
+\index{img\_andw\_sprite@{img\_andw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_andw\_sprite}{img\_andw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+andw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00139}{139}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6fda1491b9785c823f36e585a72b2557}\label{letters_8c_a6fda1491b9785c823f36e585a72b2557} 
+\index{letters.c@{letters.c}!img\_Aw\_sprite@{img\_Aw\_sprite}}
+\index{img\_Aw\_sprite@{img\_Aw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Aw\_sprite}{img\_Aw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Aw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00154}{154}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a447c7e46610963e76012c6c223ca1625}\label{letters_8c_a447c7e46610963e76012c6c223ca1625} 
+\index{letters.c@{letters.c}!img\_Bw\_sprite@{img\_Bw\_sprite}}
+\index{img\_Bw\_sprite@{img\_Bw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Bw\_sprite}{img\_Bw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Bw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00155}{155}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a10df6ea53e08c826820bee898f5b81d1}\label{letters_8c_a10df6ea53e08c826820bee898f5b81d1} 
+\index{letters.c@{letters.c}!img\_commaw\_sprite@{img\_commaw\_sprite}}
+\index{img\_commaw\_sprite@{img\_commaw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_commaw\_sprite}{img\_commaw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+commaw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00142}{142}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a28efb6fadabef3f075db5859bacbc23a}\label{letters_8c_a28efb6fadabef3f075db5859bacbc23a} 
+\index{letters.c@{letters.c}!img\_Cw\_sprite@{img\_Cw\_sprite}}
+\index{img\_Cw\_sprite@{img\_Cw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Cw\_sprite}{img\_Cw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Cw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00156}{156}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aebdfb8c57bca669e6d72f91c96615157}\label{letters_8c_aebdfb8c57bca669e6d72f91c96615157} 
+\index{letters.c@{letters.c}!img\_dotw\_sprite@{img\_dotw\_sprite}}
+\index{img\_dotw\_sprite@{img\_dotw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_dotw\_sprite}{img\_dotw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+dotw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00213}{213}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a13e56ac8b4a92c77156b4814d4c1aab8}\label{letters_8c_a13e56ac8b4a92c77156b4814d4c1aab8} 
+\index{letters.c@{letters.c}!img\_Dw\_sprite@{img\_Dw\_sprite}}
+\index{img\_Dw\_sprite@{img\_Dw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Dw\_sprite}{img\_Dw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Dw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00158}{158}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a2b5db8fda1c7f66ae276c6837de68d62}\label{letters_8c_a2b5db8fda1c7f66ae276c6837de68d62} 
+\index{letters.c@{letters.c}!img\_eightw\_sprite@{img\_eightw\_sprite}}
+\index{img\_eightw\_sprite@{img\_eightw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_eightw\_sprite}{img\_eightw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+eightw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00152}{152}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a2a3838ca72df5678eb98c6fa19b93f1c}\label{letters_8c_a2a3838ca72df5678eb98c6fa19b93f1c} 
+\index{letters.c@{letters.c}!img\_eraseblackletters\_sprite@{img\_eraseblackletters\_sprite}}
+\index{img\_eraseblackletters\_sprite@{img\_eraseblackletters\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_eraseblackletters\_sprite}{img\_eraseblackletters\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+eraseblackletters\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00211}{211}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aa13a802538411ac96cd3512fffc34b53}\label{letters_8c_aa13a802538411ac96cd3512fffc34b53} 
+\index{letters.c@{letters.c}!img\_erasewhiteletters\_sprite@{img\_erasewhiteletters\_sprite}}
+\index{img\_erasewhiteletters\_sprite@{img\_erasewhiteletters\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_erasewhiteletters\_sprite}{img\_erasewhiteletters\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+erasewhiteletters\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00212}{212}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ace78a0ff8f91a5d06694687402da03b0}\label{letters_8c_ace78a0ff8f91a5d06694687402da03b0} 
+\index{letters.c@{letters.c}!img\_Ew\_sprite@{img\_Ew\_sprite}}
+\index{img\_Ew\_sprite@{img\_Ew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Ew\_sprite}{img\_Ew\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Ew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00159}{159}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a3f7ac98b26a30b41ac6e1977e7c8469e}\label{letters_8c_a3f7ac98b26a30b41ac6e1977e7c8469e} 
+\index{letters.c@{letters.c}!img\_exclamationw\_sprite@{img\_exclamationw\_sprite}}
+\index{img\_exclamationw\_sprite@{img\_exclamationw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_exclamationw\_sprite}{img\_exclamationw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+exclamationw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00136}{136}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a707a219809dfc75642c45b29053a6823}\label{letters_8c_a707a219809dfc75642c45b29053a6823} 
+\index{letters.c@{letters.c}!img\_fivew\_sprite@{img\_fivew\_sprite}}
+\index{img\_fivew\_sprite@{img\_fivew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_fivew\_sprite}{img\_fivew\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+fivew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00149}{149}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a210f1776cb465047af2fcec69aed430f}\label{letters_8c_a210f1776cb465047af2fcec69aed430f} 
+\index{letters.c@{letters.c}!img\_fourw\_sprite@{img\_fourw\_sprite}}
+\index{img\_fourw\_sprite@{img\_fourw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_fourw\_sprite}{img\_fourw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+fourw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00148}{148}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4e86e4fd08f9b4db91098384cee98813}\label{letters_8c_a4e86e4fd08f9b4db91098384cee98813} 
+\index{letters.c@{letters.c}!img\_Fw\_sprite@{img\_Fw\_sprite}}
+\index{img\_Fw\_sprite@{img\_Fw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Fw\_sprite}{img\_Fw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Fw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00160}{160}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a0405fbe0474bb13e38efd9b811814718}\label{letters_8c_a0405fbe0474bb13e38efd9b811814718} 
+\index{letters.c@{letters.c}!img\_Gw\_sprite@{img\_Gw\_sprite}}
+\index{img\_Gw\_sprite@{img\_Gw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Gw\_sprite}{img\_Gw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Gw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00161}{161}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a18b6e609fdb4d04401a7c3cc833a941a}\label{letters_8c_a18b6e609fdb4d04401a7c3cc833a941a} 
+\index{letters.c@{letters.c}!img\_Hw\_sprite@{img\_Hw\_sprite}}
+\index{img\_Hw\_sprite@{img\_Hw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Hw\_sprite}{img\_Hw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Hw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00162}{162}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_acda3b4060d884fb3c68f739090e00117}\label{letters_8c_acda3b4060d884fb3c68f739090e00117} 
+\index{letters.c@{letters.c}!img\_Iw\_sprite@{img\_Iw\_sprite}}
+\index{img\_Iw\_sprite@{img\_Iw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Iw\_sprite}{img\_Iw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Iw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00163}{163}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aed0f9f82f0042d5ec6138956e43c8c29}\label{letters_8c_aed0f9f82f0042d5ec6138956e43c8c29} 
+\index{letters.c@{letters.c}!img\_Jw\_sprite@{img\_Jw\_sprite}}
+\index{img\_Jw\_sprite@{img\_Jw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Jw\_sprite}{img\_Jw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Jw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00164}{164}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a23d2e741c40fc812a75b03c63eec96ff}\label{letters_8c_a23d2e741c40fc812a75b03c63eec96ff} 
+\index{letters.c@{letters.c}!img\_Kw\_sprite@{img\_Kw\_sprite}}
+\index{img\_Kw\_sprite@{img\_Kw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Kw\_sprite}{img\_Kw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Kw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00165}{165}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4aafadc1730e021d96c931d02c0ce578}\label{letters_8c_a4aafadc1730e021d96c931d02c0ce578} 
+\index{letters.c@{letters.c}!img\_lçw\_sprite@{img\_lçw\_sprite}}
+\index{img\_lçw\_sprite@{img\_lçw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lçw\_sprite}{img\_lçw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lçw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00169}{169}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a96588b9c335022d85ada1cde8628b073}\label{letters_8c_a96588b9c335022d85ada1cde8628b073} 
+\index{letters.c@{letters.c}!img\_law\_sprite@{img\_law\_sprite}}
+\index{img\_law\_sprite@{img\_law\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_law\_sprite}{img\_law\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+law\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00166}{166}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a549019982632163e51f9362d91ecf597}\label{letters_8c_a549019982632163e51f9362d91ecf597} 
+\index{letters.c@{letters.c}!img\_lbw\_sprite@{img\_lbw\_sprite}}
+\index{img\_lbw\_sprite@{img\_lbw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lbw\_sprite}{img\_lbw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lbw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00167}{167}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a21090e1fb2cd307a623cbaa40eee6377}\label{letters_8c_a21090e1fb2cd307a623cbaa40eee6377} 
+\index{letters.c@{letters.c}!img\_lcw\_sprite@{img\_lcw\_sprite}}
+\index{img\_lcw\_sprite@{img\_lcw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lcw\_sprite}{img\_lcw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lcw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00168}{168}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ac985e6989ee26364017c6b57de2fde95}\label{letters_8c_ac985e6989ee26364017c6b57de2fde95} 
+\index{letters.c@{letters.c}!img\_ldw\_sprite@{img\_ldw\_sprite}}
+\index{img\_ldw\_sprite@{img\_ldw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_ldw\_sprite}{img\_ldw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+ldw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00170}{170}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a3c5a505f10bd1d7d852309f7d9fc8c83}\label{letters_8c_a3c5a505f10bd1d7d852309f7d9fc8c83} 
+\index{letters.c@{letters.c}!img\_leftwhite\_sprite@{img\_leftwhite\_sprite}}
+\index{img\_leftwhite\_sprite@{img\_leftwhite\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_leftwhite\_sprite}{img\_leftwhite\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+leftwhite\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00140}{140}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a784e4df74ff22434f1e952ba6fe55cd4}\label{letters_8c_a784e4df74ff22434f1e952ba6fe55cd4} 
+\index{letters.c@{letters.c}!img\_lew\_sprite@{img\_lew\_sprite}}
+\index{img\_lew\_sprite@{img\_lew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lew\_sprite}{img\_lew\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00171}{171}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a07e2050a61cda247a14930c229801770}\label{letters_8c_a07e2050a61cda247a14930c229801770} 
+\index{letters.c@{letters.c}!img\_lfw\_sprite@{img\_lfw\_sprite}}
+\index{img\_lfw\_sprite@{img\_lfw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lfw\_sprite}{img\_lfw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lfw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00172}{172}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a717177a1fed444e0a7a846d53292615f}\label{letters_8c_a717177a1fed444e0a7a846d53292615f} 
+\index{letters.c@{letters.c}!img\_lgw\_sprite@{img\_lgw\_sprite}}
+\index{img\_lgw\_sprite@{img\_lgw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lgw\_sprite}{img\_lgw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lgw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00173}{173}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a2e3a3820f724537eb1e26cd5068a3506}\label{letters_8c_a2e3a3820f724537eb1e26cd5068a3506} 
+\index{letters.c@{letters.c}!img\_lhw\_sprite@{img\_lhw\_sprite}}
+\index{img\_lhw\_sprite@{img\_lhw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lhw\_sprite}{img\_lhw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lhw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00174}{174}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a93ebb974b14e8871a8b2c5028ce021d7}\label{letters_8c_a93ebb974b14e8871a8b2c5028ce021d7} 
+\index{letters.c@{letters.c}!img\_liw\_sprite@{img\_liw\_sprite}}
+\index{img\_liw\_sprite@{img\_liw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_liw\_sprite}{img\_liw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+liw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00175}{175}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a8109358016d2af7c58983e89ea43aac7}\label{letters_8c_a8109358016d2af7c58983e89ea43aac7} 
+\index{letters.c@{letters.c}!img\_ljw\_sprite@{img\_ljw\_sprite}}
+\index{img\_ljw\_sprite@{img\_ljw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_ljw\_sprite}{img\_ljw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+ljw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00176}{176}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ae3a00cea5d4cc020f7817989de18f82b}\label{letters_8c_ae3a00cea5d4cc020f7817989de18f82b} 
+\index{letters.c@{letters.c}!img\_lkw\_sprite@{img\_lkw\_sprite}}
+\index{img\_lkw\_sprite@{img\_lkw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lkw\_sprite}{img\_lkw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lkw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00177}{177}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a00d7fa8fba44d494aa2c5873ed8ecd4a}\label{letters_8c_a00d7fa8fba44d494aa2c5873ed8ecd4a} 
+\index{letters.c@{letters.c}!img\_llw\_sprite@{img\_llw\_sprite}}
+\index{img\_llw\_sprite@{img\_llw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_llw\_sprite}{img\_llw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+llw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00178}{178}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4911d884fae393aa8cfa680e7e72132b}\label{letters_8c_a4911d884fae393aa8cfa680e7e72132b} 
+\index{letters.c@{letters.c}!img\_lmw\_sprite@{img\_lmw\_sprite}}
+\index{img\_lmw\_sprite@{img\_lmw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lmw\_sprite}{img\_lmw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lmw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00179}{179}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a584c37a187a80d4605ba9ed797d7cdd7}\label{letters_8c_a584c37a187a80d4605ba9ed797d7cdd7} 
+\index{letters.c@{letters.c}!img\_lnw\_sprite@{img\_lnw\_sprite}}
+\index{img\_lnw\_sprite@{img\_lnw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lnw\_sprite}{img\_lnw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lnw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00180}{180}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a82f85028538ae3ad43873ef07e2cd520}\label{letters_8c_a82f85028538ae3ad43873ef07e2cd520} 
+\index{letters.c@{letters.c}!img\_low\_sprite@{img\_low\_sprite}}
+\index{img\_low\_sprite@{img\_low\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_low\_sprite}{img\_low\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+low\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00181}{181}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ac901e9366ed397f12e6b910a0166f9b0}\label{letters_8c_ac901e9366ed397f12e6b910a0166f9b0} 
+\index{letters.c@{letters.c}!img\_lpw\_sprite@{img\_lpw\_sprite}}
+\index{img\_lpw\_sprite@{img\_lpw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lpw\_sprite}{img\_lpw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lpw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00182}{182}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a2ad3c55482bbcd3732ad1f02406b12d4}\label{letters_8c_a2ad3c55482bbcd3732ad1f02406b12d4} 
+\index{letters.c@{letters.c}!img\_lqw\_sprite@{img\_lqw\_sprite}}
+\index{img\_lqw\_sprite@{img\_lqw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lqw\_sprite}{img\_lqw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lqw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00183}{183}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abecb12cacbe95f6ab82b7e7c0789294b}\label{letters_8c_abecb12cacbe95f6ab82b7e7c0789294b} 
+\index{letters.c@{letters.c}!img\_lrw\_sprite@{img\_lrw\_sprite}}
+\index{img\_lrw\_sprite@{img\_lrw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lrw\_sprite}{img\_lrw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lrw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00184}{184}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aadbdf01d25359f91174d21245a9e73ca}\label{letters_8c_aadbdf01d25359f91174d21245a9e73ca} 
+\index{letters.c@{letters.c}!img\_lsw\_sprite@{img\_lsw\_sprite}}
+\index{img\_lsw\_sprite@{img\_lsw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lsw\_sprite}{img\_lsw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lsw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00185}{185}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abe38081e2fda66ba71a592c579fa7181}\label{letters_8c_abe38081e2fda66ba71a592c579fa7181} 
+\index{letters.c@{letters.c}!img\_ltw\_sprite@{img\_ltw\_sprite}}
+\index{img\_ltw\_sprite@{img\_ltw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_ltw\_sprite}{img\_ltw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+ltw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00186}{186}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a25b5d09293b66db40b81680aa170be52}\label{letters_8c_a25b5d09293b66db40b81680aa170be52} 
+\index{letters.c@{letters.c}!img\_luw\_sprite@{img\_luw\_sprite}}
+\index{img\_luw\_sprite@{img\_luw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_luw\_sprite}{img\_luw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+luw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00187}{187}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a78ee9c8ca84fc592bfbfbbc42fd3e9fd}\label{letters_8c_a78ee9c8ca84fc592bfbfbbc42fd3e9fd} 
+\index{letters.c@{letters.c}!img\_lvw\_sprite@{img\_lvw\_sprite}}
+\index{img\_lvw\_sprite@{img\_lvw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lvw\_sprite}{img\_lvw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lvw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00188}{188}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_afd134b5b713c12e985a28633f8928e4b}\label{letters_8c_afd134b5b713c12e985a28633f8928e4b} 
+\index{letters.c@{letters.c}!img\_Lw\_sprite@{img\_Lw\_sprite}}
+\index{img\_Lw\_sprite@{img\_Lw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Lw\_sprite}{img\_Lw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Lw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00189}{189}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a545ec5385c00ae53672bf0bd8fc1f559}\label{letters_8c_a545ec5385c00ae53672bf0bd8fc1f559} 
+\index{letters.c@{letters.c}!img\_lww\_sprite@{img\_lww\_sprite}}
+\index{img\_lww\_sprite@{img\_lww\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lww\_sprite}{img\_lww\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lww\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00190}{190}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_af8b79a560125e64640d036d54d983cbd}\label{letters_8c_af8b79a560125e64640d036d54d983cbd} 
+\index{letters.c@{letters.c}!img\_lxw\_sprite@{img\_lxw\_sprite}}
+\index{img\_lxw\_sprite@{img\_lxw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lxw\_sprite}{img\_lxw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lxw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00191}{191}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6d0f4c9dd2b8753f52939984671e0071}\label{letters_8c_a6d0f4c9dd2b8753f52939984671e0071} 
+\index{letters.c@{letters.c}!img\_lyw\_sprite@{img\_lyw\_sprite}}
+\index{img\_lyw\_sprite@{img\_lyw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lyw\_sprite}{img\_lyw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lyw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00192}{192}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a360c2a5ccc002baba256b1b2081d906b}\label{letters_8c_a360c2a5ccc002baba256b1b2081d906b} 
+\index{letters.c@{letters.c}!img\_lzw\_sprite@{img\_lzw\_sprite}}
+\index{img\_lzw\_sprite@{img\_lzw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_lzw\_sprite}{img\_lzw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+lzw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00193}{193}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aecfb4edaca4695bb60c56f44b24925bc}\label{letters_8c_aecfb4edaca4695bb60c56f44b24925bc} 
+\index{letters.c@{letters.c}!img\_Mw\_sprite@{img\_Mw\_sprite}}
+\index{img\_Mw\_sprite@{img\_Mw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Mw\_sprite}{img\_Mw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Mw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00194}{194}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a54224e45c81ea19959640ec3db412bfd}\label{letters_8c_a54224e45c81ea19959640ec3db412bfd} 
+\index{letters.c@{letters.c}!img\_ninew\_sprite@{img\_ninew\_sprite}}
+\index{img\_ninew\_sprite@{img\_ninew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_ninew\_sprite}{img\_ninew\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+ninew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00153}{153}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aa6f13964d565b31e65899184fbf919c2}\label{letters_8c_aa6f13964d565b31e65899184fbf919c2} 
+\index{letters.c@{letters.c}!img\_Nw\_sprite@{img\_Nw\_sprite}}
+\index{img\_Nw\_sprite@{img\_Nw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Nw\_sprite}{img\_Nw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Nw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00195}{195}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4b44ee3e373349cedbb05f17bbb4d620}\label{letters_8c_a4b44ee3e373349cedbb05f17bbb4d620} 
+\index{letters.c@{letters.c}!img\_onew\_sprite@{img\_onew\_sprite}}
+\index{img\_onew\_sprite@{img\_onew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_onew\_sprite}{img\_onew\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+onew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00145}{145}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a0989bfa23a5ebd77cc4e22b94ebd42ae}\label{letters_8c_a0989bfa23a5ebd77cc4e22b94ebd42ae} 
+\index{letters.c@{letters.c}!img\_Ow\_sprite@{img\_Ow\_sprite}}
+\index{img\_Ow\_sprite@{img\_Ow\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Ow\_sprite}{img\_Ow\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Ow\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00196}{196}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_acb886de0bebc0fe84518fb4a2bcbb69f}\label{letters_8c_acb886de0bebc0fe84518fb4a2bcbb69f} 
+\index{letters.c@{letters.c}!img\_percentagew\_sprite@{img\_percentagew\_sprite}}
+\index{img\_percentagew\_sprite@{img\_percentagew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_percentagew\_sprite}{img\_percentagew\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+percentagew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00138}{138}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6a961c18002deecd9e9c2539db64a68b}\label{letters_8c_a6a961c18002deecd9e9c2539db64a68b} 
+\index{letters.c@{letters.c}!img\_Pw\_sprite@{img\_Pw\_sprite}}
+\index{img\_Pw\_sprite@{img\_Pw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Pw\_sprite}{img\_Pw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Pw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00197}{197}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a801f12db32a96281c1918f493cd5f516}\label{letters_8c_a801f12db32a96281c1918f493cd5f516} 
+\index{letters.c@{letters.c}!img\_questionmarkw\_sprite@{img\_questionmarkw\_sprite}}
+\index{img\_questionmarkw\_sprite@{img\_questionmarkw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_questionmarkw\_sprite}{img\_questionmarkw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+questionmarkw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00198}{198}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ae3eee94e89310d5b1a3eab0c6be0cccd}\label{letters_8c_ae3eee94e89310d5b1a3eab0c6be0cccd} 
+\index{letters.c@{letters.c}!img\_Qw\_sprite@{img\_Qw\_sprite}}
+\index{img\_Qw\_sprite@{img\_Qw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Qw\_sprite}{img\_Qw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Qw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00199}{199}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6df061fb264a0b2e6b625089910c9a60}\label{letters_8c_a6df061fb264a0b2e6b625089910c9a60} 
+\index{letters.c@{letters.c}!img\_rightbracketw\_sprite@{img\_rightbracketw\_sprite}}
+\index{img\_rightbracketw\_sprite@{img\_rightbracketw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_rightbracketw\_sprite}{img\_rightbracketw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+rightbracketw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00141}{141}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a1332af8942eb181f24021442bbc5d4da}\label{letters_8c_a1332af8942eb181f24021442bbc5d4da} 
+\index{letters.c@{letters.c}!img\_Rw\_sprite@{img\_Rw\_sprite}}
+\index{img\_Rw\_sprite@{img\_Rw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Rw\_sprite}{img\_Rw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Rw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00200}{200}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a3c236e736804624cfcff09abe7684db2}\label{letters_8c_a3c236e736804624cfcff09abe7684db2} 
+\index{letters.c@{letters.c}!img\_semicolonw\_sprite@{img\_semicolonw\_sprite}}
+\index{img\_semicolonw\_sprite@{img\_semicolonw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_semicolonw\_sprite}{img\_semicolonw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+semicolonw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00143}{143}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a9d3b8b760792d960522351e6b2aee307}\label{letters_8c_a9d3b8b760792d960522351e6b2aee307} 
+\index{letters.c@{letters.c}!img\_sevenw\_sprite@{img\_sevenw\_sprite}}
+\index{img\_sevenw\_sprite@{img\_sevenw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_sevenw\_sprite}{img\_sevenw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+sevenw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00151}{151}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6d3d380cc34e1c9a425b28978788e901}\label{letters_8c_a6d3d380cc34e1c9a425b28978788e901} 
+\index{letters.c@{letters.c}!img\_sidebarb\_sprite@{img\_sidebarb\_sprite}}
+\index{img\_sidebarb\_sprite@{img\_sidebarb\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_sidebarb\_sprite}{img\_sidebarb\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+sidebarb\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{letters_8c_a273eed0e6fb9b5c6827cfe2cf79b0a45}\label{letters_8c_a273eed0e6fb9b5c6827cfe2cf79b0a45} 
+\index{letters.c@{letters.c}!img\_sidebarw\_sprite@{img\_sidebarw\_sprite}}
+\index{img\_sidebarw\_sprite@{img\_sidebarw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_sidebarw\_sprite}{img\_sidebarw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+sidebarw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00201}{201}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a7f625f93c51e6f751908f7291ca88f41}\label{letters_8c_a7f625f93c51e6f751908f7291ca88f41} 
+\index{letters.c@{letters.c}!img\_sixw\_sprite@{img\_sixw\_sprite}}
+\index{img\_sixw\_sprite@{img\_sixw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_sixw\_sprite}{img\_sixw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+sixw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00150}{150}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ac7b91a43a4a0811f1a9ac319e52a1b1f}\label{letters_8c_ac7b91a43a4a0811f1a9ac319e52a1b1f} 
+\index{letters.c@{letters.c}!img\_start\_sprite@{img\_start\_sprite}}
+\index{img\_start\_sprite@{img\_start\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_start\_sprite}{img\_start\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+start\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00040}{40}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a2f12c1f0f7b75e136f74f0f58a24010b}\label{letters_8c_a2f12c1f0f7b75e136f74f0f58a24010b} 
+\index{letters.c@{letters.c}!img\_Sw\_sprite@{img\_Sw\_sprite}}
+\index{img\_Sw\_sprite@{img\_Sw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Sw\_sprite}{img\_Sw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Sw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00202}{202}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a1ec05373b4d37ccd4e1ed2727c4de45f}\label{letters_8c_a1ec05373b4d37ccd4e1ed2727c4de45f} 
+\index{letters.c@{letters.c}!img\_Tb\_sprite@{img\_Tb\_sprite}}
+\index{img\_Tb\_sprite@{img\_Tb\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Tb\_sprite}{img\_Tb\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Tb\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+\Hypertarget{letters_8c_ac038169a63446e03f9d93473e34b7ea2}\label{letters_8c_ac038169a63446e03f9d93473e34b7ea2} 
+\index{letters.c@{letters.c}!img\_threew\_sprite@{img\_threew\_sprite}}
+\index{img\_threew\_sprite@{img\_threew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_threew\_sprite}{img\_threew\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+threew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00147}{147}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a7f19f5faac025c3b97f8573b99d3c3de}\label{letters_8c_a7f19f5faac025c3b97f8573b99d3c3de} 
+\index{letters.c@{letters.c}!img\_Tw\_sprite@{img\_Tw\_sprite}}
+\index{img\_Tw\_sprite@{img\_Tw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Tw\_sprite}{img\_Tw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Tw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00203}{203}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a9c9db3dd31a147a1ba556508124c1838}\label{letters_8c_a9c9db3dd31a147a1ba556508124c1838} 
+\index{letters.c@{letters.c}!img\_twodotsw\_sprite@{img\_twodotsw\_sprite}}
+\index{img\_twodotsw\_sprite@{img\_twodotsw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_twodotsw\_sprite}{img\_twodotsw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+twodotsw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00204}{204}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a33c147fca47ae31c07fd1e4437056abf}\label{letters_8c_a33c147fca47ae31c07fd1e4437056abf} 
+\index{letters.c@{letters.c}!img\_twow\_sprite@{img\_twow\_sprite}}
+\index{img\_twow\_sprite@{img\_twow\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_twow\_sprite}{img\_twow\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+twow\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00146}{146}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abea80d7ab7b82d2d9b50171955e94912}\label{letters_8c_abea80d7ab7b82d2d9b50171955e94912} 
+\index{letters.c@{letters.c}!img\_Uw\_sprite@{img\_Uw\_sprite}}
+\index{img\_Uw\_sprite@{img\_Uw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Uw\_sprite}{img\_Uw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Uw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00205}{205}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a189d8ddf2584474c778dbccf80e5d174}\label{letters_8c_a189d8ddf2584474c778dbccf80e5d174} 
+\index{letters.c@{letters.c}!img\_Vw\_sprite@{img\_Vw\_sprite}}
+\index{img\_Vw\_sprite@{img\_Vw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Vw\_sprite}{img\_Vw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Vw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00206}{206}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a864ef25496ee0c759c4f66a705bbad40}\label{letters_8c_a864ef25496ee0c759c4f66a705bbad40} 
+\index{letters.c@{letters.c}!img\_Ww\_sprite@{img\_Ww\_sprite}}
+\index{img\_Ww\_sprite@{img\_Ww\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Ww\_sprite}{img\_Ww\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Ww\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00207}{207}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a545159036a472e665e347026d64eaa74}\label{letters_8c_a545159036a472e665e347026d64eaa74} 
+\index{letters.c@{letters.c}!img\_Xw\_sprite@{img\_Xw\_sprite}}
+\index{img\_Xw\_sprite@{img\_Xw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Xw\_sprite}{img\_Xw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Xw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00208}{208}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a2e2aa75637d2706c92363873e75a68f7}\label{letters_8c_a2e2aa75637d2706c92363873e75a68f7} 
+\index{letters.c@{letters.c}!img\_Yw\_sprite@{img\_Yw\_sprite}}
+\index{img\_Yw\_sprite@{img\_Yw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Yw\_sprite}{img\_Yw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Yw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00209}{209}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4f462370e27daab85227d2fb8d84abe1}\label{letters_8c_a4f462370e27daab85227d2fb8d84abe1} 
+\index{letters.c@{letters.c}!img\_zerow\_sprite@{img\_zerow\_sprite}}
+\index{img\_zerow\_sprite@{img\_zerow\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_zerow\_sprite}{img\_zerow\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+zerow\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00144}{144}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a56b360df59ec84e6e9a900fae7efa71b}\label{letters_8c_a56b360df59ec84e6e9a900fae7efa71b} 
+\index{letters.c@{letters.c}!img\_Zw\_sprite@{img\_Zw\_sprite}}
+\index{img\_Zw\_sprite@{img\_Zw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{img\_Zw\_sprite}{img\_Zw\_sprite}}
+{\footnotesize\ttfamily xpm\+\_\+image\+\_\+t img\+\_\+\+Zw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00210}{210}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a88b9a8c089103b38565462a0a0cf0e4c}\label{letters_8c_a88b9a8c089103b38565462a0a0cf0e4c} 
+\index{letters.c@{letters.c}!Iw\_sprite@{Iw\_sprite}}
+\index{Iw\_sprite@{Iw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Iw\_sprite}{Iw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Iw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00085}{85}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abc7986cf3603a54dd52b2d4b7a0cc836}\label{letters_8c_abc7986cf3603a54dd52b2d4b7a0cc836} 
+\index{letters.c@{letters.c}!Jw\_sprite@{Jw\_sprite}}
+\index{Jw\_sprite@{Jw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Jw\_sprite}{Jw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Jw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00086}{86}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aa947725d9149d83521afe5c185d75314}\label{letters_8c_aa947725d9149d83521afe5c185d75314} 
+\index{letters.c@{letters.c}!Kw\_sprite@{Kw\_sprite}}
+\index{Kw\_sprite@{Kw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Kw\_sprite}{Kw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Kw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00087}{87}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aa4bb6248cfd624be4b2c8272b11733e7}\label{letters_8c_aa4bb6248cfd624be4b2c8272b11733e7} 
+\index{letters.c@{letters.c}!lçw\_sprite@{lçw\_sprite}}
+\index{lçw\_sprite@{lçw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lçw\_sprite}{lçw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lçw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00091}{91}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ab70405cb71eafe05595c403adaa86464}\label{letters_8c_ab70405cb71eafe05595c403adaa86464} 
+\index{letters.c@{letters.c}!law\_sprite@{law\_sprite}}
+\index{law\_sprite@{law\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{law\_sprite}{law\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} law\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00088}{88}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a34c91fcbd1ae2f1aa722655af4ba6eda}\label{letters_8c_a34c91fcbd1ae2f1aa722655af4ba6eda} 
+\index{letters.c@{letters.c}!lbw\_sprite@{lbw\_sprite}}
+\index{lbw\_sprite@{lbw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lbw\_sprite}{lbw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lbw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00089}{89}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a75474a1872792ea4e3c2a186d0e9fca0}\label{letters_8c_a75474a1872792ea4e3c2a186d0e9fca0} 
+\index{letters.c@{letters.c}!lcw\_sprite@{lcw\_sprite}}
+\index{lcw\_sprite@{lcw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lcw\_sprite}{lcw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lcw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00090}{90}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_af3f68eb1129a916bf83192ffdd7b5057}\label{letters_8c_af3f68eb1129a916bf83192ffdd7b5057} 
+\index{letters.c@{letters.c}!ldw\_sprite@{ldw\_sprite}}
+\index{ldw\_sprite@{ldw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{ldw\_sprite}{ldw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} ldw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00092}{92}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_afa03b61cd603d494b4defa6d8e4dbf34}\label{letters_8c_afa03b61cd603d494b4defa6d8e4dbf34} 
+\index{letters.c@{letters.c}!leftwhite\_sprite@{leftwhite\_sprite}}
+\index{leftwhite\_sprite@{leftwhite\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{leftwhite\_sprite}{leftwhite\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} leftwhite\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00062}{62}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a812470d5966c87beef5b7c3cd2232aa8}\label{letters_8c_a812470d5966c87beef5b7c3cd2232aa8} 
+\index{letters.c@{letters.c}!lew\_sprite@{lew\_sprite}}
+\index{lew\_sprite@{lew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lew\_sprite}{lew\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00093}{93}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aba1bb6cd0ae81a80d919c05c8b934ab9}\label{letters_8c_aba1bb6cd0ae81a80d919c05c8b934ab9} 
+\index{letters.c@{letters.c}!lfw\_sprite@{lfw\_sprite}}
+\index{lfw\_sprite@{lfw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lfw\_sprite}{lfw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lfw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00094}{94}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a1c7f67c2b9021083b0894e3857fad30b}\label{letters_8c_a1c7f67c2b9021083b0894e3857fad30b} 
+\index{letters.c@{letters.c}!lgw\_sprite@{lgw\_sprite}}
+\index{lgw\_sprite@{lgw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lgw\_sprite}{lgw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lgw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00095}{95}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a9be93d396ac48bbdd5fed03069e2a9f1}\label{letters_8c_a9be93d396ac48bbdd5fed03069e2a9f1} 
+\index{letters.c@{letters.c}!lhw\_sprite@{lhw\_sprite}}
+\index{lhw\_sprite@{lhw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lhw\_sprite}{lhw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lhw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00096}{96}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ad41cc85b99f7eac083ca6688a7e56a55}\label{letters_8c_ad41cc85b99f7eac083ca6688a7e56a55} 
+\index{letters.c@{letters.c}!liw\_sprite@{liw\_sprite}}
+\index{liw\_sprite@{liw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{liw\_sprite}{liw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} liw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00097}{97}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4c9e868c2b8c4baf217be997afcc0cf2}\label{letters_8c_a4c9e868c2b8c4baf217be997afcc0cf2} 
+\index{letters.c@{letters.c}!ljw\_sprite@{ljw\_sprite}}
+\index{ljw\_sprite@{ljw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{ljw\_sprite}{ljw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} ljw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00098}{98}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a8a24650edb585a567c41242d62d2534f}\label{letters_8c_a8a24650edb585a567c41242d62d2534f} 
+\index{letters.c@{letters.c}!lkw\_sprite@{lkw\_sprite}}
+\index{lkw\_sprite@{lkw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lkw\_sprite}{lkw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lkw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00099}{99}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_af0320d3018840f8118f73288fbee8c23}\label{letters_8c_af0320d3018840f8118f73288fbee8c23} 
+\index{letters.c@{letters.c}!llw\_sprite@{llw\_sprite}}
+\index{llw\_sprite@{llw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{llw\_sprite}{llw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} llw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00100}{100}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a62a5575f0d3ee480c9ba726f4216d4ff}\label{letters_8c_a62a5575f0d3ee480c9ba726f4216d4ff} 
+\index{letters.c@{letters.c}!lmw\_sprite@{lmw\_sprite}}
+\index{lmw\_sprite@{lmw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lmw\_sprite}{lmw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lmw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00101}{101}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ae334cdc6031a5c38b51864b28777ffa2}\label{letters_8c_ae334cdc6031a5c38b51864b28777ffa2} 
+\index{letters.c@{letters.c}!lnw\_sprite@{lnw\_sprite}}
+\index{lnw\_sprite@{lnw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lnw\_sprite}{lnw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lnw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00102}{102}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ab2758a678f565db75c8c978de5b1fea6}\label{letters_8c_ab2758a678f565db75c8c978de5b1fea6} 
+\index{letters.c@{letters.c}!low\_sprite@{low\_sprite}}
+\index{low\_sprite@{low\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{low\_sprite}{low\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} low\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00103}{103}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a57c16e1bad2078105db8fc32a146d08a}\label{letters_8c_a57c16e1bad2078105db8fc32a146d08a} 
+\index{letters.c@{letters.c}!lpw\_sprite@{lpw\_sprite}}
+\index{lpw\_sprite@{lpw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lpw\_sprite}{lpw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lpw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00104}{104}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_af2224baf2d674763a2b9b7309b4cc154}\label{letters_8c_af2224baf2d674763a2b9b7309b4cc154} 
+\index{letters.c@{letters.c}!lqw\_sprite@{lqw\_sprite}}
+\index{lqw\_sprite@{lqw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lqw\_sprite}{lqw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lqw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00105}{105}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a38d2391bc68e26075d67e8c988737cda}\label{letters_8c_a38d2391bc68e26075d67e8c988737cda} 
+\index{letters.c@{letters.c}!lrw\_sprite@{lrw\_sprite}}
+\index{lrw\_sprite@{lrw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lrw\_sprite}{lrw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lrw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00106}{106}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a4aa3e96c2b65905738de5f910cf1f64b}\label{letters_8c_a4aa3e96c2b65905738de5f910cf1f64b} 
+\index{letters.c@{letters.c}!lsw\_sprite@{lsw\_sprite}}
+\index{lsw\_sprite@{lsw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lsw\_sprite}{lsw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lsw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00107}{107}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abebf8d8a6773755ad145b80a6356701f}\label{letters_8c_abebf8d8a6773755ad145b80a6356701f} 
+\index{letters.c@{letters.c}!ltw\_sprite@{ltw\_sprite}}
+\index{ltw\_sprite@{ltw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{ltw\_sprite}{ltw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} ltw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00108}{108}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a55c443ba329ac9c2667d61f05c79bf7c}\label{letters_8c_a55c443ba329ac9c2667d61f05c79bf7c} 
+\index{letters.c@{letters.c}!luw\_sprite@{luw\_sprite}}
+\index{luw\_sprite@{luw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{luw\_sprite}{luw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} luw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00109}{109}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a95cc2438b6975224b494ed7673408b27}\label{letters_8c_a95cc2438b6975224b494ed7673408b27} 
+\index{letters.c@{letters.c}!lvw\_sprite@{lvw\_sprite}}
+\index{lvw\_sprite@{lvw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lvw\_sprite}{lvw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lvw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00110}{110}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ad584b67649bf2fce089186ab0be85cc0}\label{letters_8c_ad584b67649bf2fce089186ab0be85cc0} 
+\index{letters.c@{letters.c}!Lw\_sprite@{Lw\_sprite}}
+\index{Lw\_sprite@{Lw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Lw\_sprite}{Lw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Lw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00111}{111}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abf44b206bbfdfa0acfdf717f425b495d}\label{letters_8c_abf44b206bbfdfa0acfdf717f425b495d} 
+\index{letters.c@{letters.c}!lww\_sprite@{lww\_sprite}}
+\index{lww\_sprite@{lww\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lww\_sprite}{lww\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lww\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00112}{112}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ad13e1701a76ae2165b84169f1d7b870a}\label{letters_8c_ad13e1701a76ae2165b84169f1d7b870a} 
+\index{letters.c@{letters.c}!lxw\_sprite@{lxw\_sprite}}
+\index{lxw\_sprite@{lxw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lxw\_sprite}{lxw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lxw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00113}{113}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6f611e8e418b3c31a6df46b07f526fa7}\label{letters_8c_a6f611e8e418b3c31a6df46b07f526fa7} 
+\index{letters.c@{letters.c}!lyw\_sprite@{lyw\_sprite}}
+\index{lyw\_sprite@{lyw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lyw\_sprite}{lyw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lyw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00114}{114}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ac28475db4251b1fe0ab4879c989b20c4}\label{letters_8c_ac28475db4251b1fe0ab4879c989b20c4} 
+\index{letters.c@{letters.c}!lzw\_sprite@{lzw\_sprite}}
+\index{lzw\_sprite@{lzw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{lzw\_sprite}{lzw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} lzw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00115}{115}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a3450ff731edd37e48c4895ea89e310a1}\label{letters_8c_a3450ff731edd37e48c4895ea89e310a1} 
+\index{letters.c@{letters.c}!Mw\_sprite@{Mw\_sprite}}
+\index{Mw\_sprite@{Mw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Mw\_sprite}{Mw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Mw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00116}{116}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a264788cf5b507d4a44a9125829e82024}\label{letters_8c_a264788cf5b507d4a44a9125829e82024} 
+\index{letters.c@{letters.c}!ninew\_sprite@{ninew\_sprite}}
+\index{ninew\_sprite@{ninew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{ninew\_sprite}{ninew\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} ninew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00075}{75}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a01191f9dc5690bc448d5e1d17a07597b}\label{letters_8c_a01191f9dc5690bc448d5e1d17a07597b} 
+\index{letters.c@{letters.c}!Nw\_sprite@{Nw\_sprite}}
+\index{Nw\_sprite@{Nw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Nw\_sprite}{Nw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Nw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00117}{117}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aeacb6740c28219f83c2e272b887ee7b1}\label{letters_8c_aeacb6740c28219f83c2e272b887ee7b1} 
+\index{letters.c@{letters.c}!onew\_sprite@{onew\_sprite}}
+\index{onew\_sprite@{onew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{onew\_sprite}{onew\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} onew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00067}{67}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a8fe0f73e082a4a693faa3959b48e986b}\label{letters_8c_a8fe0f73e082a4a693faa3959b48e986b} 
+\index{letters.c@{letters.c}!Ow\_sprite@{Ow\_sprite}}
+\index{Ow\_sprite@{Ow\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Ow\_sprite}{Ow\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Ow\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00118}{118}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ab8273774d679dd8ef1626c28bc6d5eb5}\label{letters_8c_ab8273774d679dd8ef1626c28bc6d5eb5} 
+\index{letters.c@{letters.c}!percentagew\_sprite@{percentagew\_sprite}}
+\index{percentagew\_sprite@{percentagew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{percentagew\_sprite}{percentagew\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} percentagew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00060}{60}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aca69559ffcb49ebb0a9a86417a9b8eb7}\label{letters_8c_aca69559ffcb49ebb0a9a86417a9b8eb7} 
+\index{letters.c@{letters.c}!Pw\_sprite@{Pw\_sprite}}
+\index{Pw\_sprite@{Pw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Pw\_sprite}{Pw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Pw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00119}{119}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a150badeae3cc2d48376803e0f980d2e2}\label{letters_8c_a150badeae3cc2d48376803e0f980d2e2} 
+\index{letters.c@{letters.c}!questionmarkw\_sprite@{questionmarkw\_sprite}}
+\index{questionmarkw\_sprite@{questionmarkw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{questionmarkw\_sprite}{questionmarkw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} questionmarkw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00120}{120}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ab1700441da10dc6f5a9c80c620933f5a}\label{letters_8c_ab1700441da10dc6f5a9c80c620933f5a} 
+\index{letters.c@{letters.c}!Qw\_sprite@{Qw\_sprite}}
+\index{Qw\_sprite@{Qw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Qw\_sprite}{Qw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Qw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00121}{121}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6674f0d7af6c6f44313ffa714648c2f9}\label{letters_8c_a6674f0d7af6c6f44313ffa714648c2f9} 
+\index{letters.c@{letters.c}!rightbracketw\_sprite@{rightbracketw\_sprite}}
+\index{rightbracketw\_sprite@{rightbracketw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{rightbracketw\_sprite}{rightbracketw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} rightbracketw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00063}{63}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a9b6149776b238b28a3042e65aca2d25a}\label{letters_8c_a9b6149776b238b28a3042e65aca2d25a} 
+\index{letters.c@{letters.c}!Rw\_sprite@{Rw\_sprite}}
+\index{Rw\_sprite@{Rw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Rw\_sprite}{Rw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Rw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00122}{122}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abb2aa514153c119783ea76d9880d002d}\label{letters_8c_abb2aa514153c119783ea76d9880d002d} 
+\index{letters.c@{letters.c}!semicolonw\_sprite@{semicolonw\_sprite}}
+\index{semicolonw\_sprite@{semicolonw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{semicolonw\_sprite}{semicolonw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} semicolonw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00065}{65}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a510a2b19cc6c2d4bee720e85c8835fe7}\label{letters_8c_a510a2b19cc6c2d4bee720e85c8835fe7} 
+\index{letters.c@{letters.c}!sevenw\_sprite@{sevenw\_sprite}}
+\index{sevenw\_sprite@{sevenw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{sevenw\_sprite}{sevenw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} sevenw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00073}{73}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a326e53698309317d982467f30de09739}\label{letters_8c_a326e53698309317d982467f30de09739} 
+\index{letters.c@{letters.c}!sidebarw\_sprite@{sidebarw\_sprite}}
+\index{sidebarw\_sprite@{sidebarw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{sidebarw\_sprite}{sidebarw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} sidebarw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00123}{123}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a8281764253d63362db8c3d1a53dc4179}\label{letters_8c_a8281764253d63362db8c3d1a53dc4179} 
+\index{letters.c@{letters.c}!sixw\_sprite@{sixw\_sprite}}
+\index{sixw\_sprite@{sixw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{sixw\_sprite}{sixw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} sixw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00072}{72}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a75012a54c57023b00894abef433232d7}\label{letters_8c_a75012a54c57023b00894abef433232d7} 
+\index{letters.c@{letters.c}!start\_sprite@{start\_sprite}}
+\index{start\_sprite@{start\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{start\_sprite}{start\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} start\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00018}{18}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a252632b30d6a48b03b982a2f7786a0df}\label{letters_8c_a252632b30d6a48b03b982a2f7786a0df} 
+\index{letters.c@{letters.c}!Sw\_sprite@{Sw\_sprite}}
+\index{Sw\_sprite@{Sw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Sw\_sprite}{Sw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Sw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00124}{124}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abbb6ffad264938bb16db4ebe96ddcd05}\label{letters_8c_abbb6ffad264938bb16db4ebe96ddcd05} 
+\index{letters.c@{letters.c}!threew\_sprite@{threew\_sprite}}
+\index{threew\_sprite@{threew\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{threew\_sprite}{threew\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} threew\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00069}{69}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_aa66d035c7c392526b931637d947c5d44}\label{letters_8c_aa66d035c7c392526b931637d947c5d44} 
+\index{letters.c@{letters.c}!Tw\_sprite@{Tw\_sprite}}
+\index{Tw\_sprite@{Tw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Tw\_sprite}{Tw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Tw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00125}{125}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_abc3b5b4bc98d7d0aa3e243092ecf766a}\label{letters_8c_abc3b5b4bc98d7d0aa3e243092ecf766a} 
+\index{letters.c@{letters.c}!twodotsw\_sprite@{twodotsw\_sprite}}
+\index{twodotsw\_sprite@{twodotsw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{twodotsw\_sprite}{twodotsw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} twodotsw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00126}{126}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a6cf0a7065244b9a11c327ffb2daa5ec4}\label{letters_8c_a6cf0a7065244b9a11c327ffb2daa5ec4} 
+\index{letters.c@{letters.c}!twow\_sprite@{twow\_sprite}}
+\index{twow\_sprite@{twow\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{twow\_sprite}{twow\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} twow\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00068}{68}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a79af0ccc73a613027914b34b7717598e}\label{letters_8c_a79af0ccc73a613027914b34b7717598e} 
+\index{letters.c@{letters.c}!Uw\_sprite@{Uw\_sprite}}
+\index{Uw\_sprite@{Uw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Uw\_sprite}{Uw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Uw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00127}{127}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ac9a0141b95f7265ef8a6a6f338238e1c}\label{letters_8c_ac9a0141b95f7265ef8a6a6f338238e1c} 
+\index{letters.c@{letters.c}!Vw\_sprite@{Vw\_sprite}}
+\index{Vw\_sprite@{Vw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Vw\_sprite}{Vw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Vw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00128}{128}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a0ce9c6094f042570c5a137887713251c}\label{letters_8c_a0ce9c6094f042570c5a137887713251c} 
+\index{letters.c@{letters.c}!Ww\_sprite@{Ww\_sprite}}
+\index{Ww\_sprite@{Ww\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Ww\_sprite}{Ww\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Ww\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00129}{129}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a1e7a300ec48ae0554b6b85f1af2a530f}\label{letters_8c_a1e7a300ec48ae0554b6b85f1af2a530f} 
+\index{letters.c@{letters.c}!Xw\_sprite@{Xw\_sprite}}
+\index{Xw\_sprite@{Xw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Xw\_sprite}{Xw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Xw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00130}{130}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_a013204b2d8e1a9e8de138d1fc91e5fc1}\label{letters_8c_a013204b2d8e1a9e8de138d1fc91e5fc1} 
+\index{letters.c@{letters.c}!Yw\_sprite@{Yw\_sprite}}
+\index{Yw\_sprite@{Yw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Yw\_sprite}{Yw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Yw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00131}{131}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_af1d55b3a57848cbccd44bd1801260f82}\label{letters_8c_af1d55b3a57848cbccd44bd1801260f82} 
+\index{letters.c@{letters.c}!zerow\_sprite@{zerow\_sprite}}
+\index{zerow\_sprite@{zerow\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{zerow\_sprite}{zerow\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} zerow\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00066}{66}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+
+\Hypertarget{letters_8c_ab60aff875bc4b58de8d38355f0eeaabb}\label{letters_8c_ab60aff875bc4b58de8d38355f0eeaabb} 
+\index{letters.c@{letters.c}!Zw\_sprite@{Zw\_sprite}}
+\index{Zw\_sprite@{Zw\_sprite}!letters.c@{letters.c}}
+\doxysubsubsection{\texorpdfstring{Zw\_sprite}{Zw\_sprite}}
+{\footnotesize\ttfamily uint8\+\_\+t\texorpdfstring{$\ast$}{*} Zw\+\_\+sprite\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \mbox{\hyperlink{sprites_8c_source_l00132}{132}} of file \mbox{\hyperlink{sprites_8c_source}{sprites.\+c}}.
+

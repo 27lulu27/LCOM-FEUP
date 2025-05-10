@@ -1,0 +1,260 @@
+\doxysection{src/alien.h File Reference}
+\hypertarget{alien_8h}{}\label{alien_8h}\index{src/alien.h@{src/alien.h}}
+
+
+Header file containing definitions and function prototypes for alien manipulation.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for alien.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_alien}{Alien}}
+\begin{DoxyCompactList}\small\item\em Struct representing an alien entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{alien_8h_aa54efb489142fe5b7ab10bcbff9a579f}{ALIEN\+\_\+\+COLUMNS}}~8
+\item 
+\#define \mbox{\hyperlink{alien_8h_ab4b929749caf8d4f492da56a22df559f}{ALIEN\+\_\+\+ROWS}}~4
+\item 
+\#define \mbox{\hyperlink{alien_8h_ac1ed6f2f60c77f89c280be8b23f36eab}{ALIEN\+\_\+\+COUNT}}~(ALIEN\+\_\+\+COLUMNS \texorpdfstring{$\ast$}{*} ALIEN\+\_\+\+ROWS)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{alien_8h_a94245e4c26d13b3b3189c113100b51d7}{init\+\_\+aliens}} (uint16\+\_\+t x\+\_\+res, uint16\+\_\+t y\+\_\+res)
+\begin{DoxyCompactList}\small\item\em Initializes the aliens at the start of the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{alien_8h_a20b7d3c635db2499444661a9e3e0de4d}{draw\+\_\+alien}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Draws an alien sprite at the specified coordinates. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{alien_8h_aa0df4bfd1873e94493d8268825051e2a}{delete\+\_\+alien}} (uint16\+\_\+t x, uint16\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Deletes an alien sprite at the specified coordinates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{alien_8h_a14e05fad9daa4ab53ee1358171b86b0d}{draw\+\_\+aliens}} (void)
+\begin{DoxyCompactList}\small\item\em Draws all alive aliens on the screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{alien_8h_ad41dda425726620c758d91489f94c93b}{set\+\_\+alien\+\_\+dead}} (int index)
+\begin{DoxyCompactList}\small\item\em Sets an alien as dead. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{alien_8h_af94a4eb5b67a10eea057aba41d4be138}{move\+\_\+aliens}} (void)
+\begin{DoxyCompactList}\small\item\em Moves all alive aliens. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{alien_8h_a80d3420dd02c804f605027a5f38a0658}{check\+\_\+all\+\_\+aliens\+\_\+dead}} (void)
+\begin{DoxyCompactList}\small\item\em Checks if all aliens are dead. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_alien}{Alien}} \mbox{\hyperlink{alien_8h_a98d97778028fdcea1300f6ec9e242f65}{aliens}} \mbox{[}ALIEN\+\_\+\+COUNT\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array containing all aliens in the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{alien_8h_abe3222080920e969777184424358ade9}{alien\+\_\+shoot\+\_\+interval}}
+\begin{DoxyCompactList}\small\item\em Interval for alien shooting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file containing definitions and function prototypes for alien manipulation. 
+
+
+
+Definition in file \mbox{\hyperlink{alien_8h_source}{alien.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{alien_8h_aa54efb489142fe5b7ab10bcbff9a579f}\label{alien_8h_aa54efb489142fe5b7ab10bcbff9a579f} 
+\index{alien.h@{alien.h}!ALIEN\_COLUMNS@{ALIEN\_COLUMNS}}
+\index{ALIEN\_COLUMNS@{ALIEN\_COLUMNS}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{ALIEN\_COLUMNS}{ALIEN\_COLUMNS}}
+{\footnotesize\ttfamily \#define ALIEN\+\_\+\+COLUMNS~8}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8h_source_l00012}{12}} of file \mbox{\hyperlink{alien_8h_source}{alien.\+h}}.
+
+\Hypertarget{alien_8h_ac1ed6f2f60c77f89c280be8b23f36eab}\label{alien_8h_ac1ed6f2f60c77f89c280be8b23f36eab} 
+\index{alien.h@{alien.h}!ALIEN\_COUNT@{ALIEN\_COUNT}}
+\index{ALIEN\_COUNT@{ALIEN\_COUNT}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{ALIEN\_COUNT}{ALIEN\_COUNT}}
+{\footnotesize\ttfamily \#define ALIEN\+\_\+\+COUNT~(ALIEN\+\_\+\+COLUMNS \texorpdfstring{$\ast$}{*} ALIEN\+\_\+\+ROWS)}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8h_source_l00014}{14}} of file \mbox{\hyperlink{alien_8h_source}{alien.\+h}}.
+
+\Hypertarget{alien_8h_ab4b929749caf8d4f492da56a22df559f}\label{alien_8h_ab4b929749caf8d4f492da56a22df559f} 
+\index{alien.h@{alien.h}!ALIEN\_ROWS@{ALIEN\_ROWS}}
+\index{ALIEN\_ROWS@{ALIEN\_ROWS}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{ALIEN\_ROWS}{ALIEN\_ROWS}}
+{\footnotesize\ttfamily \#define ALIEN\+\_\+\+ROWS~4}
+
+
+
+Definition at line \mbox{\hyperlink{alien_8h_source_l00013}{13}} of file \mbox{\hyperlink{alien_8h_source}{alien.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{alien_8h_a80d3420dd02c804f605027a5f38a0658}\label{alien_8h_a80d3420dd02c804f605027a5f38a0658} 
+\index{alien.h@{alien.h}!check\_all\_aliens\_dead@{check\_all\_aliens\_dead}}
+\index{check\_all\_aliens\_dead@{check\_all\_aliens\_dead}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{check\_all\_aliens\_dead()}{check\_all\_aliens\_dead()}}
+{\footnotesize\ttfamily bool check\+\_\+all\+\_\+aliens\+\_\+dead (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Checks if all aliens are dead. 
+
+This function checks if all aliens are dead. \begin{DoxyReturn}{Returns}
+true if all aliens are dead, false otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00112}{112}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8h_aa0df4bfd1873e94493d8268825051e2a}\label{alien_8h_aa0df4bfd1873e94493d8268825051e2a} 
+\index{alien.h@{alien.h}!delete\_alien@{delete\_alien}}
+\index{delete\_alien@{delete\_alien}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{delete\_alien()}{delete\_alien()}}
+{\footnotesize\ttfamily int delete\+\_\+alien (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Deletes an alien sprite at the specified coordinates. 
+
+This function deletes an alien sprite at the specified (x, y) coordinates on the screen by drawing a black sprite over it. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the alien sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the alien sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00048}{48}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8h_a20b7d3c635db2499444661a9e3e0de4d}\label{alien_8h_a20b7d3c635db2499444661a9e3e0de4d} 
+\index{alien.h@{alien.h}!draw\_alien@{draw\_alien}}
+\index{draw\_alien@{draw\_alien}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{draw\_alien()}{draw\_alien()}}
+{\footnotesize\ttfamily int draw\+\_\+alien (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Draws an alien sprite at the specified coordinates. 
+
+This function draws an alien sprite at the specified (x, y) coordinates on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em x} & The x-\/coordinate of the upper-\/left corner of the alien sprite. \\
+\hline
+{\em y} & The y-\/coordinate of the upper-\/left corner of the alien sprite. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 upon success, non-\/zero otherwise. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00040}{40}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8h_a14e05fad9daa4ab53ee1358171b86b0d}\label{alien_8h_a14e05fad9daa4ab53ee1358171b86b0d} 
+\index{alien.h@{alien.h}!draw\_aliens@{draw\_aliens}}
+\index{draw\_aliens@{draw\_aliens}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{draw\_aliens()}{draw\_aliens()}}
+{\footnotesize\ttfamily void draw\+\_\+aliens (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Draws all alive aliens on the screen. 
+
+This function draws all alive aliens on the screen. 
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00056}{56}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8h_a94245e4c26d13b3b3189c113100b51d7}\label{alien_8h_a94245e4c26d13b3b3189c113100b51d7} 
+\index{alien.h@{alien.h}!init\_aliens@{init\_aliens}}
+\index{init\_aliens@{init\_aliens}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{init\_aliens()}{init\_aliens()}}
+{\footnotesize\ttfamily void init\+\_\+aliens (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x\+\_\+res,  }\item[{uint16\+\_\+t}]{y\+\_\+res }\end{DoxyParamCaption})}
+
+
+
+Initializes the aliens at the start of the game. 
+
+This function initializes the positions of all aliens at the start of the game. 
+\begin{DoxyParams}{Parameters}
+{\em x\+\_\+res} & The screen width resolution. \\
+\hline
+{\em y\+\_\+res} & The screen height resolution. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00027}{27}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8h_af94a4eb5b67a10eea057aba41d4be138}\label{alien_8h_af94a4eb5b67a10eea057aba41d4be138} 
+\index{alien.h@{alien.h}!move\_aliens@{move\_aliens}}
+\index{move\_aliens@{move\_aliens}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{move\_aliens()}{move\_aliens()}}
+{\footnotesize\ttfamily void move\+\_\+aliens (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Moves all alive aliens. 
+
+This function moves all alive aliens on the screen according to their current direction. 
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00075}{75}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8h_ad41dda425726620c758d91489f94c93b}\label{alien_8h_ad41dda425726620c758d91489f94c93b} 
+\index{alien.h@{alien.h}!set\_alien\_dead@{set\_alien\_dead}}
+\index{set\_alien\_dead@{set\_alien\_dead}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{set\_alien\_dead()}{set\_alien\_dead()}}
+{\footnotesize\ttfamily void set\+\_\+alien\+\_\+dead (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Sets an alien as dead. 
+
+This function marks the specified alien as dead and deletes its sprite from the screen. 
+\begin{DoxyParams}{Parameters}
+{\em index} & The index of the alien to be marked as dead. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00066}{66}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{alien_8h_abe3222080920e969777184424358ade9}\label{alien_8h_abe3222080920e969777184424358ade9} 
+\index{alien.h@{alien.h}!alien\_shoot\_interval@{alien\_shoot\_interval}}
+\index{alien\_shoot\_interval@{alien\_shoot\_interval}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{alien\_shoot\_interval}{alien\_shoot\_interval}}
+{\footnotesize\ttfamily int alien\+\_\+shoot\+\_\+interval\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Interval for alien shooting. 
+
+This variable represents the interval between alien shots. 
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00021}{21}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+
+\Hypertarget{alien_8h_a98d97778028fdcea1300f6ec9e242f65}\label{alien_8h_a98d97778028fdcea1300f6ec9e242f65} 
+\index{alien.h@{alien.h}!aliens@{aliens}}
+\index{aliens@{aliens}!alien.h@{alien.h}}
+\doxysubsubsection{\texorpdfstring{aliens}{aliens}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_alien}{Alien}} aliens\mbox{[}ALIEN\+\_\+\+COUNT\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Array containing all aliens in the game. 
+
+This array stores all alien entities present in the game. 
+
+Definition at line \mbox{\hyperlink{alien_8c_source_l00020}{20}} of file \mbox{\hyperlink{alien_8c_source}{alien.\+c}}.
+

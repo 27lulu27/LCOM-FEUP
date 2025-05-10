@@ -1,0 +1,43 @@
+\doxysection{score.\+h}
+\hypertarget{score_8h_source}{}\label{score_8h_source}\index{src/score.h@{src/score.h}}
+\mbox{\hyperlink{score_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00006}00006\ \textcolor{preprocessor}{\#ifndef\ SCORE\_H}}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00007}00007\ \textcolor{preprocessor}{\#define\ SCORE\_H}}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00009}00009\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00014}\mbox{\hyperlink{struct_score}{00014}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00015}00015\ \ \ \textcolor{keywordtype}{int}\ score;}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00016}00016\ \ \ \textcolor{keywordtype}{int}\ lives;}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00017}00017\ \}\ \mbox{\hyperlink{struct_score}{Score}};}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00025}00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_ad412bd4b019684f65ffc0a7329230b4c}{init\_score}}(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info,\ \textcolor{keywordtype}{int}\ initial\_lives);}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00032}00032\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_aaee542d3d50b8381ae32a7988de45265}{update\_score}}(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info,\ \textcolor{keywordtype}{int}\ points);}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00038}00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_a19b87e2c11783731fd604db62f573636}{decrement\_lives}}(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info);}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00044}00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_af02807ea1d130a53010007ea1b78b69c}{draw\_score}}(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info);}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00050}00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_a80435eec9f6ce3ca56ec5f983f331aa6}{draw\_lives}}(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info);}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00056}00056\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_a8b3f30b0e190034dea2801d4da83d7c1}{draw\_final\_score}}(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info);}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00062}00062\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_ac9d2010d9375c17d14455a279167fecd}{draw\_best\_score}}(\mbox{\hyperlink{struct_score}{Score}}*\ score\_info);}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00069}00069\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8h_afb4c3703e5755f5a6156baa007248c13}{draw\_time\_remaining}}(\textcolor{keywordtype}{int}\ time\_remaining);}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00075}00075\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{score_8h_a3951b025e02a4bfd74ff02dcac77a8c3}{alien\_score\_value}};\ \ \textcolor{comment}{//how\ many\ points\ each\ alien\ kill\ is\ worth}}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00080}00080\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct_score}{Score}}\ \mbox{\hyperlink{score_8h_adc7277eea8958dea6b52f5e3dbe65a7e}{game\_score}};}
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00085}00085\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{score_8h_ac3816f3d5c6e0dce27cf9b2b18ed94ca}{best\_score}};\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{score_8h_source_l00087}00087\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SCORE\_H}}
+
+\end{DoxyCode}

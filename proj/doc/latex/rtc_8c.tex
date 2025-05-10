@@ -1,0 +1,66 @@
+\doxysection{rtc.\+c File Reference}
+\hypertarget{rtc_8c}{}\label{rtc_8c}\index{rtc.c@{rtc.c}}
+{\ttfamily \#include $<$lcom/lcf.\+h$>$}\newline
+{\ttfamily \#include "{}rtc.\+h"{}}\newline
+Include dependency graph for rtc.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{rtc_8c_a8e4030507a3afad53e5b80851f90d193}{rtc\+\_\+output}} (uint8\+\_\+t command, uint8\+\_\+t \texorpdfstring{$\ast$}{*}output)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{rtc_8c_ad94a4129c242c6fd858b515d84b6f642}{bcd\+\_\+to\+\_\+binary}} (uint8\+\_\+t num)
+\item 
+int \mbox{\hyperlink{rtc_8c_a85eac1995c2f6a6c4a643ba04275056b}{rtc\+\_\+get\+Time}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{rtc_8c_a00a531a34a1d603329df5778f1203ab6}{hours}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{rtc_8c_ad94a4129c242c6fd858b515d84b6f642}\label{rtc_8c_ad94a4129c242c6fd858b515d84b6f642} 
+\index{rtc.c@{rtc.c}!bcd\_to\_binary@{bcd\_to\_binary}}
+\index{bcd\_to\_binary@{bcd\_to\_binary}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{bcd\_to\_binary()}{bcd\_to\_binary()}}
+{\footnotesize\ttfamily uint8\+\_\+t bcd\+\_\+to\+\_\+binary (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00016}{16}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+\Hypertarget{rtc_8c_a85eac1995c2f6a6c4a643ba04275056b}\label{rtc_8c_a85eac1995c2f6a6c4a643ba04275056b} 
+\index{rtc.c@{rtc.c}!rtc\_getTime@{rtc\_getTime}}
+\index{rtc\_getTime@{rtc\_getTime}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_getTime()}{rtc\_getTime()}}
+{\footnotesize\ttfamily int rtc\+\_\+get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00020}{20}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+\Hypertarget{rtc_8c_a8e4030507a3afad53e5b80851f90d193}\label{rtc_8c_a8e4030507a3afad53e5b80851f90d193} 
+\index{rtc.c@{rtc.c}!rtc\_output@{rtc\_output}}
+\index{rtc\_output@{rtc\_output}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{rtc\_output()}{rtc\_output()}}
+{\footnotesize\ttfamily int rtc\+\_\+output (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{command,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00006}{6}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{rtc_8c_a00a531a34a1d603329df5778f1203ab6}\label{rtc_8c_a00a531a34a1d603329df5778f1203ab6} 
+\index{rtc.c@{rtc.c}!hours@{hours}}
+\index{hours@{hours}!rtc.c@{rtc.c}}
+\doxysubsubsection{\texorpdfstring{hours}{hours}}
+{\footnotesize\ttfamily uint8\+\_\+t hours = 0}
+
+
+
+Definition at line \mbox{\hyperlink{rtc_8c_source_l00005}{5}} of file \mbox{\hyperlink{rtc_8c_source}{rtc.\+c}}.
+

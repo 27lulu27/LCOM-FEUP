@@ -1,0 +1,126 @@
+\doxysection{video.\+c File Reference}
+\hypertarget{video_8c}{}\label{video_8c}\index{video.c@{video.c}}
+{\ttfamily \#include "{}video.\+h"{}}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+Include dependency graph for video.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{video_8c_a2389fb7d53fbae7b1fef93f9d034fcb2}{vg\+\_\+initi}} (uint16\+\_\+t mode)
+\item 
+int \mbox{\hyperlink{video_8c_a4f0da3f238c61b44f31ed7e0ccf70be8}{vg\+\_\+draw\+\_\+pixel}} (uint16\+\_\+t x, uint16\+\_\+t y, uint8\+\_\+t \texorpdfstring{$\ast$}{*}color)
+\item 
+int \mbox{\hyperlink{video_8c_acb6eef3bad755bbcbbe85de3ece6d9ac}{vg\+\_\+draw\+\_\+line}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t len, uint8\+\_\+t \texorpdfstring{$\ast$}{*}color)
+\item 
+int \mbox{\hyperlink{video_8c_ac8df515f9118f571ca2c7f714c54efb7}{vg\+\_\+draw\+\_\+rect}} (uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t width, uint16\+\_\+t height, uint8\+\_\+t \texorpdfstring{$\ast$}{*}color)
+\item 
+void \mbox{\hyperlink{video_8c_a74930566e72c70d3e7d9bf66afd2e8c3}{double\+\_\+buffer}} ()
+\item 
+int \mbox{\hyperlink{video_8c_a90580c1a284b055e1fb503e921315531}{draw\+\_\+xpm}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}used\+\_\+colors, xpm\+\_\+image\+\_\+t img, uint16\+\_\+t x, uint16\+\_\+t y)
+\item 
+int \mbox{\hyperlink{video_8c_a61259319174926f8b014eb26f91ce791}{draw\+\_\+sprite}} (xpm\+\_\+image\+\_\+t img, uint8\+\_\+t \texorpdfstring{$\ast$}{*}sprite, uint16\+\_\+t x, uint16\+\_\+t y)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+vbe\+\_\+mode\+\_\+info\+\_\+t \mbox{\hyperlink{video_8c_a26081be7a771e5c611b33f15caaf831e}{vmi\+\_\+p}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{video_8c_a13d46a89176726a5343cab02f94ebc9e}{buff}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{video_8c_a74930566e72c70d3e7d9bf66afd2e8c3}\label{video_8c_a74930566e72c70d3e7d9bf66afd2e8c3} 
+\index{video.c@{video.c}!double\_buffer@{double\_buffer}}
+\index{double\_buffer@{double\_buffer}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{double\_buffer()}{double\_buffer()}}
+{\footnotesize\ttfamily void double\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00116}{116}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{video_8c_a61259319174926f8b014eb26f91ce791}\label{video_8c_a61259319174926f8b014eb26f91ce791} 
+\index{video.c@{video.c}!draw\_sprite@{draw\_sprite}}
+\index{draw\_sprite@{draw\_sprite}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_sprite()}{draw\_sprite()}}
+{\footnotesize\ttfamily int draw\+\_\+sprite (\begin{DoxyParamCaption}\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{sprite,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00141}{141}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{video_8c_a90580c1a284b055e1fb503e921315531}\label{video_8c_a90580c1a284b055e1fb503e921315531} 
+\index{video.c@{video.c}!draw\_xpm@{draw\_xpm}}
+\index{draw\_xpm@{draw\_xpm}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{draw\_xpm()}{draw\_xpm()}}
+{\footnotesize\ttfamily int draw\+\_\+xpm (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{used\+\_\+colors,  }\item[{xpm\+\_\+image\+\_\+t}]{img,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00120}{120}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{video_8c_acb6eef3bad755bbcbbe85de3ece6d9ac}\label{video_8c_acb6eef3bad755bbcbbe85de3ece6d9ac} 
+\index{video.c@{video.c}!vg\_draw\_line@{vg\_draw\_line}}
+\index{vg\_draw\_line@{vg\_draw\_line}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_line()}{vg\_draw\_line()}}
+{\footnotesize\ttfamily int vg\+\_\+draw\+\_\+line (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{len,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00086}{86}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{video_8c_a4f0da3f238c61b44f31ed7e0ccf70be8}\label{video_8c_a4f0da3f238c61b44f31ed7e0ccf70be8} 
+\index{video.c@{video.c}!vg\_draw\_pixel@{vg\_draw\_pixel}}
+\index{vg\_draw\_pixel@{vg\_draw\_pixel}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_pixel()}{vg\_draw\_pixel()}}
+{\footnotesize\ttfamily int vg\+\_\+draw\+\_\+pixel (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00063}{63}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{video_8c_ac8df515f9118f571ca2c7f714c54efb7}\label{video_8c_ac8df515f9118f571ca2c7f714c54efb7} 
+\index{video.c@{video.c}!vg\_draw\_rect@{vg\_draw\_rect}}
+\index{vg\_draw\_rect@{vg\_draw\_rect}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{vg\_draw\_rect()}{vg\_draw\_rect()}}
+{\footnotesize\ttfamily int vg\+\_\+draw\+\_\+rect (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{width,  }\item[{uint16\+\_\+t}]{height,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{color }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00101}{101}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{video_8c_a2389fb7d53fbae7b1fef93f9d034fcb2}\label{video_8c_a2389fb7d53fbae7b1fef93f9d034fcb2} 
+\index{video.c@{video.c}!vg\_initi@{vg\_initi}}
+\index{vg\_initi@{vg\_initi}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{vg\_initi()}{vg\_initi()}}
+{\footnotesize\ttfamily int vg\+\_\+initi (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00009}{9}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{video_8c_a13d46a89176726a5343cab02f94ebc9e}\label{video_8c_a13d46a89176726a5343cab02f94ebc9e} 
+\index{video.c@{video.c}!buff@{buff}}
+\index{buff@{buff}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{buff}{buff}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} buff}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00006}{6}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+
+\Hypertarget{video_8c_a26081be7a771e5c611b33f15caaf831e}\label{video_8c_a26081be7a771e5c611b33f15caaf831e} 
+\index{video.c@{video.c}!vmi\_p@{vmi\_p}}
+\index{vmi\_p@{vmi\_p}!video.c@{video.c}}
+\doxysubsubsection{\texorpdfstring{vmi\_p}{vmi\_p}}
+{\footnotesize\ttfamily vbe\+\_\+mode\+\_\+info\+\_\+t vmi\+\_\+p}
+
+
+
+Definition at line \mbox{\hyperlink{video_8c_source_l00005}{5}} of file \mbox{\hyperlink{video_8c_source}{video.\+c}}.
+

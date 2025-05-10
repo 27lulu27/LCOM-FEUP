@@ -1,0 +1,54 @@
+\doxysection{utils.\+c}
+\hypertarget{utils_8c_source}{}\label{utils_8c_source}\index{src/utils.c@{src/utils.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <lcom/lcf.h>}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00002}00002\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00005}00005\ \textcolor{keywordtype}{int}\ cnt\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00016}00016\ int(util\_get\_LSB)(uint16\_t\ val,\ uint8\_t\ *lsb)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00017}00017\ \ \ uint16\_t\ temp\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00019}00019\ \ \ temp\ =\ (val\ \&\ 0x00FF);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00021}00021\ \ \ *lsb\ =\ (uint8\_t)\ temp;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00023}00023\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00024}00024\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00035}00035\ int(util\_get\_MSB)(uint16\_t\ val,\ uint8\_t\ *msb)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00036}00036\ \ \ uint16\_t\ temp\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00038}00038\ \ \ temp\ =\ (val\ \&\ 0xFF00);}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00040}00040\ \ \ temp\ =\ temp\ >>\ 8;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00042}00042\ \ \ *msb\ =\ (uint8\_t)\ temp;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00044}00044\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00045}00045\ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00056}00056\ int\ (util\_sys\_inb)(\textcolor{keywordtype}{int}\ port,\ uint8\_t\ *value)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00058}00058\ \ \ uint32\_t\ variable\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00059}00059\ \ \ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00060}00060\ \ \ \textcolor{keywordflow}{if}(sys\_inb(port,\ \&variable)\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00062}00062\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00063}00063\ \textcolor{preprocessor}{\ \ \#ifdef\ LAB3}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00064}00064\ \ \ cnt++;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00065}00065\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00068}00068\ \ \ *value\ =\ (uint8\_t)\ variable;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00071}00071\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{utils_8c_source_l00072}00072\ \}}
+
+\end{DoxyCode}
